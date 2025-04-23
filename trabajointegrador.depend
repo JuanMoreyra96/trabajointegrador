@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1745413737 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\trabajo practico intregrador\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
+
+1745341227 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\trabajo practico intregrador\trabajointegrador\cliente.cpp
+	"cliente.h"
+	"cstring"
+	"cliente.h"
+
+1745419800 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\trabajo practico intregrador\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	<iostream>
+
+1745339907 c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\trabajo practico intregrador\trabajointegrador\cliente.h
+	<string>
+
+1745413944 c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\trabajo practico intregrador\trabajointegrador\clientemenu.h
+
