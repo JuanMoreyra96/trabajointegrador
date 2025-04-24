@@ -7,6 +7,7 @@ using namespace std;
 
 void clientemanager::cargarcliente()
 {
+    //hola
     cliente nuevoCliente;
     clientearchivo pArchivo;
 
