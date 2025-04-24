@@ -2,11 +2,15 @@
 #include <iostream>
 #include <string>
 #include "cliente.h"
+#include "clientearchivo.h"
 using namespace std;
 
 void clientemanager::cargarcliente()
 {
     cliente nuevoCliente;
+    clientearchivo pArchivo;
+
+
     int dni, telefono;
     string nombre,apellido,direccion,email;
     bool reservado;
@@ -34,9 +38,14 @@ void clientemanager::cargarcliente()
 
     nuevoCliente = cliente(dni,nombre,apellido, telefono, direccion, email, reservado);
 
-  cout << nuevoCliente.toString();
-  system("Pause");
+  //cout << nuevoCliente.toString();
+  //system("Pause");
 
+  if(pArchivo.guardar(nuevoCliente)){
+        cout << "se guardo joya" << endl;
+  }else{
+        cout << "hubo un error al guardar" << endl;
+    }
 
 
 }
