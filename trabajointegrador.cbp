@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="cliente.cpp" />
 		<Unit filename="cliente.h" />
+		<Unit filename="clientearchivo.cpp" />
+		<Unit filename="clientearchivo.h" />
 		<Unit filename="clientemanager.cpp" />
 		<Unit filename="clientemanager.h" />
 		<Unit filename="clientemenu.cpp" />

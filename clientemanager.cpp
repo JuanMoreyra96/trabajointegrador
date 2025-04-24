@@ -50,4 +50,14 @@ void clientemanager::cargarcliente()
 
 }
 
+void clientemanager::mostrarcantidadregistros(){
+    clientearchivo pArchivo;
+    //int cantidadregistros = pArchivo.getcantidadregistros();
+
+   // cout << "La canidad de registros son : " << cantidadregistros << endl;
+}
+
+
+
+
 

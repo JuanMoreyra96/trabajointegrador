@@ -26,7 +26,7 @@
 1745506057 c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\cliente.h
 	<string>
 
-1745506764 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemenu.cpp
+1745512384 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemenu.cpp
 	"clientemenu.h"
 	"clientemanager.h"
 	<iostream>
@@ -39,14 +39,14 @@
 	"cliente.h"
 	"clientemenu.h"
 
-1745510135 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemanager.cpp
+1745515289 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
 	"cliente.h"
 	"clientearchivo.h"
 
-1745430663 c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemanager.h
+1745512384 c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientemanager.h
 
 1745509975 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\escritorio\repos\programacion2\clientearchivo.cpp
 	"clientearchivo.h"
