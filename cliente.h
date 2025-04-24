@@ -32,6 +32,7 @@
         void setReservado(bool reservado);
 
         std::string toString();
+        std::string toCSV();
 
     };
 

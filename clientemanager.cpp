@@ -1,9 +1,12 @@
 #include "clientemanager.h"
 #include <iostream>
+#include <string>
+#include "cliente.h"
 using namespace std;
 
 void clientemanager::cargarcliente()
 {
+    cliente nuevoCliente;
     int dni, telefono;
     string nombre,apellido,direccion,email;
     bool reservado;
@@ -15,15 +18,12 @@ void clientemanager::cargarcliente()
     getline(cin, nombre);
 
     cout << "ingrese apellidos: ";
-    cin.ignore();
     getline(cin, apellido);
 
     cout << "ingrese direccion: ";
-    cin.ignore();
     getline(cin, direccion);
 
     cout << "ingrese email: ";
-    cin.ignore();
     getline(cin, email);
 
     cout << "ingrese telefono: ";
@@ -31,6 +31,12 @@ void clientemanager::cargarcliente()
 
     cout << "Tiene reserva? : 1-Si / 0=No";
     cin >> reservado;
+
+    nuevoCliente = cliente(dni,nombre,apellido, telefono, direccion, email, reservado);
+
+  // cout << nuevoCliente.toString();
+
+
 
 }
 

@@ -1,9 +1,12 @@
 #include "clientemenu.h"
+#include "clientemanager.h"
 #include <iostream>
+#include "cliente.h"
 using namespace std;
 void clientemenu::mostrar()
 {
     int opcion;
+    clientemanager cmanager;
     do
     {
         cout << "_____________________________________________" << endl;
@@ -20,7 +23,8 @@ void clientemenu::mostrar()
         switch(opcion)
         {
         case 1:
-            cout << "1" << endl;
+            cmanager.cargarcliente();
+            //out << "1" << endl;
             break;
         case 2:
             cout << "2" << endl;
