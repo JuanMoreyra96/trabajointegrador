@@ -49,13 +49,15 @@ void cliente::setReservado(bool reservado){_reservado=reservado;}
 std::string cliente::toString(){
     string str = "";
     str = to_string(_dni)+ ",";
+    str+= _nombre;
+    str+=",";
     str+= _apellido;
     str+= ",";
-    str+= to_string(_telefono)+ ",";
     str+= _direccion;
     str+= ",";
     str+= _email;
     str+= ",";
+    str+= to_string(_telefono)+ ",";
     str+= to_string(_reservado);
 
 

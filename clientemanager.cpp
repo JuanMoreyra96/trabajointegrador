@@ -34,7 +34,8 @@ void clientemanager::cargarcliente()
 
     nuevoCliente = cliente(dni,nombre,apellido, telefono, direccion, email, reservado);
 
-  // cout << nuevoCliente.toString();
+  cout << nuevoCliente.toString();
+  system("Pause");
 
 
 
