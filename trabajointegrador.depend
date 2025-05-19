@@ -55,3 +55,40 @@
 	"cliente.h"
 	<string>
 
+1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
+	"cliente.h"
+	"cstring"
+	"cliente.h"
+
+1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
+	<string>
+
+1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	"clientemanager.h"
+	<iostream>
+	"cliente.h"
+
+1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
+
+1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
+
+1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
+
+1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
+	"clientearchivo.h"
+
+1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.h
+	"cliente.h"
+	<string>
+
+1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.cpp
+	"clientemanager.h"
+	<iostream>
+	<string>
+	"cliente.h"
+	"clientearchivo.h"
+
