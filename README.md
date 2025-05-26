@@ -1,2 +1,0 @@
-# trabajointegrador
-Trabajo Programacion II
