@@ -32,6 +32,6 @@ int main()
 
 */
 
-/* chau*/
+/* chau nos vemos*/
     return 0;
 }
