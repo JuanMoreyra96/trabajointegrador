@@ -22,6 +22,6 @@ public:
     //void setFecha(Fecha fecha);
 
     void Mostrar();
-    void Cargar
+    void Cargar(int idPago, int idReserva, float importe/*, Fecha fecha*/);
 
 };

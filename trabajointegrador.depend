@@ -147,3 +147,29 @@
 
 1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.h
 
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.cpp
+	"clientearchivo.h"
+
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.h
+	"cliente.h"
+	<string>
+
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.cpp
+	"clientemanager.h"
+	<iostream>
+	<string>
+	"cliente.h"
+	"clientearchivo.h"
+
+1748302603 source:c:\users\tomas moreyra\documents\github\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
+
+1748559665 source:c:\users\tomas moreyra\documents\github\trabajointegrador\pagos.cpp
+	<iostream>
+	"pagos.h"
+	<cstring>
+
+1748559593 c:\users\tomas moreyra\documents\github\trabajointegrador\pagos.h
+
