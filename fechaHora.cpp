@@ -1,6 +1,8 @@
 #include <iostream>
 #include "fechaHora.h"
 
+using namespace std;
+
 FechaHora::FechaHora(){
     setDia(0);
     setMes(0);
