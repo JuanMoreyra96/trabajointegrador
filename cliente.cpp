@@ -4,61 +4,53 @@
 using namespace std;
 
 cliente::cliente(){
-    _dni = 0;
+    strcpy(_idCliente, "");
+    strcpy(_dni, "");
     strcpy(_nombre, "");
     strcpy(_apellido, "");
-    _telefono = 0;
-    strcpy(_direccion, "");
     strcpy(_email, "");
-    _reservado = false;
+    strcpy(_celular , "");
+    _estado = false;
 }
-cliente::cliente(int dni, std::string nombre, std::string apellido,int telefono, std::string direccion,std::string email, bool reservado){
-   /* _dni = dni;
-    strcpy(_nombre, nombre.c_str());
-    strcpy(_apellido, apellido.c_str());
-    _telefono = telefono;
-    strcpy(_direccion, direccion.c_str());
-    strcpy(_email, email.c_str());
-    _reservado = reservado;*/
+cliente::cliente(std::string idCliente,std::string dni,std::string nombre,std::string apellido,std::string email, std::string celular, bool estado){
 
-    // asi queda mas retulizado el codigo
+    setidCliente(idCliente);
     setDni(dni);
     setNombre(nombre);
     setApellido(apellido);
-    setTelefono(telefono);
-    setDireccion(direccion);
     setEmail(email);
-    setReservado(reservado);
+    setCelular(celular);
+    setEstado(estado);
 }
-int cliente::getDni(){return _dni;}
+std::string cliente::getidCliente(){return _idCliente;}
+std::string cliente::getDni(){return _dni;}
 std::string cliente::getNombre(){return _nombre;}
 std::string cliente::getApellido(){return _apellido;}
-int cliente::getTelefono(){return _telefono;}
-std::string cliente::getDireccion(){return _direccion;}
+std::string cliente::getCelular(){return _celular;}
 std::string cliente::getEmail(){return _email;}
-bool cliente::getReservado(){return _reservado;}
+bool cliente::getEstado(){return _estado;}
 
-void cliente::setDni(int dni){_dni=dni;}
+void cliente::setidCliente(std::string idCliente){strcpy(_idCliente,idCliente.c_str());}
+void cliente::setDni(std::string dni){strcpy(_dni,dni.c_str());}
 void cliente::setNombre(std::string nombre){strcpy(_nombre,nombre.c_str());}
 void cliente::setApellido(std::string apellido){strcpy(_apellido,apellido.c_str());}
-void cliente::setTelefono(int telefono){_telefono=telefono;}
-void cliente::setDireccion(std::string direccion){strcpy(_direccion,direccion.c_str());}
 void cliente::setEmail(std::string email){strcpy(_email,email.c_str());}
-void cliente::setReservado(bool reservado){_reservado=reservado;}
+void cliente::setCelular(std::string celular){strcpy(_celular,celular.c_str());}
+void cliente::setEstado(bool estado){_estado=estado;}
 
 std::string cliente::toString(){
     string str = "";
-    str = to_string(_dni)+ ",";
+    str = _dni;
+    str+=",";
     str+= _nombre;
     str+=",";
     str+= _apellido;
     str+= ",";
-    str+= _direccion;
-    str+= ",";
     str+= _email;
     str+= ",";
-    str+= to_string(_telefono)+ ",";
-    str+= to_string(_reservado);
+    str+= _celular;
+    str+=",";
+    str+= to_string(_estado);
 
 
     return str;

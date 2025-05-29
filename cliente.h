@@ -1,39 +1,43 @@
 #ifndef CLIENTE_H_INCLUDED
 #define CLIENTE_H_INCLUDED
+#include "persona.h"
 #include <string>
- class cliente{
-     private:
-        int _dni;
-        char _nombre[30];
-        char _apellido[30];
-        int _telefono;
-        char _direccion[30];
-        char _email[30];
-        bool _reservado;
-        //fecha fechareserva //(composision) usamos un objeto de una clase como propiedad de otra.
-     public:
-        cliente();
-        cliente(int dni, std::string nombre, std::string apellido,int telefono, std::string direccion,std::string email, bool reservado);
+class cliente : public persona {
 
-        int getDni();
+private:
+    char _idCliente [3];
+    char _dni[9];
+    char _nombre[50];
+    char _apellido[50];
+    char _email[50];
+    char _celular[10];
+    bool _estado;
+
+public:
+    cliente();
+    cliente(std::string idCliente,std::string dni,std::string nombre,std::string apellido,std::string email, std::string celular, bool estado);
+
+
+        std::string getidCliente();
+        std::string getDni();
         std::string getNombre();
         std::string getApellido();
-        int getTelefono();
-        std::string getDireccion();
         std::string getEmail();
-        bool getReservado();
+        std::string getCelular();
+        bool getEstado();
 
-        void setDni(int dni);
+        void setidCliente(std::string idCliente);
+        void setDni(std::string dni);
         void setNombre(std::string nombre);
         void setApellido(std::string apellido);
-        void setTelefono(int telefono);
-        void setDireccion(std::string direccion);
         void setEmail(std::string email);
-        void setReservado(bool reservado);
+        void setCelular(std::string celular);
+        void setEstado(bool estado);
 
         std::string toString();
-        std::string toCSV();
 
-    };
+
+
+};
 
 #endif // CLIENTE_H_INCLUDED

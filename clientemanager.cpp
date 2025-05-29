@@ -12,10 +12,12 @@ void clientemanager::cargarcliente()
     clientearchivo pArchivo;
 
 
-    int dni, telefono;
-    string nombre,apellido,direccion,email;
-    bool reservado;
 
+    string idCliente,nombre,apellido,direccion,email,dni, celular;
+    bool estado;
+
+    cout << "ingrese dni del cliente: ";
+    cin >> idCliente;
     cout << "ingrese dni del cliente: ";
     cin >> dni;
     cout << "ingrese nombre: ";
@@ -32,12 +34,12 @@ void clientemanager::cargarcliente()
     getline(cin, email);
 
     cout << "ingrese telefono: ";
-    cin >> telefono;
+    cin >> celular;
 
     cout << "Tiene reserva? : 1-Si / 0=No";
-    cin >> reservado;
+    cin >> estado;
 
-    nuevoCliente = cliente(dni,nombre,apellido, telefono, direccion, email, reservado);
+    nuevoCliente = cliente(idCliente,dni,nombre,apellido, email, celular, estado);
 
   //cout << nuevoCliente.toString();
   //system("Pause");
