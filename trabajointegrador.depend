@@ -92,3 +92,40 @@
 	"cliente.h"
 	"clientearchivo.h"
 
+1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.cpp
+	"cliente.h"
+	"cstring"
+	"cliente.h"
+
+1748525142 c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.h
+	<string>
+
+1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	"clientemanager.h"
+	<iostream>
+	"cliente.h"
+
+1748525142 c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemenu.h
+
+1748525142 c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemanager.h
+
+1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
+
+1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientearchivo.cpp
+	"clientearchivo.h"
+
+1748525142 c:\users\morey\onedrive\documentos\github\trabajointegrador\clientearchivo.h
+	"cliente.h"
+	<string>
+
+1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemanager.cpp
+	"clientemanager.h"
+	<iostream>
+	<string>
+	"cliente.h"
+	"clientearchivo.h"
+
