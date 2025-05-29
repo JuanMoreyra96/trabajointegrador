@@ -92,12 +92,13 @@
 	"cliente.h"
 	"clientearchivo.h"
 
-1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.cpp
+1748534052 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.cpp
 	"cliente.h"
 	"cstring"
 	"cliente.h"
 
-1748524267 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.h
+1748534099 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.h
+	"persona.h"
 	<string>
 
 1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientearchivo.cpp
@@ -107,7 +108,7 @@
 	"cliente.h"
 	<string>
 
-1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemanager.cpp
+1748533641 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
@@ -124,8 +125,15 @@
 
 1748524267 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemenu.h
 
-1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\main.cpp
+1748530903 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\main.cpp
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
+
+1748531984 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\persona.cpp
+	"cstring"
+	"persona.h"
+
+1748532016 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\persona.h
+	<string>
 
