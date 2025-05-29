@@ -4,23 +4,52 @@
 //# include "archivoPagos.h"
 //# include Fecha.h
 
-void Pagos::setIdPago(int idPago){_idPago=idPago;}
-void Pagos::setIdReserva(int idReserva){_idReserva=idReserva;}
-void Pagos::setImporte(float importe){_importe=importe;}
-//void Pagos::setFecha(Fecha fecha){_fecha=fecha};
+Pagos::Pagos(){
+    _idPago=0;
+    _idReserva=0;
+    _importe=0;
+    //_fecha=0;
+}
+Pagos::Pagos(int idPago, int idReserva, float importe/*, Fecha fecha*/){
+    setIdPago(idPago);
+    setIdReserva(idReserva);
+    setImporte(importe);
+    //setFecha(fecha);
+}
 
-int Pagos::getIdPago(){return _idPago;}
-int Pagos::getIdReserva(){return _idReserva;}
-float Pagos::getImporte(){return _importe;}
-//Fecha Pagos::getFecha(){return _fecha};
-
-void cargar(int idPago, int idReserva, float importe/*, Fecha fecha*/) {
-        setIdPago(idPago);
-        setIdReserva(idReserva);
-        setImporte(importe);
-        //setFecha(fecha);
+int Pagos::getIdPago(){
+    return _idPago;
     }
-void Mostrar(){
+int Pagos::getIdReserva(){
+    return _idReserva;
+    }
+float Pagos::getImporte(){
+    return _importe;
+    }
+/*Fecha Pagos::getFecha(){
+    return _fecha;
+    }*/
+
+void Pagos::setIdPago(int idPago){
+    _idPago=idPago;
+    }
+void Pagos::setIdReserva(int idReserva){
+    _idReserva=idReserva;
+    }
+void Pagos::setImporte(float importe){
+    _importe=importe;
+    }
+/*void Pagos::setFecha(Fecha fecha){
+    _fecha=fecha
+    }*/
+
+void Pagos::Cargar(int idPago, int idReserva, float importe/*, Fecha fecha*/) {
+    setIdPago(idPago);
+    setIdReserva(idReserva);
+    setImporte(importe);
+    //setFecha(fecha);
+    }
+void Pagos::Mostrar(){
     std::cout << "ID Pago: " << _idPago << endl;
     std::cout << "ID Reserva: " << _idReserva << endl;
     std::cout << "Importe: " << _importe << endl;

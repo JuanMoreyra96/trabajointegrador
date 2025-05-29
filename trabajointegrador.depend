@@ -129,3 +129,21 @@
 	"cliente.h"
 	"clientearchivo.h"
 
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.cpp
+	"cliente.h"
+	"cstring"
+	"cliente.h"
+
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.h
+	<string>
+
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	"clientemanager.h"
+	<iostream>
+	"cliente.h"
+
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.h
+
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.h
+
