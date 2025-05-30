@@ -2,7 +2,7 @@
 # include "pagos.h"
 # include<cstring>
 //# include "archivoPagos.h"
-//# include Fecha.h
+//# include "fecha.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ Pagos::Pagos(){
     setImporte(0);
     //setFecha(0);
 }
-Pagos::Pagos(int idPago, int idReserva, float importe/*, Fecha fecha*/){
+Pagos::Pagos(int idPago, int idReserva, float importe/*, FechaHora fecha*/){
     setIdPago(idPago);
     setIdReserva(idReserva);
     setImporte(importe);
@@ -28,7 +28,7 @@ int Pagos::getIdReserva(){
 float Pagos::getImporte(){
     return _importe;
     }
-/*Fecha Pagos::getFecha(){
+/*FechaHora Pagos::getFecha(){
     return _fecha;
     }*/
 
@@ -41,19 +41,8 @@ void Pagos::setIdReserva(int idReserva){
 void Pagos::setImporte(float importe){
     _importe=importe;
     }
-/*void Pagos::setFecha(Fecha fecha){
+/*void Pagos::setFecha(FechaHora fecha){
     _fecha=fecha
     }*/
 
-void Pagos::Cargar(int idPago, int idReserva, float importe/*, Fecha fecha*/) {
-    setIdPago(idPago);
-    setIdReserva(idReserva);
-    setImporte(importe);
-    //setFecha(fecha);
-    }
-void Pagos::Mostrar(){
-    std::cout << "ID Pago: " << _idPago << endl;
-    std::cout << "ID Reserva: " << _idReserva << endl;
-    std::cout << "Importe: " << _importe << endl;
-    //std::cout << "Fecha del pago: " << _fecha << endl;
 }
