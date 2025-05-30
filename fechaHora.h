@@ -24,7 +24,6 @@ public:
     void setHora (int hora);
     void setMinuto (int minuto);
 
-    void Cargar(int dia, int mes, int anio, int hora, int minuto);
     void Mostrar();
 
 };

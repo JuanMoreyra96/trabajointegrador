@@ -51,15 +51,6 @@ void FechaHora::setMinuto (int minuto){
     _minuto=minuto;
 }
 
-void FechaHora::Cargar(int dia, int mes, int anio, int hora, int minuto){
-    setDia(dia);
-    setMes(mes);
-    setAnio(anio);
-    setHora(hora);
-    setMinuto(minuto);
-}
-
 void FechaHora::Mostrar(){
-    std::cout << "La hora es: " << _hora << ":" << _minuto <<  endl;
-    std::cout << "La fecha es: " << _dia << "/" << _mes << "/" << _anio << endl;
+    std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto <<  endl;
 }
