@@ -92,12 +92,12 @@
 	"cliente.h"
 	"clientearchivo.h"
 
-1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.cpp
+1748618299 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.cpp
 	"cliente.h"
 	"cstring"
 	"cliente.h"
 
-1748525142 c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.h
+1748618299 c:\users\morey\onedrive\documentos\github\trabajointegrador\cliente.h
 	<string>
 
 1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemenu.cpp
@@ -122,7 +122,7 @@
 	"cliente.h"
 	<string>
 
-1748525142 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemanager.cpp
+1748618299 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
@@ -172,4 +172,19 @@
 	<cstring>
 
 1748559593 c:\users\tomas moreyra\documents\github\trabajointegrador\pagos.h
+
+1748620002 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\fechahora.cpp
+	<iostream>
+	"fechaHora.h"
+
+1748620002 c:\users\morey\onedrive\documentos\github\trabajointegrador\fechahora.h
+
+1748620483 source:c:\users\morey\onedrive\documentos\github\trabajointegrador\pagos.cpp
+	<iostream>
+	"pagos.h"
+	<cstring>
+	"fechaHora.h"
+
+1748620281 c:\users\morey\onedrive\documentos\github\trabajointegrador\pagos.h
+	"fechaHora.h"
 
