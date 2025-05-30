@@ -2,7 +2,7 @@
 # include "pagos.h"
 # include<cstring>
 //# include "archivoPagos.h"
-//# include "fecha.h"
+# include "fecha.h"
 
 using namespace std;
 
