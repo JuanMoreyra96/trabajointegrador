@@ -4,11 +4,11 @@
 using namespace std;
 
 FechaHora::FechaHora(){
-    setDia(0);
-    setMes(0);
-    setAnio(0);
-    setHora(0);
-    setMinuto(0);
+    _dia=0;
+    _mes=0;
+    _anio=0;
+    _hora=0;
+    _minuto=0;
 }
 
 FechaHora::FechaHora(int dia, int mes, int anio, int hora, int minuto){
