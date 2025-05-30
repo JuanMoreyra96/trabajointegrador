@@ -7,10 +7,10 @@
 using namespace std;
 
 Pagos::Pagos(){
-    setIdPago(0);
-    setIdReserva(0);
-    setImporte(0);
-    //setFecha(0);
+    _idPago=0;
+    _idReserva=0;
+    _importe=0;
+    //_fecha=0;
 }
 Pagos::Pagos(int idPago, int idReserva, float importe/*, FechaHora fecha*/){
     setIdPago(idPago);
