@@ -43,6 +43,8 @@
 		<Unit filename="fechaHora.cpp" />
 		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="pagos.cpp" />
+		<Unit filename="pagos.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
