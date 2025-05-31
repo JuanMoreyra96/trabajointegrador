@@ -8,7 +8,7 @@ using namespace std;
 void clientemanager::cargarcliente()
 {
     //hola
-    cliente nuevoCliente;
+    Cliente nuevoCliente;
     clientearchivo pArchivo;
 
 
@@ -39,7 +39,7 @@ void clientemanager::cargarcliente()
     cout << "Tiene reserva? : 1-Si / 0=No";
     cin >> estado;
 
-    nuevoCliente = cliente(idCliente,dni,nombre,apellido, email, celular, estado);
+    nuevoCliente = Cliente(dni,nombre,apellido, email, celular, estado, idCliente);
 
   //cout << nuevoCliente.toString();
   //system("Pause");

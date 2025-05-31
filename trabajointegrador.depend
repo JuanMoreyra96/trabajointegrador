@@ -137,3 +137,49 @@
 1748532016 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\persona.h
 	<string>
 
+1748562148 source:c:\users\juan\documents\github\trabajointegrador\cliente.cpp
+	"Cliente.h"
+	<cstring>
+	<iostream>
+
+1748562148 c:\users\juan\documents\github\trabajointegrador\cliente.h
+	<string>
+	"persona.h"
+
+1748562448 c:\users\juan\documents\github\trabajointegrador\persona.h
+	<string>
+
+1748301738 source:c:\users\juan\documents\github\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	"clientemanager.h"
+	<iostream>
+	"cliente.h"
+
+1748301738 c:\users\juan\documents\github\trabajointegrador\clientemenu.h
+
+1748301738 c:\users\juan\documents\github\trabajointegrador\clientemanager.h
+
+1748302099 source:c:\users\juan\documents\github\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
+
+1748562167 source:c:\users\juan\documents\github\trabajointegrador\clientearchivo.cpp
+	"clientearchivo.h"
+
+1748562155 c:\users\juan\documents\github\trabajointegrador\clientearchivo.h
+	"cliente.h"
+	<string>
+
+1748562177 source:c:\users\juan\documents\github\trabajointegrador\clientemanager.cpp
+	"clientemanager.h"
+	<iostream>
+	<string>
+	"cliente.h"
+	"clientearchivo.h"
+
+1748562148 source:c:\users\juan\documents\github\trabajointegrador\persona.cpp
+	<cstring>
+	"persona.h"
+	<iostream>
+
