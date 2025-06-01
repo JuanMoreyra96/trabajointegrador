@@ -15,12 +15,12 @@ PaqueteDeViaje::PaqueteDeViaje(){
     _totalCupos = 0;
     _cuposOcupados = 0;
     _temporadaAlta = false;
-   _fechaRegreso = FechaHora(); 
-   _FechaSalida = FechaHora(); 
+   _fechaRegreso = FechaHora();
+   _fechaSalida = FechaHora();
     _estado = false;
    }
 
-   
+
 PaqueteDeViaje::PaqueteDeViaje(
       int idPaquete,
         int idCoordinador1,
@@ -32,8 +32,8 @@ PaqueteDeViaje::PaqueteDeViaje(
         int totalCupos,
         int cuposOcupados,
         bool temporadaAlta,
-        FechaHora fechaRegreso, 
-        FechaHora FechaSalida, 
+        FechaHora fechaRegreso,
+        FechaHora fechaSalida,
         bool estado
 ){
     setIdPaquete(idPaquete);
@@ -47,7 +47,7 @@ PaqueteDeViaje::PaqueteDeViaje(
     setCuposOcupados(cuposOcupados);
     setTemporadaAlta(temporadaAlta);
     setFechaRegreso(fechaRegreso);
-    setFechaSalida(FechaSalida);
+    setFechaSalida(fechaSalida);
     setEstado(estado);
 }
 
@@ -82,10 +82,10 @@ PaqueteDeViaje::PaqueteDeViaje(
             return _temporadaAlta;
         }
          FechaHora PaqueteDeViaje::getFechaRegreso(){
-            return _fechaRegreso
+            return _fechaRegreso;
          }
          FechaHora PaqueteDeViaje::getFechaSalida(){
-            return _FechaSalida;
+            return _fechaSalida;
          }
         bool PaqueteDeViaje::getEstado(){
             return _estado;
@@ -95,10 +95,10 @@ PaqueteDeViaje::PaqueteDeViaje(
             _idPaquete = idPaquete;
         }
         void PaqueteDeViaje::setIdCoordinador1(int idCoordinador){
-            _idCoordinador[0] = idCoordinador
+            _idCoordinador[0] = idCoordinador;
         }
          void PaqueteDeViaje::setIdCoordinador2(int idCoordinador){
-            _idCoordinador[1] = idCoordinador
+            _idCoordinador[1] = idCoordinador;
         }
         void PaqueteDeViaje::setDestino (std::string destino){
             strcpy(_destino, destino.c_str());
@@ -107,7 +107,7 @@ PaqueteDeViaje::PaqueteDeViaje(
             strcpy(_tipoTransporte, tipoTransporte.c_str());
         }
         void PaqueteDeViaje::setHotel (std::string hotel){
-            strcpy(_hora, hotel.c_str());
+            strcpy(_hotel, hotel.c_str());
         }
         void PaqueteDeViaje::setPrecio(float precio){
             _precio = precio;
@@ -125,14 +125,14 @@ PaqueteDeViaje::PaqueteDeViaje(
             _fechaRegreso = fecha;
         }
         void PaqueteDeViaje::setFechaSalida(FechaHora fecha){
-            _FechaSalida = fecha;
+            _fechaSalida = fecha;
         }
         void PaqueteDeViaje::setEstado(bool estado){
             _estado = estado;
         }
-   
+
         void PaqueteDeViaje::Mostrar(){
-//TODO: el manager ya habrá validado que el paquete esté activo
+            //TODO: el manager ya habrá validado que el paquete esté activo
             cout<<"ID PAQUETE: "<<_idPaquete<<endl;
             cout<<"ID COORDINADOR 1: "<<_idCoordinador[0]<<endl;
             cout<<"ID COORDINADOR 2:"<<_idCoordinador[1]<<endl;
@@ -142,8 +142,16 @@ PaqueteDeViaje::PaqueteDeViaje(
             cout<<"PRECIO POR PERSONA: "<< _precio<<endl;
             cout<<"TOTAL DE CUPOS: "<<_totalCupos<<endl;
             cout<<"CUPOS OCUPADOS: "<<_cuposOcupados<<endl;
-            cout<<"TEMPORADA: "<<_temporadaAlta<<endl;
-            cout<<"FECHA DE SALIDA: "<<_FechaSalida<<endl;
-            cout<<"FECHA DE REGRESO"<<_fechaRegreso<<endl;
+            if(_temporadaAlta)
+                {
+                  cout<<  "TEMPORADA ALTA"<<endl;
+
+                }else
+               {
+                  cout<<  "TEMPORADA BAJA"<<endl;
+
+                }
+          _fechaSalida.Mostrar();
+          _fechaRegreso.Mostrar();
             // estado: no se muestra
         }

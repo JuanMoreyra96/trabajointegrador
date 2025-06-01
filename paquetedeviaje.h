@@ -13,13 +13,13 @@
     int _totalCupos;
     int _cuposOcupados;
     bool _temporadaAlta;
-    FechaHora _fechaRegreso; 
-    FechaHora _FechaSalida; 
+    FechaHora _fechaRegreso;
+    FechaHora _fechaSalida;
     bool _estado;
 
      public:
         PaqueteDeViaje();
-        PaqueteDeViaje( 
+        PaqueteDeViaje(
         int idPaquete,
         int idCoordinador1,
         int idCoordinador2,
@@ -30,8 +30,8 @@
         int totalCupos,
         int cuposOcupados,
         bool temporadaAlta,
-        FechaHora fechaRegreso, 
-        FechaHora FechaSalida, 
+        FechaHora fechaRegreso,
+        FechaHora fechaSalida,
         bool estado
         );
         //GETTERS
