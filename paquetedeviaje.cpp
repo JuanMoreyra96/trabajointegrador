@@ -15,9 +15,9 @@ PaqueteDeViaje::PaqueteDeViaje(){
     _totalCupos = 0;
     _cuposOcupados = 0;
     _temporadaAlta = false;
-  // _fechaRegreso = FechaHora(); 
-   //_FechaSalida = FechaHora(); 
-    _estado;
+   _fechaRegreso = FechaHora(); 
+   _FechaSalida = FechaHora(); 
+    _estado = false;
    }
 
    
@@ -32,8 +32,8 @@ PaqueteDeViaje::PaqueteDeViaje(
         int totalCupos,
         int cuposOcupados,
         bool temporadaAlta,
-        // FechaHora fechaRegreso, 
-        // FechaHora FechaSalida, 
+        FechaHora fechaRegreso, 
+        FechaHora FechaSalida, 
         bool estado
 ){
     setIdPaquete(idPaquete);
@@ -46,8 +46,8 @@ PaqueteDeViaje::PaqueteDeViaje(
     setTotalCupos(totalCupos);
     setCuposOcupados(cuposOcupados);
     setTemporadaAlta(temporadaAlta);
-    // setFechaRegreso(fechaRegreso);
-    // setFechaSalida(FechaSalida);
+    setFechaRegreso(fechaRegreso);
+    setFechaSalida(FechaSalida);
     setEstado(estado);
 }
 
@@ -101,10 +101,14 @@ PaqueteDeViaje::PaqueteDeViaje(
             _idCoordinador[1] = idCoordinador
         }
         void PaqueteDeViaje::setDestino (std::string destino){
-
+            strcpy(_destino, destino.c_str());
         }
-        void PaqueteDeViaje::setTipoTransporte (std::string tipoTransporte);
-        void PaqueteDeViaje::setHotel (std::string hotel);
+        void PaqueteDeViaje::setTipoTransporte (std::string tipoTransporte){
+            strcpy(_tipoTransporte, tipoTransporte.c_str());
+        }
+        void PaqueteDeViaje::setHotel (std::string hotel){
+            strcpy(_hora, hotel.c_str());
+        }
         void PaqueteDeViaje::setPrecio(float precio){
             _precio = precio;
         }
@@ -117,61 +121,29 @@ PaqueteDeViaje::PaqueteDeViaje(
         void PaqueteDeViaje::setTemporadaAlta(bool temporadaAlta){
             _temporadaAlta = temporadaAlta;
         }
-        void PaqueteDeViaje::setFechaRegreso(Fecha fecha){
+        void PaqueteDeViaje::setFechaRegreso(FechaHora fecha){
             _fechaRegreso = fecha;
         }
-        void PaqueteDeViaje::setFechaSalida(Fecha fecha){
+        void PaqueteDeViaje::setFechaSalida(FechaHora fecha){
             _FechaSalida = fecha;
         }
         void PaqueteDeViaje::setEstado(bool estado){
             _estado = estado;
         }
-        bool PaqueteDeViaje::Cargar()
-        {
-            //TODO: agregar validaciones
-        cout<<"Id del paquete: ";
-        cin>>_idPaquete;
-
-        cout<<"Id del 1° coordinador: ";
-        cin>>_idCoordinador[0];
-
-        cout<<"Id del 2° coordinador: ";
-        cin>>_idCoordinador[1]; 
-        cout<<"Destino: ";
-        cin>>_destino; 
-        cout<<"Tipo de transporte: ";
-        cin>>_tipoTransporte; 
-        cout<<"Hotel: ";
-        cin>>_hotel; 
-        cout<<"Precio por persona en pesos:";
-        cin>>_precio;
-        cout<<"Total de cupos:";
-        cin>>_cupos;
-        cout<<"¿El paquete es de temporada alta o baja? 1-Alta 0-Baja";
-        cin>>_temporadaAlta;
-        _cuposOcupados = 0;
-         cout<<"Fecha Y hora de salida (DD/MM/AAAA HH:mm): ";
-        cin>>_FechaSalida
-    
-         cout<<"Fecha Y hora de regreso (DD/MM/AAAA HH:mm): ";
-        cin>>_fechaRegreso
- 
-        _estado = true;
-            return true;
-        }
+   
         void PaqueteDeViaje::Mostrar(){
-//TODO:validar que este activo
-            cout<<_idPaquete<<endl;
-            cout<<_idCoordinador[0]<<endl;
-            cout<<_idCoordinador[1]<<endl;
-            cout<<_destino<<endl;
-            cout<<_hotel<<endl;
-            cout<<_tipoTransporte<<endl;
-            cout<<_precio<<endl;
-            cout<<_totalCupos<<endl;
-            cout<<_cuposOcupados<<endl;
-            cout<<_temporadaAlta<<endl;
-            cout<<_FechaSalida<<endl;
-            cout<<_fechaRegreso<<endl;
-
+//TODO: el manager ya habrá validado que el paquete esté activo
+            cout<<"ID PAQUETE: "<<_idPaquete<<endl;
+            cout<<"ID COORDINADOR 1: "<<_idCoordinador[0]<<endl;
+            cout<<"ID COORDINADOR 2:"<<_idCoordinador[1]<<endl;
+            cout<<"DESTINO: "<<_destino<<endl;
+            cout<<"HOTEL: "<<_hotel<<endl;
+            cout<<"TIPO DE TRANSPORTE: "<<_tipoTransporte<<endl;
+            cout<<"PRECIO POR PERSONA: "<< _precio<<endl;
+            cout<<"TOTAL DE CUPOS: "<<_totalCupos<<endl;
+            cout<<"CUPOS OCUPADOS: "<<_cuposOcupados<<endl;
+            cout<<"TEMPORADA: "<<_temporadaAlta<<endl;
+            cout<<"FECHA DE SALIDA: "<<_FechaSalida<<endl;
+            cout<<"FECHA DE REGRESO"<<_fechaRegreso<<endl;
+            // estado: no se muestra
         }

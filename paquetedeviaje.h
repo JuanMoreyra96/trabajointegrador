@@ -1,6 +1,7 @@
 #ifndef PAQUETEDEVIAJE_H_INCLUDED
 #define PAQUETEDEVIAJE_H_INCLUDED
 #include <string>
+#include "fechahora.h"
  class PaqueteDeViaje{
     private:
     int _idPaquete;
@@ -44,13 +45,13 @@
         int getTotalCupos();
         int getCuposOcupados();
         bool getTemporadaAlta();
-        // FechaHora getFechaRegreso();
-        // FechaHora getFechaSalida();
+         FechaHora getFechaRegreso();
+         FechaHora getFechaSalida();
         bool getEstado();
         //SETTERS
         void setIdPaquete(int idPaquete);
-         void setIdCoordinador1(int idCoordinador);
-         void setIdCoordinador2(int idCoordinador);
+        void setIdCoordinador1(int idCoordinador);
+        void setIdCoordinador2(int idCoordinador);
 
         void setDestino (std::string destino);
         void setTipoTransporte (std::string tipoTransporte);
@@ -59,10 +60,10 @@
         void setTotalCupos(int totalCupos);
         void setCuposOcupados(int cuposOcupados);
         void setTemporadaAlta(bool temporadaAlta);
-        void setFechaRegreso(Fecha fecha);
-        void setFechaSalida(Fecha fecha);
+        void setFechaRegreso(FechaHora fecha);
+        void setFechaSalida(FechaHora fecha);
         void setEstado(bool estado);
-        bool Cargar();
+
         void Mostrar();
 
     };
