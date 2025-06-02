@@ -43,6 +43,14 @@
 		<Unit filename="fechaHora.cpp" />
 		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="paquetedeviaje.cpp" />
+		<Unit filename="paquetedeviaje.h" />
+		<Unit filename="paquetedeviajearchivo.cpp" />
+		<Unit filename="paquetedeviajearchivo.h" />
+		<Unit filename="paquetedeviajemanager.cpp" />
+		<Unit filename="paquetedeviajemanager.h" />
+		<Unit filename="paquetedeviajemenu.cpp" />
+		<Unit filename="paquetedeviajemenu.h" />
 		<Unit filename="persona.cpp" />
 		<Unit filename="persona.h" />
 		<Extensions>
