@@ -12,10 +12,10 @@ void clientemenu::mostrar()
         cout << "_____________________________________________" << endl;
         cout << "     MENU SISTEMA REGISTRO DE CLIENTES       " << endl;
         cout << "_____________________________________________" << endl;
-        cout << "1- registar nuevo cliente" << endl;
-        cout << "2- listar todos los clientes" << endl;
-        cout << "3- buscar cliente por servicio contratado" << endl;
-        cout << "4- mostrar cantidad registros" << endl;
+        cout << "1- Registar nuevo cliente" << endl;
+       // cout << "2- listar todos los clientes" << endl;
+       // cout << "3- buscar cliente por servicio contratado" << endl;
+       // cout << "4- mostrar cantidad registros" << endl;
         cout << "5- salir" << endl;
 
         cin >> opcion;
@@ -24,16 +24,6 @@ void clientemenu::mostrar()
         {
         case 1:
             cmanager.cargarcliente();
-            break;
-        case 2:
-            cout << "Seccion en desarrollo...!" << endl;
-            break;
-        case 3:
-            cout << "3" << endl;
-            break;
-        case 4:
-            cmanager.mostrarcantidadregistros();
-            // cout << "4" << endl;
             break;
         case 5:
             return;

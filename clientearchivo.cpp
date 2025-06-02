@@ -7,7 +7,7 @@ clientearchivo::clientearchivo(std::string nombrearchivo){
 _nombrearchivo = nombrearchivo;
 }
 
-bool clientearchivo::guardar(cliente registro){
+bool clientearchivo::guardar(Cliente registro){
 
  FILE *pFile;
  bool result;
@@ -17,7 +17,7 @@ bool clientearchivo::guardar(cliente registro){
 
     return false;
  }
- result = fwrite(&registro, sizeof(cliente),1,pFile);
+ result = fwrite(&registro, sizeof(Cliente),1,pFile);
     fclose(pFile);
 
  return result;

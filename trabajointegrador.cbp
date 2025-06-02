@@ -40,9 +40,11 @@
 		<Unit filename="clientemanager.h" />
 		<Unit filename="clientemenu.cpp" />
 		<Unit filename="clientemenu.h" />
+		<Unit filename="fechaHora.cpp" />
+		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="reserva.cpp" />
-		<Unit filename="reserva.h" />
+		<Unit filename="persona.cpp" />
+		<Unit filename="persona.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
