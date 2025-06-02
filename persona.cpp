@@ -31,7 +31,7 @@ void Persona::setEmail(std::string email){strcpy(_email,email.c_str());}
 void Persona::setCelular(std::string celular){strcpy(_celular,celular.c_str());}
 void Persona::setEstado(bool estado){_estado=estado;}
 void Persona::Mostrar(){
-    cout<< "Datos del Cliente " << endl;
+    cout<< "Datos de la persona: " << endl;
     cout<<"Dni: "<< _dni<< endl;
     cout<<"Nombre: "<< _nombre<< endl;
     cout<<"Apellido: "<< _apellido << endl;

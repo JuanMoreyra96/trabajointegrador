@@ -55,33 +55,34 @@
 	"cliente.h"
 	<string>
 
-1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
-	"cliente.h"
-	"cstring"
-	"cliente.h"
+1748885436 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
+	"Cliente.h"
+	<cstring>
+	<iostream>
 
-1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
+1748885165 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
 	<string>
+	"persona.h"
 
-1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
+1748885531 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
 	"clientemenu.h"
 	"clientemanager.h"
 	<iostream>
 	"cliente.h"
 
-1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
+1748300531 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
 
-1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
+1748885562 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
 
-1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
+1748881132 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
 
-1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
+1748881201 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
 	"clientearchivo.h"
 
-1747690090 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.h
+1748881201 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.h
 	"cliente.h"
 	<string>
 
@@ -179,6 +180,14 @@
 	"clientearchivo.h"
 
 1748562148 source:c:\users\juan\documents\github\trabajointegrador\persona.cpp
+	<cstring>
+	"persona.h"
+	<iostream>
+
+1748884898 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\persona.h
+	<string>
+
+1748885010 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\persona.cpp
 	<cstring>
 	"persona.h"
 	<iostream>

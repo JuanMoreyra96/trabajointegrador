@@ -10,13 +10,11 @@ void clientemanager::cargarcliente()
     //hola
     Cliente nuevoCliente;
     clientearchivo pArchivo;
-
-
-
-    string idCliente,nombre,apellido,direccion,email,dni, celular;
+    int idCliente;
+    string nombre,apellido,direccion,email,dni, celular;
     bool estado;
 
-    cout << "ingrese dni del cliente: ";
+    cout << "ingrese el ID del cliente: ";
     cin >> idCliente;
     cout << "ingrese dni del cliente: ";
     cin >> dni;
@@ -53,12 +51,9 @@ void clientemanager::cargarcliente()
 
 }
 
-void clientemanager::mostrarcantidadregistros(){
-    clientearchivo pArchivo;
-    //int cantidadregistros = pArchivo.getcantidadregistros();
-
-   // cout << "La canidad de registros son : " << cantidadregistros << endl;
-}
+//void clientemanager::mostrarcantidadregistros(){
+//    clientearchivo pArchivo;
+//}
 
 
 

@@ -3,16 +3,16 @@
 #include <iostream>
 using namespace std;
 Cliente::Cliente()
-:Persona(), _idCliente (""){
+    : Persona(), _idCliente(0) {
 }
-Cliente::Cliente(std::string dni,std::string nombre,std::string apellido,std::string email, std::string celular, bool estado, std::string idCliente)
+Cliente::Cliente(std::string dni,std::string nombre,std::string apellido,std::string email, std::string celular, bool estado, int idCliente)
 :Persona(dni,nombre,apellido,email,celular,estado){
     setidCliente(idCliente);
 }
-void Cliente::setidCliente(std::string idCliente){
-    strcpy(_idCliente,idCliente.c_str());
+void Cliente::setidCliente(int idCliente){
+    _idCliente = idCliente;
 }
-std::string Cliente::getidCliente(){
+int Cliente::getidCliente(){
     return _idCliente;
 }
 void Cliente::Mostrar(){

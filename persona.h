@@ -6,7 +6,7 @@ class Persona{
         char _nombre[50];
         char _apellido[50];
         char _email[50];
-        char _celular[10];
+        char _celular[11];
         bool _estado;
      public:
         Persona();
@@ -24,5 +24,4 @@ class Persona{
         void setCelular(std::string celular);
         void setEstado(bool estado);
         void Mostrar();
-        bool Cargar();
     };
