@@ -78,6 +78,7 @@
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
+	"paquetedeviajemenu.h"
 
 1748881201 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
 	"clientearchivo.h"
@@ -86,7 +87,7 @@
 	"cliente.h"
 	<string>
 
-1747690090 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.cpp
+1748300531 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
@@ -135,4 +136,76 @@
 	"fechaHora.h"
 
 1748559782 c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.h
+
+1748788378 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\fechahora.cpp
+	<iostream>
+	"fechaHora.h"
+
+1748788378 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\fechahora.h
+
+1748791587 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviaje.cpp
+	"paquetedeviaje.h"
+	"cstring"
+	<iostream>
+
+1748791123 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviaje.h
+	<string>
+	"fechahora.h"
+
+1748792436 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajearchivo.cpp
+	"Paquetedeviajearchivo.h"
+
+1748792395 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajearchivo.h
+	<string>
+	"paquetedeviaje.h"
+
+1748797446 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajemanager.cpp
+	<iostream>
+	<string>
+	"fechaHora.h"
+	"paquetedeviaje.h"
+	"paquetedeviajearchivo.h"
+	"paquetedeviajemanager.h"
+
+1748794105 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajemanager.h
+
+1748797168 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajemenu.cpp
+	"paquetedeviajemenu.h"
+	"paquetedeviajemanager.h"
+	<iostream>
+
+1748796943 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\paquetedeviajemenu.h
+
+1748886618 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
+	"Cliente.h"
+	<cstring>
+	<iostream>
+
+1748886618 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
+	<string>
+	"persona.h"
+
+1748886618 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\persona.h
+	<string>
+
+1748886618 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
+	"clientemenu.h"
+	"clientemanager.h"
+	<iostream>
+	"cliente.h"
+
+1748300531 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
+
+1748886618 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
+
+1748885958 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\fechahora.cpp
+	<iostream>
+	"fechaHora.h"
+
+1748885958 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\fechahora.h
+
+1748881132 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
+	<iostream>
+	"cliente.h"
+	"clientemenu.h"
 
