@@ -94,31 +94,32 @@
 	"cliente.h"
 	"clientearchivo.h"
 
-1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.cpp
-	"cliente.h"
-	"cstring"
-	"cliente.h"
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.cpp
+	"Cliente.h"
+	<cstring>
+	<iostream>
 
-1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.h
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.h
 	<string>
+	"persona.h"
 
-1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.cpp
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.cpp
 	"clientearchivo.h"
 
-1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.h
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.h
 	"cliente.h"
 	<string>
 
-1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.cpp
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
 	"cliente.h"
 	"clientearchivo.h"
 
-1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.h
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.h
 
-1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.cpp
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.cpp
 	"clientemenu.h"
 	"clientemanager.h"
 	<iostream>
@@ -126,16 +127,16 @@
 
 1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.h
 
-1748302603 source:c:\users\tomas moreyra\documents\github\trabajointegrador\main.cpp
+1748901324 source:c:\users\tomas moreyra\documents\github\trabajointegrador\main.cpp
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
 
-1748559782 source:c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.cpp
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.cpp
 	<iostream>
 	"fechaHora.h"
 
-1748559782 c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.h
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.h
 
 1748788378 source:d:\documentos\tup-utn\3�cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\fechahora.cpp
 	<iostream>
@@ -208,4 +209,61 @@
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
+
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\persona.h
+	<string>
+
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviaje.cpp
+	"paquetedeviaje.h"
+	"cstring"
+	<iostream>
+
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviaje.h
+	<string>
+	"fechahora.h"
+
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajearchivo.cpp
+	"Paquetedeviajearchivo.h"
+
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajearchivo.h
+	<string>
+	"paquetedeviaje.h"
+
+1748908222 source:c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajemanager.cpp
+	<iostream>
+	<string>
+	"fechaHora.h"
+	"paquetedeviaje.h"
+	"paquetedeviajearchivo.h"
+	"paquetedeviajemanager.h"
+
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajemanager.h
+
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajemenu.cpp
+	"paquetedeviajemenu.h"
+	"paquetedeviajemanager.h"
+	<iostream>
+
+1748901618 c:\users\tomas moreyra\documents\github\trabajointegrador\paquetedeviajemenu.h
+
+1748901618 source:c:\users\tomas moreyra\documents\github\trabajointegrador\persona.cpp
+	<cstring>
+	"persona.h"
+	<iostream>
+
+1748904281 source:c:\users\tomas moreyra\documents\github\trabajointegrador\reserva.cpp
+	<iostream>
+	"reserva.h"
+	<cstring>
+	"fechaHora.h"
+
+1748903982 c:\users\tomas moreyra\documents\github\trabajointegrador\reserva.h
+	"fechaHora.h"
+
+1748905464 source:c:\users\tomas moreyra\documents\github\trabajointegrador\reservaarchivo.cpp
+	"reservaArchivo.h"
+
+1748905347 c:\users\tomas moreyra\documents\github\trabajointegrador\reservaarchivo.h
+	<string>
+	"Reserva.h"
 

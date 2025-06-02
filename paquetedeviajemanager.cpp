@@ -57,7 +57,7 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   cin>>minutos;
   fechaSalida = FechaHora(dia, mes, anio, hora, minutos);
 
-   cout<<"Ingrese la fecha de regreso: ";
+  cout<<"Ingrese la fecha de regreso: ";
   cout<<"Dia: ";
   cin>> dia;
   cout<<"Mes: ";
