@@ -5,5 +5,8 @@ class clientemanager
 private:
 public:
     void cargarcliente();
-  //  void mostrarcantidadregistros();
+    void mostrarCantidadRegistros();
+    void listarTodos();
+    void listarClientesActivos();
+    void listarClientesInactivos();
 };
