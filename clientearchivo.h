@@ -9,7 +9,7 @@ class clientearchivo{
         clientearchivo();
         clientearchivo(std::string _nombrearchivo);
 
-        bool guardar(cliente registro);
+        bool guardar(Cliente registro);
 
 
 };
