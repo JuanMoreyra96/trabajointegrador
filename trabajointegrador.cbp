@@ -40,6 +40,8 @@
 		<Unit filename="clientemanager.h" />
 		<Unit filename="clientemenu.cpp" />
 		<Unit filename="clientemenu.h" />
+		<Unit filename="fechaHora.cpp" />
+		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="persona.cpp" />
 		<Unit filename="persona.h" />

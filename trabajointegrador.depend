@@ -55,140 +55,84 @@
 	"cliente.h"
 	<string>
 
-1748885436 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
+1748885436 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.cpp
 	"Cliente.h"
 	<cstring>
 	<iostream>
 
-1748885165 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
+1748885165 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\cliente.h
 	<string>
 	"persona.h"
 
-1748885531 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
+1748885531 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.cpp
 	"clientemenu.h"
 	"clientemanager.h"
 	<iostream>
 	"cliente.h"
 
-1748300531 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
+1748300531 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemenu.h
 
-1748885562 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
+1748885562 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.h
 
-1748881132 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
+1748881132 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\main.cpp
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
 
-1748881201 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
+1748881201 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.cpp
 	"clientearchivo.h"
 
-1748881201 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.h
+1748881201 d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientearchivo.h
 	"cliente.h"
 	<string>
 
-1747690090 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.cpp
+1747690090 source:d:\documentos\tup-utn\3ï¿½cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
 	"cliente.h"
 	"clientearchivo.h"
 
-1748534052 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.cpp
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.cpp
 	"cliente.h"
 	"cstring"
 	"cliente.h"
 
-1748534099 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\cliente.h
-	"persona.h"
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\cliente.h
 	<string>
 
-1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientearchivo.cpp
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.cpp
 	"clientearchivo.h"
 
-1748524267 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientearchivo.h
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientearchivo.h
 	"cliente.h"
 	<string>
 
-1748533641 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemanager.cpp
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.cpp
 	"clientemanager.h"
 	<iostream>
 	<string>
 	"cliente.h"
 	"clientearchivo.h"
 
-1748524267 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemanager.h
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemanager.h
 
-1748524267 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemenu.cpp
+1748300852 source:c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.cpp
 	"clientemenu.h"
 	"clientemanager.h"
 	<iostream>
 	"cliente.h"
 
-1748524267 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\clientemenu.h
+1748300852 c:\users\tomas moreyra\documents\github\trabajointegrador\clientemenu.h
 
-1748530903 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\main.cpp
+1748302603 source:c:\users\tomas moreyra\documents\github\trabajointegrador\main.cpp
 	<iostream>
 	"cliente.h"
 	"clientemenu.h"
 
-1748531984 source:c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\persona.cpp
-	"cstring"
-	"persona.h"
-
-1748532016 c:\users\usuario\onedrive - frgp.utn.edu.ar\documentos\github\trabajointegrador\persona.h
-	<string>
-
-1748562148 source:c:\users\juan\documents\github\trabajointegrador\cliente.cpp
-	"Cliente.h"
-	<cstring>
+1748559782 source:c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.cpp
 	<iostream>
+	"fechaHora.h"
 
-1748562148 c:\users\juan\documents\github\trabajointegrador\cliente.h
-	<string>
-	"persona.h"
-
-1748562448 c:\users\juan\documents\github\trabajointegrador\persona.h
-	<string>
-
-1748301738 source:c:\users\juan\documents\github\trabajointegrador\clientemenu.cpp
-	"clientemenu.h"
-	"clientemanager.h"
-	<iostream>
-	"cliente.h"
-
-1748301738 c:\users\juan\documents\github\trabajointegrador\clientemenu.h
-
-1748301738 c:\users\juan\documents\github\trabajointegrador\clientemanager.h
-
-1748302099 source:c:\users\juan\documents\github\trabajointegrador\main.cpp
-	<iostream>
-	"cliente.h"
-	"clientemenu.h"
-
-1748562167 source:c:\users\juan\documents\github\trabajointegrador\clientearchivo.cpp
-	"clientearchivo.h"
-
-1748562155 c:\users\juan\documents\github\trabajointegrador\clientearchivo.h
-	"cliente.h"
-	<string>
-
-1748562177 source:c:\users\juan\documents\github\trabajointegrador\clientemanager.cpp
-	"clientemanager.h"
-	<iostream>
-	<string>
-	"cliente.h"
-	"clientearchivo.h"
-
-1748562148 source:c:\users\juan\documents\github\trabajointegrador\persona.cpp
-	<cstring>
-	"persona.h"
-	<iostream>
-
-1748884898 d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\persona.h
-	<string>
-
-1748885010 source:d:\documentos\tup-utn\3°cuatrimestre\programacion ii\proyectos\proyectointegrador\trabajointegrador\persona.cpp
-	<cstring>
-	"persona.h"
-	<iostream>
+1748559782 c:\users\tomas moreyra\documents\github\trabajointegrador\fechahora.h
 
