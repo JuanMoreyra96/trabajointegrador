@@ -1,13 +1,12 @@
-#include "clientemanager.h"
 #include <iostream>
 #include <string>
 #include "cliente.h"
 #include "clientearchivo.h"
+#include "clientemanager.h"
 using namespace std;
 
 void clientemanager::cargarcliente()
 {
-    //hola
     Cliente nuevoCliente;
     clientearchivo pArchivo;
     int idCliente;
@@ -34,7 +33,7 @@ void clientemanager::cargarcliente()
     cout << "ingrese telefono: ";
     cin >> celular;
 
-    cout << "Tiene reserva? : 1-Si / 0=No";
+    cout << "Tiene reserva? : 1-Si / 0=No (Si le deja un estado activo, No un estado inactivo) ";
     cin >> estado;
 
     nuevoCliente = Cliente(dni,nombre,apellido, email, celular, estado, idCliente);
@@ -47,15 +46,49 @@ void clientemanager::cargarcliente()
   }else{
         cout << "hubo un error al guardar" << endl;
     }
-
-
 }
 
-//void clientemanager::mostrarcantidadregistros(){
-//    clientearchivo pArchivo;
-//}
+void clientemanager::mostrarCantidadRegistros(){
+ clientearchivo pArchivo;
+ int cantidadRegistros = pArchivo.getCantidadRegistros();
+ cout << "La cantidad de registros son: " << cantidadRegistros << endl;
+}
 
+void clientemanager::listarTodos(){
+  clientearchivo pArchivo;
+  Cliente registro;
+  int cantidadRegistros = pArchivo.getCantidadRegistros();
 
+  for(int i=0; i<cantidadRegistros; i++)
+  {
+    registro = pArchivo.leer(i);
+    registro.Mostrar();
+  }
+}
+void clientemanager::listarClientesActivos(){
+  clientearchivo pArchivo;
+  Cliente registro;
+  int cantidadRegistros = pArchivo.getCantidadRegistros();
 
+  for(int i=0; i<cantidadRegistros; i++)
+  {
+    registro = pArchivo.leer(i);
+    if(registro.getEstado()){
+   registro.Mostrar();
+    }
+  }
+}
+void clientemanager::listarClientesInactivos(){
+  clientearchivo pArchivo;
+  Cliente registro;
+  int cantidadRegistros = pArchivo.getCantidadRegistros();
 
+  for(int i=0; i<cantidadRegistros; i++)
+  {
+    registro = pArchivo.leer(i);
+    if(!registro.getEstado()){
+        registro.Mostrar();
+    }
+}
+}
 

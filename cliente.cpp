@@ -16,7 +16,7 @@ int Cliente::getidCliente(){
     return _idCliente;
 }
 void Cliente::Mostrar(){
-    cout<<"Dni: "<< _idCliente<< endl;
+    cout<<"Id: "<< _idCliente<< endl;
     cout<< "Datos del Cliente " << endl;
     cout<<"Dni: "<< getDni()<< endl;
     cout<<"Nombre: "<< getNombre()<< endl;
