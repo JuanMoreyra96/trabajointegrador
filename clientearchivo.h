@@ -10,6 +10,8 @@ class clientearchivo{
         clientearchivo(std::string _nombrearchivo);
 
         bool guardar(Cliente registro);
-
-
+        int buscar(int idCliente);
+        bool guardar(Cliente registro, int posicion);
+        int getCantidadRegistros();
+        Cliente leer(int pos);
 };
