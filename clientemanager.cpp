@@ -8,14 +8,14 @@ using namespace std;
 void clientemanager::cargarcliente()
 {
     //hola
-    cliente nuevoCliente;
+    Cliente nuevoCliente;
     clientearchivo pArchivo;
+    int idCliente;
+    string nombre,apellido,direccion,email,dni, celular;
+    bool estado;
 
-
-    int dni, telefono;
-    string nombre,apellido,direccion,email;
-    bool reservado;
-
+    cout << "ingrese el ID del cliente: ";
+    cin >> idCliente;
     cout << "ingrese dni del cliente: ";
     cin >> dni;
     cout << "ingrese nombre: ";
@@ -32,12 +32,12 @@ void clientemanager::cargarcliente()
     getline(cin, email);
 
     cout << "ingrese telefono: ";
-    cin >> telefono;
+    cin >> celular;
 
     cout << "Tiene reserva? : 1-Si / 0=No";
-    cin >> reservado;
+    cin >> estado;
 
-    nuevoCliente = cliente(dni,nombre,apellido, telefono, direccion, email, reservado);
+    nuevoCliente = Cliente(dni,nombre,apellido, email, celular, estado, idCliente);
 
   //cout << nuevoCliente.toString();
   //system("Pause");
@@ -51,12 +51,9 @@ void clientemanager::cargarcliente()
 
 }
 
-void clientemanager::mostrarcantidadregistros(){
-    clientearchivo pArchivo;
-    //int cantidadregistros = pArchivo.getcantidadregistros();
-
-   // cout << "La canidad de registros son : " << cantidadregistros << endl;
-}
+//void clientemanager::mostrarcantidadregistros(){
+//    clientearchivo pArchivo;
+//}
 
 
 
