@@ -27,7 +27,7 @@ int clientearchivo::buscar(int idCliente){
    Cliente registro;
    int posicion = 0;
 
-   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   pFile = fopen(_nombrearchivo.c_str(), "rb");
 
    if (pFile == nullptr){
       return -2;
@@ -44,10 +44,11 @@ int clientearchivo::buscar(int idCliente){
    fclose(pFile);
    return -1;
 }
+
 bool clientearchivo::guardar(Cliente registro, int posicion){
-   FILE *pFile;
-   bool result;
-   pFile = fopen(_nombreArchivo.c_str(), "rb+");
+  FILE *pFile;
+  bool result;
+   pFile = fopen(_nombrearchivo.c_str(), "rb+");
    if (pFile == nullptr){
       return false;
    }
@@ -59,7 +60,7 @@ bool clientearchivo::guardar(Cliente registro, int posicion){
 int clientearchivo::getCantidadRegistros(){
   int total, cantidad;
   FILE* pFile;
-  pFile = fopen(_nombreArchivo.c_str(), "rb");
+  pFile = fopen(_nombrearchivo.c_str(), "rb");
   if(pFile == nullptr){
     return 0;
   }
@@ -72,13 +73,13 @@ int clientearchivo::getCantidadRegistros(){
 Cliente clientearchivo::leer(int pos){
   FILE *pFile;
   Cliente registro;
-  pFile = fopen(_nombreArchivo.c_str(), "rb");
+  pFile = fopen(_nombrearchivo.c_str(), "rb");
   if(pFile == nullptr){
-    return reg;
+    return registro;
   }
   fseek(pFile, sizeof(Cliente) * pos, SEEK_SET);
   fread(&registro, sizeof(Cliente), 1, pFile);
   fclose(pFile);
-  return reg;
+  return registro;
 }
 
