@@ -12,17 +12,17 @@ Reserva::Reserva(){
     _cantidadViajeros=0;
     _fecha=FechaHora();
     _precioTotal=0;
-    _deudaCancelada=0;
+    _deudaCancelada=false;
 }
 
 Reserva::Reserva(int idReserva, int idCliente, int idPaquete, int cantidadViajeros, FechaHora fecha, float precioTotal, bool deudaCancelada){
-    int setIdReserva(idReserva);
-    int setIdCliente(idCliente);
-    int setIidPaquete(idPaquete);
-    int setCantidadViajeros(cantidadViajeros);
-    FechaHora setFecha(fecha);
-    float setPrecioTotal(precioTotal);
-    bool setDeudaCancelada(deudaCancelada);
+    setIdReserva(idReserva);
+    setIdCliente(idCliente);
+    setIidPaquete(idPaquete);
+    setCantidadViajeros(cantidadViajeros);
+    setFecha(fecha);
+    setPrecioTotal(precioTotal);
+    setDeudaCancelada(deudaCancelada);
 }
 
 //  ---- GETTERS ----
@@ -80,7 +80,8 @@ void Reserva::Mostrar(){
     cout<<"ID RESERVA: "<<_idReserva<<endl;
     cout<<"ID PAQUETE: "<<_idPaquete<<endl;
     cout<<"CANTIDAD DE VIAJEROS: "<<_cantidadViajeros<<endl;
-    cout<<"FECHA: "<<FechaHora::Mostrar<<endl;
+    _fecha.Mostrar();
+    cout<<endl;
     cout<<"PRECIO TOTAL: "<<_precioTotal<<endl;
     if (_deudaCancelada){
         cout<<"DEUDA CANCELADA: "<<_idPaquete<<endl;

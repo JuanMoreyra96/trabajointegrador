@@ -14,7 +14,7 @@ void PaqueteDeViajeMenu::mostrar(){
     cout << "1. Registrar nuevo paquete de viaje" << endl;
     cout << "2. Listar todos los paquetes de viajes" << endl;
 
-    cout << "0. Salir" << endl;
+    cout << "0. Volver al menu principal" << endl;
     cout << "===============================" << endl;
     cout << "Ingrese una opcion: ";
 

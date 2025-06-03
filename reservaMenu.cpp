@@ -11,14 +11,14 @@ void ReservaMenu::Mostrar()
     do
     {
         cout << "_____________________________________________" << endl;
-        cout << "     MENU SISTEMA REGISTRO DE CLIENTES       " << endl;
+        cout << "     MENU SISTEMA GESTION DE RESERVAS       " << endl;
         cout << "_____________________________________________" << endl;
-        cout << "1- Registar nueva reserva." << endl;
-        cout << "2- Listar todas las reservas." << endl;
-        cout << "3- Listar reservas con deuda cancelada." << endl;
-        cout << "4- Mostrar cantidad de registros" << endl;
-        cout << "5- Modificar cantidad de viajeros." << endl;
-        cout << "6- salir" << endl;
+        cout << "1. Registar nueva reserva." << endl;
+        cout << "2. Listar todas las reservas." << endl;
+        cout << "3. Listar reservas con deuda cancelada." << endl;
+        cout << "4. Mostrar cantidad de registros" << endl;
+     //   cout << "5- Modificar cantidad de viajeros." << endl;
+        cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
 
@@ -36,14 +36,14 @@ void ReservaMenu::Mostrar()
         case 4:
             reservaManager.MostrarCantidadRegistros();
             break;
-        case 5:
-            reservaManager.ModificarCantidadViajeros();
-            break;
-        case 6:
+       // case 5:
+        //    reservaManager.ModificarCantidadViajeros();
+        //    break;
+        case 0:
             return;
             break;
 
-            default:
+        default:
             cout << "Opcion invalida. Por favor, intente de nuevo" << endl;
             break;
 
