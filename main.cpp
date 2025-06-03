@@ -2,11 +2,11 @@
 using namespace std;
 #include "cliente.h"
 #include "clientemenu.h"
-
+#include "reservaMenu.h"
 int main()
 {
-    clientemenu menu;
-    menu.mostrar();
+    ReservaMenu menu;
+    menu.Mostrar();
 
 
 
