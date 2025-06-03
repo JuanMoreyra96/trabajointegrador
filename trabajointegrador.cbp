@@ -53,6 +53,14 @@
 		<Unit filename="paquetedeviajemenu.h" />
 		<Unit filename="persona.cpp" />
 		<Unit filename="persona.h" />
+		<Unit filename="reserva.cpp" />
+		<Unit filename="reserva.h" />
+		<Unit filename="reservaArchivo.cpp" />
+		<Unit filename="reservaArchivo.h" />
+		<Unit filename="reservaManager.cpp" />
+		<Unit filename="reservaManager.h" />
+		<Unit filename="reservaMenu.cpp" />
+		<Unit filename="reservaMenu.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

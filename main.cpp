@@ -2,36 +2,39 @@
 using namespace std;
 #include "cliente.h"
 #include "clientemenu.h"
-
+#include "reservaMenu.h"
+#include "paquetedeviajemenu.h"
 int main()
 {
-    clientemenu menu;
-    menu.mostrar();
+    int opc;
+    clientemenu MenuClientes;
+    PaqueteDeViajeMenu MenuPaquetes;
+    ReservaMenu MenuReservas;
+    while(true){
+        system("cls");
+        cout << "****** ABML EMPRESA DE TURISMO******" << endl;
+        cout << "1. MENU CLIENTES" << endl;
+        cout << "2. MENU PAQUETES DE VIAJES" << endl;
+        cout << "3. MENU RESERVAS" << endl;
+        cout << "0. FIN DEL PROGRAMA" << endl;
+        cout << "************************" << endl;
+        cout << "SELECCIONAR OPCION " << endl;
+        cin>>opc;
+        system("cls");
+        switch(opc){
+            case 1: MenuClientes.mostrar();
+                    break;
+            case 2: MenuPaquetes.mostrar();
+                    break;
+            case 3: MenuReservas.Mostrar();
+                    break;
+            case 0: return 0;
+                    break;
+            default: cout<<"LA SELECCION NO ES CORRECTA"<<endl;
 
-
-
- /*
-   cliente c;
-    c.setDni(100);
-    c.setNombre("Juan");
-    c.setApellido("Moreyra");
-    c.setTelefono(1537800912);
-    c.setDireccion("Alsina 3845");
-    c.setEmail("Moreyrajuanse@gmail.com");
-    c.setReservado(true);
-
-    cout << c.toString();
-
-
-    string apellido;
-    char apellido2[5];
-
-    apellido = "Juan Moreyra";
-
-    cout << apellido.size() << endl;
-
-*/
-
-/* chau*/
+        }
+        system("pause");
+    }
     return 0;
+
 }
