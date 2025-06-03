@@ -60,5 +60,36 @@ void ReservaManager::CargarReserva(){
 
 
 void ReservaManager::MostrarCantidadRegistros(){
+    ReservaArchivo pArchivo;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    cout << "La cantidad de registros son: " << cantidadRegistros << endl;
+}
 
+void ReservaManager::ListarTodos(){
+  ReservaArchivo pArchivo;
+  Reserva registro;
+  int cantidadRegistros = pArchivo.getCantidadRegistros();
+
+  for(int i=0; i<cantidadRegistros; i++)
+  {
+    registro = pArchivo.leer(i);
+    registro.Mostrar();
+  }
+}
+
+void ReservaManager::ListarReservasDeudaCancelada(){
+    ReservaArchivo pArchivo;
+    Reserva registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+
+    for(int i=0; i<cantidadRegistros; i++){
+        registro = pArchivo.leer(i);
+        if(registro.getDeudaCancelada()){
+        registro.Mostrar();
+        }
+    }
+}
+
+void ReservaManager::ModificarCantidadViajeros(){
+    //FALTA DESARROLLAR
 }
