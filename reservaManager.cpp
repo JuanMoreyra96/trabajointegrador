@@ -4,6 +4,8 @@
 #include "reserva.h"
 #include "reservaArchivo.h"
 #include "reservaManager.h"
+#include "paquetedeviajearchivo.h"
+#include "paquetedeviaje.h"
 using namespace std;
 
 
@@ -11,41 +13,31 @@ void ReservaManager::CargarReserva(){
 
     Reserva reserva;
     ReservaArchivo pArchivo;
-
-    int idReserva, idCliente, idPaquete, cantidadViajeros,dia, mes, anio, hora, minuto;
+    PaqueteDeViajeArchivo paqueteArchivo;
+    PaqueteDeViaje paquete;
+    int idReserva, idCliente, idPaquete, cantidadViajeros;
     FechaHora fecha;
     float precioTotal;
     bool deudaCancelada;
 
-    cout << "Ingrese ID de reserva: ";
-    cin >> idReserva;
+    int cantRegistros = pArchivo.getCantidadRegistros();
+    idReserva = cantRegistros+1;
 
     cout << "Ingrese ID de cliente: ";
     cin >> idCliente;
-
+    // validar que el cliente existe
     cout << "Ingrese ID de paquete: ";
     cin >> idPaquete;
 
     cout << "Ingrese la cantidad de viajeros: ";
     cin >> cantidadViajeros;
-
-    cout << "Ingrese la fecha de la reserva: "; // podemos tomar la hora y el dia actual y guardarlo automaticamente
-    cout<<"Ingrese la fecha de regreso: ";
-    cout<<"Dia: ";
-    cin>> dia;
-    cout<<"Mes: ";
-    cin>> mes;
-    cout<<"Anio: ";
-    cin>> anio;
-    cout<<"Hora: ";
-    cin>>hora;
-    cout<<"Minutos: ";
-    cin>>minuto;
-    fecha = FechaHora(dia, mes, anio, hora, minuto);
-
-    cout << "Ingrese el precio del paquete: ";
-    cin >> precioTotal;
-
+    //HACER METODO QUE RECUPERE FECHA Y HORA ACTUAL
+    fecha = FechaHora();
+    //manejo de precio
+    int posicion = paqueteArchivo.buscar(idPaquete);
+    paquete = paqueteArchivo.leer(posicion);
+    float precioIndividual = paquete.getPrecio();
+    precioTotal = precioIndividual * cantidadViajeros;
     cout << "Cancela la deuda? ";
     cin >> deudaCancelada;
 
