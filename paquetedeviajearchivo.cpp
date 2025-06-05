@@ -88,3 +88,7 @@ int PaqueteDeViajeArchivo::buscar(int idPaquete){
    fclose(pFile);
    return -1;
 }
+
+void modificarCuposOcupados(int cuposOcupados){
+
+}
