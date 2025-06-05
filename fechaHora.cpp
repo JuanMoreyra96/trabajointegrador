@@ -1,14 +1,18 @@
 #include <iostream>
 #include "fechaHora.h"
+#include <ctime>
 
 using namespace std;
 
 FechaHora::FechaHora(){
-    _dia=0;
-    _mes=0;
-    _anio=0;
-    _hora=0;
-    _minuto=0;
+   time_t now = time(nullptr);              // Tiempo actual en segundos desde epoch
+    struct tm *local = localtime(&now);      // Convertir a estructura de fecha/hora local
+
+    _dia = local->tm_mday;
+    _mes = local->tm_mon + 1;                // tm_mon es de 0 (enero) a 11 (diciembre)
+    _anio = local->tm_year + 1900;           // tm_year es años desde 1900
+    _hora = local->tm_hour;
+    _minuto = local->tm_min;
 }
 
 FechaHora::FechaHora(int dia, int mes, int anio, int hora, int minuto){

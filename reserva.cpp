@@ -78,16 +78,17 @@ void Reserva::setDeudaCancelada(bool deudaCancelada){
 
 void Reserva::Mostrar(){
     cout<<"ID RESERVA: "<<_idReserva<<endl;
+    cout<<"ID CLIENTE:"<<_idCliente<<endl;
     cout<<"ID PAQUETE: "<<_idPaquete<<endl;
     cout<<"CANTIDAD DE VIAJEROS: "<<_cantidadViajeros<<endl;
+    cout<<"FECHA DE RESERVA: ";
     _fecha.Mostrar();
-    cout<<endl;
     cout<<"PRECIO TOTAL: "<<_precioTotal<<endl;
     if (_deudaCancelada){
-        cout<<"DEUDA CANCELADA: "<<_idPaquete<<endl;
+        cout<<"DEUDA CANCELADA"<<endl;
     }
     else{
-        cout<<"DEUDA NO CANCELADA: "<<_idPaquete<<endl;
+        cout<<"DEUDA NO CANCELADA"<<endl;
     }
 }
 

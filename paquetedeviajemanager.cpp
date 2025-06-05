@@ -21,14 +21,13 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   //  char _tipoTransporte[20];
   //  char _hotel[30];
 
-
-  cout << "Ingrese ID: ";
-  cin >> idPaquete;
-  cout<<"Ingrese el destino: ";
-  cin.ignore();
-  getline(cin, destino);
-  //aqui validacion de extension de caracteres.
-  cout << "Ingrese el hotel: ";
+    int cantRegistros = pArchivo.getCantidadRegistros();
+    idPaquete = cantRegistros+1;
+    cout<<"Ingrese el destino: ";
+    cin.ignore();
+    getline(cin, destino);
+    //aqui validacion de extension de caracteres.
+    cout << "Ingrese el hotel: ";
   getline(cin, hotel);
 //aqui validacion de extension de caracteres.
   cout << "Ingrese el tipo de transporte (AVION, COLECTIVO O TREN): ";

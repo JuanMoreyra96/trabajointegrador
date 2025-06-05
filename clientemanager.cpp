@@ -13,10 +13,22 @@ void clientemanager::cargarcliente()
     string nombre,apellido,direccion,email,dni, celular;
     bool estado;
 
-    cout << "ingrese el ID del cliente: ";
-    cin >> idCliente;
-    cout << "ingrese dni del cliente: ";
+//    cout << "ingrese el ID del cliente: ";
+ //   cin >> idCliente;
+    int cantRegistros = pArchivo.getCantidadRegistros();
+    idCliente = cantRegistros+1;
+    // Aqui pedimos y verificamos que no exista un cliente con el mismo DNI ya registrado.
+    do {
+    cout << "Ingrese DNI del cliente: ";
     cin >> dni;
+
+    int resultado = pArchivo.buscar(dni);
+    if (resultado == -1 || resultado == -2) break;
+
+    cout << "Ya existe un cliente con ese DNI. Ingrese otro." << endl;
+
+    } while (true);
+
     cout << "ingrese nombre: ";
     cin.ignore();
     getline(cin, nombre);
@@ -32,14 +44,10 @@ void clientemanager::cargarcliente()
 
     cout << "ingrese telefono: ";
     cin >> celular;
-
-    cout << "Tiene reserva? : 1-Si / 0=No (Si le deja un estado activo, No un estado inactivo) ";
-    cin >> estado;
+    //Lo dejamos en activo por defecto
+    estado = true;
 
     nuevoCliente = Cliente(dni,nombre,apellido, email, celular, estado, idCliente);
-
-  //cout << nuevoCliente.toString();
-  //system("Pause");
 
   if(pArchivo.guardar(nuevoCliente)){
         cout << "se guardo joya" << endl;
