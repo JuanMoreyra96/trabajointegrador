@@ -40,6 +40,14 @@
 		<Unit filename="clientemanager.h" />
 		<Unit filename="clientemenu.cpp" />
 		<Unit filename="clientemenu.h" />
+		<Unit filename="coordinador.cpp" />
+		<Unit filename="coordinador.h" />
+		<Unit filename="coordinadorArchivo.cpp" />
+		<Unit filename="coordinadorArchivo.h" />
+		<Unit filename="coordinadorManager.cpp" />
+		<Unit filename="coordinadorManager.h" />
+		<Unit filename="coordinadorMenu.cpp" />
+		<Unit filename="coordinadorMenu.h" />
 		<Unit filename="fechaHora.cpp" />
 		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />

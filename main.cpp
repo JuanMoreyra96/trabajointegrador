@@ -4,18 +4,22 @@ using namespace std;
 #include "clientemenu.h"
 #include "reservaMenu.h"
 #include "paquetedeviajemenu.h"
+#include "coordinadorMenu.h"
+
 int main()
 {
     int opc;
     clientemenu MenuClientes;
     PaqueteDeViajeMenu MenuPaquetes;
     ReservaMenu MenuReservas;
+    CoordinadorMenu MenuCoordinadores;
     while(true){
         system("cls");
         cout << "****** ABML EMPRESA DE TURISMO******" << endl;
         cout << "1. MENU CLIENTES" << endl;
         cout << "2. MENU PAQUETES DE VIAJES" << endl;
         cout << "3. MENU RESERVAS" << endl;
+        cout << "4. MENU COORDINADORES" << endl;
         cout << "0. FIN DEL PROGRAMA" << endl;
         cout << "************************" << endl;
         cout << "SELECCIONAR OPCION " << endl;
@@ -27,6 +31,8 @@ int main()
             case 2: MenuPaquetes.mostrar();
                     break;
             case 3: MenuReservas.Mostrar();
+                    break;
+            case 4: MenuCoordinadores.mostrar();
                     break;
             case 0: return 0;
                     break;
