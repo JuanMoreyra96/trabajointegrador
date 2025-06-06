@@ -21,7 +21,7 @@ using namespace std;
       if(numero < 0) return false;
       return true;
   }
-  // para fechas de paquetes de viajes: no puedo registrar un paquete con fecha pasada o de hoy. tiene que ser desde mañana en adelante, y como mucho 5 años proximos.
+  // para fechas de paquetes de viajes: no puedo registrar un paquete con fecha pasada o de hoy. tiene que ser desde maï¿½ana en adelante, y como mucho 5 aï¿½os proximos.
   bool Validaciones::validarFechaProxima(int dia, int mes, int anio, int horas, int minutos){
       FechaHora fechaActual;
       int diaActual, mesActual, anioActual, horaActual, minutoActual;
@@ -36,14 +36,13 @@ using namespace std;
     if (horas < 0 || horas > 23) return false;
     if (minutos < 1 || minutos > 59) return false;
 
-    // Validar días según el mes (simplificado, sin años bisiestos)
     int diasPorMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     if (mes == 2 && ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0))) {
-        diasPorMes[1] = 29; // año bisiesto
+        diasPorMes[1] = 29; // aï¿½o bisiesto
     }
     if (dia < 1 || dia > diasPorMes[mes - 1]) return false;
 
-    // Comparar contra la fecha actual: solo se permite una fecha desde mañana en adelante
+    // Comparar contra la fecha actual: solo se permite una fecha desde maï¿½ana en adelante
     if (anio < anioActual) return false;
     if (anio == anioActual && mes < mesActual) return false;
     if (anio == anioActual && mes == mesActual && dia <= diaActual) return false;
@@ -51,3 +50,12 @@ using namespace std;
     return true;
   }
 
+bool Validaciones::validarFechaPosterior(FechaHora primeraFecha, int dia, int mes, int anio, int horas, int minutos){
+    FechaHora fechaNueva(dia, mes, anio, horas, minutos);
+    
+    if (fechaNueva.getAnio() < primeraFecha.getAnio()) return false;
+    if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() < primeraFecha.getMes()) return false;
+    if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() == primeraFecha.getMes() && fechaNueva.getDia() <= primeraFecha.getDia()) return false;
+    
+    return true;
+  }
