@@ -3,18 +3,18 @@
 #include "cliente.h"
 #include "clientearchivo.h"
 #include "clientemanager.h"
+#include "validaciones.h"
 using namespace std;
 
 void clientemanager::cargarcliente()
 {
     Cliente nuevoCliente;
     clientearchivo pArchivo;
+    Validaciones validar;
     int idCliente;
     string nombre,apellido,direccion,email,dni, celular;
     bool estado;
 
-//    cout << "ingrese el ID del cliente: ";
- //   cin >> idCliente;
     int cantRegistros = pArchivo.getCantidadRegistros();
     idCliente = cantRegistros+1;
     // Aqui pedimos y verificamos que no exista un cliente con el mismo DNI ya registrado.
@@ -29,21 +29,51 @@ void clientemanager::cargarcliente()
 
     } while (true);
 
-    cout << "ingrese nombre: ";
+    do{
+    cout << "ingrese nombre/s: ";
     cin.ignore();
     getline(cin, nombre);
+    if(!validar.validarCadena(nombre, 3, 50)){
+        cout<<"El nombre debe contener entre 3 y 50 caracteres."<<endl;
+    }
+    }while(!validar.validarCadena(nombre, 3, 50));
 
-    cout << "ingrese apellidos: ";
+
+     do{
+  cout << "ingrese apellido/s: ";
     getline(cin, apellido);
+    if(!validar.validarCadena(apellido, 3, 50)){
+        cout<<"El apellido debe contener entre 3 y 50 caracteres."<<endl;
+    }
+    }while(!validar.validarCadena(apellido, 3, 50));
 
-    cout << "ingrese direccion: ";
+     do{
+ cout << "ingrese direccion: ";
     getline(cin, direccion);
+    if(!validar.validarCadena(direccion, 3, 50)){
+        cout<<"La direccion debe contener entre 3 y 50 caracteres."<<endl;
+    }
+    }while(!validar.validarCadena(direccion, 3, 50));
 
+
+     do{
     cout << "ingrese email: ";
     getline(cin, email);
+    if(!validar.validarCadena(email, 3, 50)){
+        cout<<"El email debe contener entre 3 y 50 caracteres."<<endl;
+    }
+    }while(!validar.validarCadena(email, 3, 50));
 
+
+    do{
     cout << "ingrese telefono: ";
     cin >> celular;
+    if(!validar.validarCadena(celular, 3, 50)){
+        cout<<"El celular debe contener entre 3 y 50 caracteres."<<endl;
+    }
+    }while(!validar.validarCadena(celular, 3, 50));
+
+
     //Lo dejamos en activo por defecto
     estado = true;
 
