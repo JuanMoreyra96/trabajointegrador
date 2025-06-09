@@ -1,6 +1,7 @@
 #include "Cliente.h"
 #include <cstring>
 #include <iostream>
+
 using namespace std;
 Cliente::Cliente()
     : Persona(), _idCliente(0) {
