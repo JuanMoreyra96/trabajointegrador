@@ -1,24 +1,34 @@
 #include "validaciones.h"
-#include <cstring>
+#include <string>
+#include <cctype>
 #include <iostream>
 #include "fechaHora.h"
+
 using namespace std;
 
-  bool Validaciones::validarCadena(std::string cadena, int minumo, int maximo){
+  bool Validaciones::validarCadenaDeLetras(std::string cadena){
+      for (char c : cadena) {
+        if (!isalpha(c) && c != ' ') return false;
+      }
+  }
+  bool Validaciones::validarLongitudCadena(std::string cadena, int minimo, int maximo){
     int longitud = cadena.length();
-    if(longitud >= minumo && longitud <= maximo){
-        return true;
-    }
-    return false;
+    if (longitud <= minimo || longitud >= maximo) return false;
+    return true;
   }
   // para cantidad de viajeros por ejemplo
+
+  bool Validaciones::validarIngresoNumero(int numero){
+
+  }
   bool Validaciones::validarIntPositivo(int numero){
-      if(numero < 0) return false;
+      if(numero <= 0) return false;
       return true;
   }
   // para precios de paquetes
   bool Validaciones::validarFloatPositivo(float numero){
-      if(numero < 0) return false;
+     //validar que se ingresa float
+      if(numero <= 0) return false;
       return true;
   }
   // para fechas de paquetes de viajes: no puedo registrar un paquete con fecha pasada o de hoy. tiene que ser desde ma�ana en adelante, y como mucho 5 a�os proximos.
@@ -52,10 +62,14 @@ using namespace std;
 
 bool Validaciones::validarFechaPosterior(FechaHora primeraFecha, int dia, int mes, int anio, int horas, int minutos){
     FechaHora fechaNueva(dia, mes, anio, horas, minutos);
-    
+
     if (fechaNueva.getAnio() < primeraFecha.getAnio()) return false;
     if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() < primeraFecha.getMes()) return false;
     if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() == primeraFecha.getMes() && fechaNueva.getDia() <= primeraFecha.getDia()) return false;
-    
+
     return true;
   }
+    // validar dia, mes, anio, minutos, horas por separado
+  // validar que se ingrso 1 o 0 para booleano
+  // validar que se ingrese avion, tren o colectivo
+

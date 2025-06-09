@@ -5,7 +5,9 @@
 class Validaciones{
 
     public:
-        bool validarCadena(std::string cadena, int minumo, int maximo);
+        bool validarCadenaDeLetras(std::string cadena);
+        bool validarLongitudCadena(std::string cadena, int minumo, int maximo);
+        bool validarIngresoNumero(int numero);
         bool validarIntPositivo(int numero);
         bool validarFloatPositivo(float numero);
         bool validarFechaProxima(int dia, int mes, int anio, int horas, int minutos);

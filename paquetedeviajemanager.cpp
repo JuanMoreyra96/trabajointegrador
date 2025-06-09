@@ -25,37 +25,35 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
         cout<<"Ingrese el destino: ";
     cin.ignore();
     getline(cin, destino);
-    if(!validar.validarCadena(destino, 3, 50)){
+    if(!validar.validarCadenaDeLetras(destino) && !validar.validarLongitudCadena(destino, 3, 50)){
         cout<<"El destino debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(destino, 3, 50));
+    }while(!validar.validarCadenaDeLetras(destino) && !validar.validarLongitudCadena(destino, 3, 50));
 
 
        do{
       cout << "Ingrese el hotel: ";
       getline(cin, hotel);
-    if(!validar.validarCadena(hotel, 3, 30)){
-        cout<<"El hotel debe contener entre 3 y 50 caracteres."<<endl;
+    if( !validar.validarCadenaDeLetras(hotel) && !validar.validarLongitudCadena(hotel, 3, 30)){
+        cout<<"El hotel debe contener entre 3 y 30 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(hotel, 3, 30));
+    }while(!validar.validarCadenaDeLetras(hotel) && !validar.validarLongitudCadena(hotel, 3, 30));
 
     do{
   cout << "Ingrese el tipo de transporte (AVION, COLECTIVO O TREN): ";
   getline(cin, tipoTransporte);
-    if(!validar.validarCadena(tipoTransporte, 3, 20)){
-        cout<<"El tipo de transporte debe contener entre 3 y 50 caracteres."<<endl;
+    if(!validar.validarCadenaDeLetras(tipoTransporte) &&  !validar.validarLongitudCadena(tipoTransporte, 3, 20)){
+        cout<<"El tipo de transporte debe contener entre 3 y 10 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(tipoTransporte, 3, 30));
+    }while(!validar.validarCadenaDeLetras(tipoTransporte) &&  !validar.validarLongitudCadena(tipoTransporte, 3, 20));
 
-        do{
+    do{
    cout << "Ingrese el precio por persona: ";
   cin >> precio;
     if(!validar.validarFloatPositivo(precio)){
-        cout<<"El precio debe ser mayor a 0o."<<endl;
+        cout<<"El precio debe ser mayor a $0."<<endl;
     }
     }while(!validar.validarFloatPositivo(precio));
-
-
         do{
          cout << "Ingrese el total de cupos: ";
          cin >> totalCupos;
@@ -85,7 +83,7 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
         cout<<"El total de cupos debe ser mayor a 0."<<endl;
     }
     }while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos));
-    
+
     fechaSalida = FechaHora(dia, mes, anio, hora, minutos);
 
               do{
@@ -101,12 +99,12 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   cout<<"Minutos: ";
   cin>>minutos;
 
-    if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos) 
+    if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
   && !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
   ){
         cout<<"El total de cupos debe ser mayor a 0."<<endl;
     }
-    }while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos) 
+    }while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
   && !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
   );
 
