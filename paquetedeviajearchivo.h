@@ -15,5 +15,7 @@ public:
   bool guardar(PaqueteDeViaje registro, int posicion);
   int getCantidadRegistros();
   PaqueteDeViaje leer(int pos);
+
+  void modificarCuposOcupados(int cuposOcupados);
 };
 #endif
