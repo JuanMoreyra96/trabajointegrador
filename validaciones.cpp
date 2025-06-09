@@ -18,8 +18,23 @@ using namespace std;
   }
   // para cantidad de viajeros por ejemplo
 
-  bool Validaciones::validarIngresoNumero(int numero){
-
+  int Validaciones::pedirNumero(){
+    int numero;
+    while (!(cin >> numero) || numero <= 0) {
+        cout << "Entrada invalida. Ingrese un numero entero positivo: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    return numero;
+}
+  float Validaciones::pedirNumeroFloat(){
+   float numero;
+   while (!(cin >> numero) || numero <= 0) {
+        cout << "Entrada invalida. Ingrese un numero positivo: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    return numero;
   }
   bool Validaciones::validarIntPositivo(int numero){
       if(numero <= 0) return false;
@@ -70,6 +85,30 @@ bool Validaciones::validarFechaPosterior(FechaHora primeraFecha, int dia, int me
     return true;
   }
     // validar dia, mes, anio, minutos, horas por separado
+    bool Validaciones::validarDia(int dia){
+        if(dia >= 1 && dia <=31) return true;
+        return false;
+        }
+    bool Validaciones::validarMes(int mes){
+          if(mes >= 1 && mes <=12) return true;
+        return false;
+    }
+    bool Validaciones::validarAnio(int anio){
+        if(anio >= 2025 && anio <= 2030) return true;
+        return false;
+    }
+    bool Validaciones::validarHora(int hora){
+         if(hora >= 0 && hora <= 23) return true;
+        return false;
+    }
+    bool Validaciones::validarMinutos(int minutos){
+        if(minutos >= 0 && minutos <= 59) return true;
+        return false;
+    }
   // validar que se ingrso 1 o 0 para booleano
+    bool Validaciones::validarBooleano(int valor){
+    if(valor == 1 || valor == 0) return true;
+    return false;
+    }
   // validar que se ingrese avion, tren o colectivo
 
