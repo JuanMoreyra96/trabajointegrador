@@ -1,24 +1,49 @@
 #include "validaciones.h"
-#include <cstring>
+#include <string>
+#include <cctype>
 #include <iostream>
 #include "fechaHora.h"
+
 using namespace std;
 
-  bool Validaciones::validarCadena(std::string cadena, int minumo, int maximo){
+  bool Validaciones::validarCadenaDeLetras(std::string cadena){
+      for (char c : cadena) {
+        if (!isalpha(c) && c != ' ') return false;
+      }
+  }
+  bool Validaciones::validarLongitudCadena(std::string cadena, int minimo, int maximo){
     int longitud = cadena.length();
-    if(longitud >= minumo && longitud <= maximo){
-        return true;
-    }
-    return false;
+    if (longitud <= minimo || longitud >= maximo) return false;
+    return true;
   }
   // para cantidad de viajeros por ejemplo
+
+  int Validaciones::pedirNumero(){
+    int numero;
+    while (!(cin >> numero) || numero <= 0) {
+        cout << "Entrada invalida. Ingrese un numero entero positivo: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    return numero;
+}
+  float Validaciones::pedirNumeroFloat(){
+   float numero;
+   while (!(cin >> numero) || numero <= 0) {
+        cout << "Entrada invalida. Ingrese un numero positivo: ";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+    return numero;
+  }
   bool Validaciones::validarIntPositivo(int numero){
-      if(numero < 0) return false;
+      if(numero <= 0) return false;
       return true;
   }
   // para precios de paquetes
   bool Validaciones::validarFloatPositivo(float numero){
-      if(numero < 0) return false;
+     //validar que se ingresa float
+      if(numero <= 0) return false;
       return true;
   }
   // para fechas de paquetes de viajes: no puedo registrar un paquete con fecha pasada o de hoy. tiene que ser desde ma�ana en adelante, y como mucho 5 a�os proximos.
@@ -52,10 +77,38 @@ using namespace std;
 
 bool Validaciones::validarFechaPosterior(FechaHora primeraFecha, int dia, int mes, int anio, int horas, int minutos){
     FechaHora fechaNueva(dia, mes, anio, horas, minutos);
-    
+
     if (fechaNueva.getAnio() < primeraFecha.getAnio()) return false;
     if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() < primeraFecha.getMes()) return false;
     if (fechaNueva.getAnio() == primeraFecha.getAnio() && fechaNueva.getMes() == primeraFecha.getMes() && fechaNueva.getDia() <= primeraFecha.getDia()) return false;
-    
+
     return true;
   }
+    // validar dia, mes, anio, minutos, horas por separado
+    bool Validaciones::validarDia(int dia){
+        if(dia >= 1 && dia <=31) return true;
+        return false;
+        }
+    bool Validaciones::validarMes(int mes){
+          if(mes >= 1 && mes <=12) return true;
+        return false;
+    }
+    bool Validaciones::validarAnio(int anio){
+        if(anio >= 2025 && anio <= 2030) return true;
+        return false;
+    }
+    bool Validaciones::validarHora(int hora){
+         if(hora >= 0 && hora <= 23) return true;
+        return false;
+    }
+    bool Validaciones::validarMinutos(int minutos){
+        if(minutos >= 0 && minutos <= 59) return true;
+        return false;
+    }
+  // validar que se ingrso 1 o 0 para booleano
+    bool Validaciones::validarBooleano(int valor){
+    if(valor == 1 || valor == 0) return true;
+    return false;
+    }
+  // validar que se ingrese avion, tren o colectivo
+

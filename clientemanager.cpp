@@ -33,45 +33,45 @@ void clientemanager::cargarcliente()
     cout << "ingrese nombre/s: ";
     cin.ignore();
     getline(cin, nombre);
-    if(!validar.validarCadena(nombre, 3, 50)){
+    if(!validar.validarCadenaDeLetras(nombre) && !validar.validarLongitudCadena(nombre, 3, 50)){
         cout<<"El nombre debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(nombre, 3, 50));
+    }while(!validar.validarCadenaDeLetras(nombre) && !validar.validarLongitudCadena(nombre, 3, 50));
 
 
      do{
   cout << "ingrese apellido/s: ";
     getline(cin, apellido);
-    if(!validar.validarCadena(apellido, 3, 50)){
+    if(!validar.validarCadenaDeLetras(apellido) && !validar.validarLongitudCadena(apellido, 3, 50)){
         cout<<"El apellido debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(apellido, 3, 50));
+    }while(!validar.validarCadenaDeLetras(apellido) && !validar.validarLongitudCadena(apellido, 3, 50));
 
      do{
  cout << "ingrese direccion: ";
     getline(cin, direccion);
-    if(!validar.validarCadena(direccion, 3, 50)){
+    if( !validar.validarCadenaDeLetras(direccion) && !validar.validarLongitudCadena(direccion, 3, 50)){
         cout<<"La direccion debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(direccion, 3, 50));
+    }while(!validar.validarCadenaDeLetras(direccion) && !validar.validarLongitudCadena(direccion, 3, 50));
 
 
      do{
     cout << "ingrese email: ";
     getline(cin, email);
-    if(!validar.validarCadena(email, 3, 50)){
+    if(!validar.validarCadenaDeLetras(email) && !validar.validarLongitudCadena(email, 3, 50)){
         cout<<"El email debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(email, 3, 50));
+    }while(!validar.validarCadenaDeLetras(email) && !validar.validarLongitudCadena(email, 3, 50));
 
 
     do{
-    cout << "ingrese telefono: ";
+    cout << "ingrese celular: ";
     cin >> celular;
-    if(!validar.validarCadena(celular, 3, 50)){
-        cout<<"El celular debe contener entre 3 y 50 caracteres."<<endl;
+    if(!validar.validarLongitudCadena(celular, 3, 11)){
+        cout<<"El celular debe contener entre 3 y 11 caracteres."<<endl;
     }
-    }while(!validar.validarCadena(celular, 3, 50));
+    }while(!validar.validarLongitudCadena(celular, 3, 11));
 
 
     //Lo dejamos en activo por defecto
