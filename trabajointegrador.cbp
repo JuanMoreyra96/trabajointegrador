@@ -69,6 +69,8 @@
 		<Unit filename="reservaManager.h" />
 		<Unit filename="reservaMenu.cpp" />
 		<Unit filename="reservaMenu.h" />
+		<Unit filename="validaciones.cpp" />
+		<Unit filename="validaciones.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
