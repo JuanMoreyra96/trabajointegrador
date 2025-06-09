@@ -52,6 +52,8 @@ void ReservaManager::CargarReserva(){
     }
     }  while (pos == -1);
     paquete = paqueteArchivo.leer(pos);
+    int ocupados = paquete.getCuposOcupados();
+    cout << "ocupados= " << ocupados << endl;
     idPaquete = paquete.getIdPaquete();
 
 
@@ -61,31 +63,39 @@ void ReservaManager::CargarReserva(){
     cin >> cantidadViajeros;
 
     cupos = paquete.getTotalCupos() - paquete.getCuposOcupados() - cantidadViajeros;
+    int cuposLibres = paquete.getTotalCupos() - paquete.getCuposOcupados();
     if (cupos < 0){
-    cout << "No quedan suficientes cupos." << endl;
-    }
-
+        cout << "Solo quedan " << cuposLibres << " cupos libres." << endl;
+        }
     } while (cupos < 0);
+    int suma = paquete.getCuposOcupados() + cantidadViajeros;
+    paquete.setCuposOcupados(suma);
+
+     if(paqueteArchivo.guardar(paquete, pos))
+    {
+        cout << "Se han actualizado los cupos ocupados! (" << suma << ")" << endl;
+        }
+    else
+    {
+        cout << "Hubo un error inesperado." << endl;
 
 
-
-    //HACER METODO QUE RECUPERE FECHA Y HORA ACTUAL
+    // FECHA
     fecha = FechaHora();
-    //manejo de precio
+
+
+    // PRECIO RESERVA
     int posicion = paqueteArchivo.buscar(idPaquete);
     paquete = paqueteArchivo.leer(posicion);
     float precioIndividual = paquete.getPrecio();
     precioTotal = precioIndividual * cantidadViajeros;
-    cout << "Cancela la deuda? ";
-    cin >> deudaCancelada;
+    deudaCancelada=0;
 
-
+    // GUARDAR LA RESERVA
     reserva=Reserva(idReserva, idCliente, idPaquete, cantidadViajeros, fecha, precioTotal, deudaCancelada);
-    //paquete.setCuposOcupados(paquete.getCuposOcupados()+cantidadViajeros);
-    int suma = paquete.getCuposOcupados() + cantidadViajeros;
-    paqueteArchivo.
-    paquete.setCuposOcupados(suma);
-    cout << "suma" << suma << endl;
+
+    }
+
     if(pArchivo.guardar(reserva)){
         cout << "Se guardo correctamente!" << endl;
     }
@@ -124,8 +134,4 @@ void ReservaManager::ListarReservasDeudaCancelada(){
         registro.Mostrar();
         }
     }
-}
-
-void ReservaManager::ModificarCantidadViajeros(){
-    //FALTA DESARROLLAR
 }
