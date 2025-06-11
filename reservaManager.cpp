@@ -135,3 +135,7 @@ void ReservaManager::ListarReservasDeudaCancelada(){
         }
     }
 }
+
+ void ReservaManager::BuscarReservasDeCliente(int dni){
+
+ }

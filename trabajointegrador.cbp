@@ -51,6 +51,14 @@
 		<Unit filename="fechaHora.cpp" />
 		<Unit filename="fechaHora.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="pago.cpp" />
+		<Unit filename="pago.h" />
+		<Unit filename="pagoArchivo.cpp" />
+		<Unit filename="pagoArchivo.h" />
+		<Unit filename="pagoManager.cpp" />
+		<Unit filename="pagoManager.h" />
+		<Unit filename="pagoMenu.cpp" />
+		<Unit filename="pagoMenu.h" />
 		<Unit filename="paquetedeviaje.cpp" />
 		<Unit filename="paquetedeviaje.h" />
 		<Unit filename="paquetedeviajearchivo.cpp" />
