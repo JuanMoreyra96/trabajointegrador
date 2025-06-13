@@ -36,23 +36,32 @@ void Coordinador::setIdiomas(int* idiomas) {
 }
 
 
-void Coordinador::Mostrar() {
-    cout <<"ID del Coordinador: " << _idCoordinador << endl;
+void Coordinador::Mostrar(std::string* idiomas) {
+    int aux=0;
+    cout<<"ID del Coordinador: " << _idCoordinador << endl;
     cout<<"Dni: "<< getDni()<< endl;
     cout<<"Nombre: "<< getNombre()<< endl;
     cout<<"Apellido: "<< getApellido() << endl;
     cout<<"Email: "<< getEmail() << endl;
     cout<<"Celular: "<< getCelular() << endl;
-    cout<<"Idiomas: ";
-    for (int i = 0; i < 5; ++i) {
-        cout << _idiomas[i];
-        if(i<4){
-             cout<< ", ";
-        }else{
-             cout<< endl;
-        }
+    cout<<"Estado: ";
+    if(getEstado()){
+        cout<<"Activo "<< endl;
+    }else{
+        cout<<"Inactivo "<< endl;
     }
-    cout<<"Estado: "<< getEstado() << endl;
+    cout<<"Idiomas: ";
+    do{
+        if (aux < 5 && _idiomas[aux] != -1){
+            if (aux != 0){
+                cout<<", "<<idiomas[_idiomas[aux]-1];
+            }else{
+                cout<<idiomas[_idiomas[aux]-1];
+            }
+        }
+        aux++;
+    }while (_idiomas[aux-1] != -1 && aux < 5);
+    cout<<"."<<endl;
     cout << endl;
 }
 

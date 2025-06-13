@@ -11,6 +11,7 @@ class CoordinadorArchivo{
 
         bool guardar(Coordinador registro);
         int buscar(int idCoordinador);
+        int buscar(std::string dniCoordinador);
         bool guardar(Coordinador registro, int posicion);
         int getCantidadRegistros();
         Coordinador leer(int pos);

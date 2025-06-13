@@ -1,3 +1,4 @@
+#include <iostream>
 #include "coordinadorArchivo.h"
 
 CoordinadorArchivo::CoordinadorArchivo(){
@@ -38,6 +39,30 @@ int CoordinadorArchivo::buscar(int idCoordinador){
 
     while(fread(&registro, sizeof(Coordinador), 1, pFile) == 1){
         if (registro.getIdCoordinador() == idCoordinador){
+            fclose(pFile);
+            return posicion;
+        }
+        posicion++;
+    }
+
+    fclose(pFile);
+    return -1;
+}
+
+
+int CoordinadorArchivo::buscar(std::string dniCoordinador){
+    FILE *pFile;
+    Coordinador registro;
+    int posicion = 0;
+
+    pFile = fopen(_nombrearchivo.c_str(), "rb");
+
+    if (pFile == nullptr){
+        return -2;
+    }
+
+    while(fread(&registro, sizeof(Coordinador), 1, pFile) == 1){
+        if (registro.getDni() == dniCoordinador){
             fclose(pFile);
             return posicion;
         }
