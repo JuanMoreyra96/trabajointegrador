@@ -164,4 +164,38 @@ void clientemanager::bajaLogicaCliente(){
     }
 }
 
+void clientemanager::altaLogicaCliente(){
+    clientearchivo pArchivo;
+    int idAlta;
+    cout << "Ingrese el ID del cliente a dar de alta (logica): ";
+    cin >> idAlta;
+
+    int pos = pArchivo.buscar(idAlta); // Busca la posición del cliente por ID
+    if (pos == -1) {
+        cout << "Cliente con ID " << idAlta << " no encontrado." << endl;
+        return;
+    }
+
+    if (pos == -2) {
+        cout << "Error al acceder al archivo de clientes." << endl;
+        return;
+    }
+
+    Cliente clienteAActivar = pArchivo.leer(pos); // Lee el registro
+    if (clienteAActivar.getidCliente() == 0) { // Error en la lectura
+        cout << "Error al leer los datos del cliente." << endl;
+        return;
+    }
+
+    if (!clienteAActivar.getEstado()) { // Si el cliente está actualmente activo
+        clienteAActivar.darDeAlta(); // Usa el método de Cliente para cambiar el estado
+        if (pArchivo.guardar(clienteAActivar, pos)) { // Guarda el registro modificado en la misma posición
+            cout << "Cliente con ID " << idAlta<< " dado de ALTA exitosamente." << endl;
+        } else {
+            cout << "Error al actualizar el estado del cliente en el archivo." << endl;
+        }
+    } else {
+        cout << "El cliente con ID " << idAlta << " ya se encuentra ACTIVO." << endl;
+    }
+}
 

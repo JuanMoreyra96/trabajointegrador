@@ -11,6 +11,7 @@ public:
         void setidCliente(int idCliente);
         void Mostrar();
         void darDeBaja();
+        void darDeAlta();
 };
 
 

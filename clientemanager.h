@@ -10,5 +10,5 @@ public:
     void listarClientesActivos();
     void listarClientesInactivos();
     void bajaLogicaCliente();
-    void restaurarCliente();
+    void altaLogicaCliente();
 };

@@ -31,6 +31,9 @@ void Cliente::darDeBaja(){
  setEstado(false);
 }
 
+void Cliente::darDeAlta(){
+ setEstado(true);
+}
 
 
 
