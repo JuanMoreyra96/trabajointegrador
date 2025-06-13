@@ -156,3 +156,86 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
    registro.Mostrar();
   }
  }
+
+ void PaqueteDeViajeManager::bajaLogicaPaqueteDeViaje(){
+    PaqueteDeViajeArchivo pArchivo;
+    int idBaja;
+    cout << "Ingrese el ID del paquete a dar de baja (logica): ";
+    cin >> idBaja;
+
+    int pos = pArchivo.buscar(idBaja); // Busca la posición del cliente por ID
+    if (pos == -1) {
+        cout << "Cliente con ID " << idBaja << " no encontrado." << endl;
+        return;
+    }
+    if (pos == -2) {
+        cout << "Error al acceder al archivo de paquetes de viaje." << endl;
+        return;
+    }
+
+    PaqueteDeViaje paqueteABajar = pArchivo.leer(pos); // Lee el registro
+    if (paqueteABajar.getIdPaquete() == 0) { // Error en la lectura
+        cout << "Error al leer los datos del paquete." << endl;
+        return;
+    }
+
+    if (paqueteABajar.getEstado()) { // Si el paquete está actualmente activo
+        paqueteABajar.darDeBaja(); // Usa el método de Paquete de viaje para cambiar el estado
+        if (pArchivo.guardar(paqueteABajar, pos)) { // Guarda el registro modificado en la misma posición
+            cout << "Paquete con ID " << idBaja << " dado de BAJA exitosamente." << endl;
+        } else {
+            cout << "Error al actualizar el estado del paquete en el archivo." << endl;
+        }
+    } else {
+        cout << "El paquete con ID " << idBaja << " ya se encuentra en BAJA LOGICA." << endl;
+    }
+}
+
+
+void PaqueteDeViajeManager::altaLogicaPaqueteDeViaje(){
+    PaqueteDeViajeArchivo pArchivo;
+    int idAlta;
+    cout << "Ingrese el ID del cliente a dar de alta (logica): ";
+    cin >> idAlta;
+
+    int pos = pArchivo.buscar(idAlta); // Busca la posición del paquete de viaje por ID
+    if (pos == -1) {
+        cout << "Paquete de viaje con ID " << idAlta << " no encontrado." << endl;
+        return;
+    }
+
+    if (pos == -2) {
+        cout << "Error al acceder al archivo de Paquetes de Viajes." << endl;
+        return;
+    }
+
+    PaqueteDeViaje PaqueteAActivar = pArchivo.leer(pos); // Lee el registro
+    if (!PaqueteAActivar.getEstado()==0) { // Error en la lectura
+        cout << "Error al leer los datos del paquete." << endl;
+        return;
+    }
+    if (!PaqueteAActivar.getEstado()) { // Si el paquete está actualmente activo
+        PaqueteAActivar.darDeAlta(); // Usa el método de paquete para cambiar el estado
+        if (pArchivo.guardar(PaqueteAActivar, pos)) { // Guarda el registro modificado en la misma posición
+            cout << "Paquete con ID " << idAlta<< " dado de ALTA exitosamente." << endl;
+        } else {
+            cout << "Error al actualizar el estado del paquete en el archivo." << endl;
+        }
+    } else {
+        cout << "El paquete con ID " << idAlta << " ya se encuentra ACTIVO." << endl;
+    }
+}
+
+void PaqueteDeViajeManager::listarPaquetesActivos(){
+  PaqueteDeViajeArchivo pArchivo;
+  PaqueteDeViaje registro;
+  int cantidadRegistros = pArchivo.getCantidadRegistros();
+
+  for(int i=0; i<cantidadRegistros; i++)
+  {
+    registro = pArchivo.leer(i);
+    if(registro.getEstado()){
+   registro.Mostrar();
+    }
+  }
+}

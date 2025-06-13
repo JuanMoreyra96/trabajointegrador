@@ -12,5 +12,7 @@ public:
   //void listarPaquetesInactivos();
   // void listarPaquetesPasados --> no confundir con inactivos
   void modificarCuposOcupadosEnPaquete();
+  void bajaLogicaPaqueteDeViaje();
+  void altaLogicaPaqueteDeViaje();
 };
 #endif

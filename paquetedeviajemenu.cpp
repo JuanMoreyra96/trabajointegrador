@@ -13,7 +13,9 @@ void PaqueteDeViajeMenu::mostrar(){
     cout << "========================================================" << endl;
     cout << "1. Registrar nuevo paquete de viaje" << endl;
     cout << "2. Listar todos los paquetes de viajes" << endl;
-
+    cout << "3. Cambiar estado baja un paquete de viaje por ID" << endl;
+    cout << "4. Cambiar estado a alta un paquete de viaje por ID" << endl;
+    cout << "5. Listar paquetes activos" << endl;
     cout << "0. Volver al menu principal" << endl;
     cout << "===============================" << endl;
     cout << "Ingrese una opcion: ";
@@ -27,11 +29,18 @@ void PaqueteDeViajeMenu::mostrar(){
             case 2:
                 pManager.listarTodos();
                 break;
+            case 3:
+                pManager.bajaLogicaPaqueteDeViaje();
+                break;
+            case 4:
+                pManager.altaLogicaPaqueteDeViaje();
+            case 5:
+                pManager.listarPaquetesActivos();
             case 0:
                 return;
                 break;
             default:
-                cout << "Opci�n inv�lida. Por favor, intente de nuevo." << endl;
+                cout << "Opcion invalida. Por favor, intente de nuevo." << endl;
         }
 
       cout << endl << endl;

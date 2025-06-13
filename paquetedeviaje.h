@@ -65,6 +65,8 @@
         void setEstado(bool estado);
 
         void Mostrar();
+        void darDeBaja();
+        void darDeAlta();
 
     };
 

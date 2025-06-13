@@ -154,4 +154,13 @@ PaqueteDeViaje::PaqueteDeViaje(
           _fechaSalida.Mostrar();
           _fechaRegreso.Mostrar();
             // estado: no se muestra
+
         }
+
+
+    void PaqueteDeViaje::darDeBaja(){
+ setEstado(false);
+}
+void PaqueteDeViaje::darDeAlta(){
+ setEstado(true);
+}
