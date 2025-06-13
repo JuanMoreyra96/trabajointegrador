@@ -10,9 +10,9 @@ void CoordinadorMenu::mostrar()
     CoordinadorManager cmanager;
     do
     {
-        cout << "_____________________________________________" << endl;
-        cout << "     MENU SISTEMA REGISTRO DE CLIENTES       " << endl;
-        cout << "_____________________________________________" << endl;
+        cout << "---------------------------------------------" << endl;
+        cout << "|  MENU SISTEMA REGISTRO DE COORDINADORES   |" << endl;
+        cout << "---------------------------------------------" << endl;
         cout << "1. Registar nuevo coordinador" << endl;
         cout << "2. listar todos los coordinadores" << endl;
         cout << "3. Listar coordinadores activos" << endl;
@@ -38,10 +38,9 @@ void CoordinadorMenu::mostrar()
         case 0:
             return;
             break;
-
-            default:
+        default:
             cout << "Opcion invalida. Por favor, intente de nuevo" << endl;
-            break;
+        break;
 
         }
         system("pause");
