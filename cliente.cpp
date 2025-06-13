@@ -24,7 +24,11 @@ void Cliente::Mostrar(){
     cout<<"Apellido: "<< getApellido() << endl;
     cout<<"Email: "<< getEmail() << endl;
     cout<<"Celular: "<< getCelular() << endl;
-    cout<<"Estado: "<< getEstado() << endl;
+    cout<<"Estado: "<< (getEstado() ? "ACTIVO" : "BAJA LOGICA") << endl;
+}
+
+void Cliente::darDeBaja(){
+ setEstado(false);
 }
 
 

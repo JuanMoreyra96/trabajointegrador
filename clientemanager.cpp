@@ -127,6 +127,41 @@ void clientemanager::listarClientesInactivos(){
     if(!registro.getEstado()){
         registro.Mostrar();
     }
+    }
 }
+
+void clientemanager::bajaLogicaCliente(){
+    clientearchivo pArchivo;
+    int idBaja;
+    cout << "Ingrese el ID del cliente a dar de baja (logica): ";
+    cin >> idBaja;
+
+    int pos = pArchivo.buscar(idBaja); // Busca la posición del cliente por ID
+    if (pos == -1) {
+        cout << "Cliente con ID " << idBaja << " no encontrado." << endl;
+        return;
+    }
+    if (pos == -2) {
+        cout << "Error al acceder al archivo de clientes." << endl;
+        return;
+    }
+
+    Cliente clienteABajar = pArchivo.leer(pos); // Lee el registro
+    if (clienteABajar.getidCliente() == 0) { // Error en la lectura
+        cout << "Error al leer los datos del cliente." << endl;
+        return;
+    }
+
+    if (clienteABajar.getEstado()) { // Si el cliente está actualmente activo
+        clienteABajar.darDeBaja(); // Usa el método de Cliente para cambiar el estado
+        if (pArchivo.guardar(clienteABajar, pos)) { // Guarda el registro modificado en la misma posición
+            cout << "Cliente con ID " << idBaja << " dado de BAJA exitosamente." << endl;
+        } else {
+            cout << "Error al actualizar el estado del cliente en el archivo." << endl;
+        }
+    } else {
+        cout << "El cliente con ID " << idBaja << " ya se encuentra en BAJA LOGICA." << endl;
+    }
 }
+
 

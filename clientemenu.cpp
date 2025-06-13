@@ -16,6 +16,7 @@ void clientemenu::mostrar()
         cout << "2. listar todos los clientes" << endl;
         cout << "3. Listar clientes activos" << endl;
         cout << "4. Mostrar cantidad de registros" << endl;
+        cout << "5. Dar de baja cliente" << endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -34,6 +35,8 @@ void clientemenu::mostrar()
         case 4:
             cmanager.mostrarCantidadRegistros();
             break;
+        case 5:
+            cmanager.bajaLogicaCliente();
         case 0:
             return;
             break;
