@@ -6,6 +6,8 @@ class Validaciones{
 
     public:
         bool validarCadenaDeLetras(std::string cadena);
+        bool validarCadenaDeNumeros(std::string cadena);
+        bool validarCadenaEmail(std::string cadena);
         bool validarLongitudCadena(std::string cadena, int minumo, int maximo);
         int pedirNumero();
         float pedirNumeroFloat();
