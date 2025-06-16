@@ -10,6 +10,7 @@ public:
   PagoArchivo(std::string nombreArchivo);
 
   int buscar(int idPago);
+  float sumarPagosPorReserva(int idReserva);
   bool guardar(Pago registro);
   bool guardar(Pago registro, int posicion);
   int getCantidadRegistros();

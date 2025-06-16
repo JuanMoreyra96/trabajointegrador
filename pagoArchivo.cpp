@@ -1,8 +1,10 @@
 #include "pagoArchivo.h"
+#include <iostream>
+using namespace std;
 
 
 PagoArchivo::PagoArchivo(){
-  _nombreArchivo = "reserva.dat";
+  _nombreArchivo = "pagos.dat";
 }
 
 PagoArchivo::PagoArchivo(std::string nombreArchivo){
@@ -29,6 +31,26 @@ int PagoArchivo::buscar(int idPago){
 
    fclose(pFile);
    return -1;
+}
+
+float PagoArchivo::sumarPagosPorReserva(int idReserva){
+   FILE *pFile;
+   Pago reg;
+   float suma = 0;
+   pFile = fopen(_nombreArchivo.c_str(), "ab+");
+
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo.";
+      return -2;
+   }
+
+   while(fread(&reg, sizeof(Pago), 1, pFile) == 1){
+      if (reg.getIdReserva() == idReserva){
+         suma += reg.getImporte();
+      }
+   }
+   fclose(pFile);
+   return suma;
 }
 
 bool PagoArchivo::guardar(Pago registro){

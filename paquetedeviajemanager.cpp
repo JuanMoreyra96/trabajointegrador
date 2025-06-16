@@ -5,6 +5,7 @@
 #include "paquetedeviajearchivo.h"
 #include "paquetedeviajemanager.h"
 #include "validaciones.h"
+#include <iomanip>
 using namespace std;
 
 void PaqueteDeViajeManager::cargarPaqueteDeViaje()
@@ -67,11 +68,11 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
     }while(!validar.validarIntPositivo(totalCupos));
 
       do{
-         cout << "¿El paquete pertenece a temporada baja o alta? 1- Alta 0- Baja: ";
+         cout << "Temporada: 1- Alta 0- Baja: ";
          cin >> temporadaAlta;
 
     if(!validar.validarBooleano(temporadaAlta)){
-        cout<<"El total de cupos debe ser mayor a 0."<<endl;
+        cout<<"Ingrese 0 o 1 segun corresponda."<<endl;
     }
     }while(!validar.validarBooleano(temporadaAlta));
 
@@ -96,7 +97,7 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
     fechaSalida = FechaHora(dia, mes, anio, hora, minutos);
 
             do{
-       cout<<"Ingrese la fecha de salida: ";
+       cout<<"Ingrese la fecha de regreso: ";
   cout<<"Dia: ";
   cin>> dia;
   cout<<"Mes: ";
@@ -149,6 +150,19 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   PaqueteDeViaje registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
 
+    cout << setw(5)  << "ID"
+         << setw(8)  << "Coord1"
+         << setw(8)  << "Coord2"
+         << setw(20) << "Destino"
+         << setw(20) << "Hotel"
+         << setw(13) << "Transporte"
+         << setw(10) << "Precio"
+         << setw(8)  << "Cupos"
+         << setw(8)  << "Ocupados"
+         << setw(10) << "Temporada"
+         << " Salida - Regreso" << endl;
+
+    cout << string(135, '-') << endl;
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);

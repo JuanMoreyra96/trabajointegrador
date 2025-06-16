@@ -2,7 +2,7 @@
 # include "reserva.h"
 # include<cstring>
 # include "fechaHora.h"
-
+#include <iomanip>
 using namespace std;
 
 Reserva::Reserva(){
@@ -77,19 +77,17 @@ void Reserva::setDeudaCancelada(bool deudaCancelada){
 //  ---- MOSTRAR ----
 
 void Reserva::Mostrar(){
-    cout<<"ID RESERVA: "<<_idReserva<<endl;
-    cout<<"ID CLIENTE:"<<_idCliente<<endl;
-    cout<<"ID PAQUETE: "<<_idPaquete<<endl;
-    cout<<"CANTIDAD DE VIAJEROS: "<<_cantidadViajeros<<endl;
-    cout<<"FECHA DE RESERVA: ";
+ cout << left
+         << setw(10) << _idReserva
+         << setw(12) << _idCliente
+         << setw(12) << _idPaquete
+         << setw(20) << _cantidadViajeros;
+
     _fecha.Mostrar();
-    cout<<"PRECIO TOTAL: "<<_precioTotal<<endl;
-    if (_deudaCancelada){
-        cout<<"DEUDA CANCELADA"<<endl;
-    }
-    else{
-        cout<<"DEUDA NO CANCELADA"<<endl;
-    }
+
+    cout << setw(15) << fixed << setprecision(2) << _precioTotal
+         << setw(18) << (_deudaCancelada ? "CANCELADA" : "NO CANCELADA")
+         << endl;
 }
 
 

@@ -10,12 +10,44 @@ using namespace std;
       for (char c : cadena) {
         if (!isalpha(c) && c != ' ') return false;
       }
+      return true;
   }
-  bool Validaciones::validarLongitudCadena(std::string cadena, int minimo, int maximo){
-    int longitud = cadena.length();
-    if (longitud <= minimo || longitud >= maximo) return false;
-    return true;
-  }
+
+
+    bool Validaciones::validarLongitudCadena(std::string cadena, int minimo, int maximo){
+        int longitud = cadena.length();
+        if (longitud < minimo || longitud > maximo) return false;
+        return true;
+    }
+
+
+    bool Validaciones::validarCadenaDeNumeros(std::string cadena){
+        for (char c : cadena) {
+            if (!isdigit(c)) return false;
+        }
+        return true;
+    }
+
+
+    bool Validaciones::validarCadenaEmail(std::string cadena) {
+        bool tieneArroba = false;
+        bool tienePunto = false;
+
+        for (char c : cadena) {
+            if (isalpha(c) || isdigit(c) || c == '@' || c == '.' || c == '-' || c == '_') {
+                if (c == '@') tieneArroba = true;
+                if (c == '.') tienePunto = true;
+            } else {
+                return false;
+            }
+        }
+        if (tieneArroba && tienePunto){
+            return true;
+        }else{
+            return false;
+        }
+	}
+
   // para cantidad de viajeros por ejemplo
 
   int Validaciones::pedirNumero(){
@@ -55,7 +87,6 @@ using namespace std;
       anioActual = fechaActual.getAnio();
       horaActual = fechaActual.getHora();
       minutoActual = fechaActual.getMinuto();
-
     if (anio < anioActual || anio > anioActual + 5) return false;
     if (mes < 1 || mes > 12) return false;
     if (horas < 0 || horas > 23) return false;
@@ -68,8 +99,11 @@ using namespace std;
     if (dia < 1 || dia > diasPorMes[mes - 1]) return false;
 
     // Comparar contra la fecha actual: solo se permite una fecha desde ma�ana en adelante
+
     if (anio < anioActual) return false;
+
     if (anio == anioActual && mes < mesActual) return false;
+
     if (anio == anioActual && mes == mesActual && dia <= diaActual) return false;
 
     return true;

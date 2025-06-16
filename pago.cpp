@@ -2,6 +2,7 @@
 # include "pago.h"
 # include<cstring>
 #include "fechaHora.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -44,9 +45,11 @@ void Pago::setFecha(FechaHora fecha){
     _fecha=fecha;
     }
 void Pago::Mostrar(){
-    cout<<"ID PAGO: "<<_idPago<<endl;
-    cout<<"ID RESERVA:"<<_idReserva<<endl;
-    cout<<"IMPORTE"<<_importe<<endl;
-    cout<<"FECHA DE PAGO: ";
+    cout << left
+         << setw(10) << _idPago
+         << setw(12) << _idReserva
+         << setw(10) << fixed << setprecision(2) << _importe;
+
     _fecha.Mostrar();
+    cout << endl;
 }

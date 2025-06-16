@@ -9,4 +9,6 @@ public:
     void listarTodos();
     void listarClientesActivos();
     void listarClientesInactivos();
+    void bajaLogicaCliente();
+    void altaLogicaCliente();
 };

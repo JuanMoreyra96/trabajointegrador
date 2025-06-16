@@ -15,6 +15,6 @@ class Coordinador: public Persona{
         void setIdCoordinador(int idCoordinador);
         int* getIdiomas();
         void setIdiomas (int* idiomas);
-        void Mostrar();
+        void Mostrar(std::string* idiomas);
 };
 

@@ -8,6 +8,7 @@
 #include "paquetedeviaje.h"
 #include "clientearchivo.h"
 #include "cliente.h"
+#include <iomanip>
 using namespace std;
 
 
@@ -53,9 +54,7 @@ void ReservaManager::CargarReserva(){
     }  while (pos == -1);
     paquete = paqueteArchivo.leer(pos);
     int ocupados = paquete.getCuposOcupados();
-    cout << "ocupados= " << ocupados << endl;
     idPaquete = paquete.getIdPaquete();
-
 
     // CUPOS
     do{
@@ -78,7 +77,7 @@ void ReservaManager::CargarReserva(){
     else
     {
         cout << "Hubo un error inesperado." << endl;
-
+    }
 
     // FECHA
     fecha = FechaHora();
@@ -94,7 +93,7 @@ void ReservaManager::CargarReserva(){
     // GUARDAR LA RESERVA
     reserva=Reserva(idReserva, idCliente, idPaquete, cantidadViajeros, fecha, precioTotal, deudaCancelada);
 
-    }
+
 
     if(pArchivo.guardar(reserva)){
         cout << "Se guardo correctamente!" << endl;
@@ -115,7 +114,17 @@ void ReservaManager::ListarTodos(){
   ReservaArchivo pArchivo;
   Reserva registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
+ cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
 
+    cout << string(100, '-') << endl;
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);
@@ -127,7 +136,17 @@ void ReservaManager::ListarReservasDeudaCancelada(){
     ReservaArchivo pArchivo;
     Reserva registro;
     int cantidadRegistros = pArchivo.getCantidadRegistros();
+ cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
 
+    cout << string(100, '-') << endl;
     for(int i=0; i<cantidadRegistros; i++){
         registro = pArchivo.leer(i);
         if(registro.getDeudaCancelada()){

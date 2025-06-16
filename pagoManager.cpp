@@ -12,11 +12,13 @@
 #include "validaciones.h"
 #include "pago.h"
 #include "pagoArchivo.h"
+#include <iomanip>
 using namespace std;
 
   void PagoManager::CargarPago(){
     Pago pago;
     PagoArchivo pArchivo;
+    Reserva reservaAPagar;
     ReservaArchivo archivoReserva;
     Validaciones validar;
 
@@ -27,38 +29,59 @@ using namespace std;
     int cantRegistros = pArchivo.getCantidadRegistros();
     idPago = cantRegistros+1;
 
-    int resultado;
+    int posicion;
     do {
     cout << "Ingrese el ID de la reserva: ";
     cin >> idReserva;
 
-    resultado = archivoReserva.buscar(idReserva);
-    if (resultado == -1 || resultado == -2){
+    posicion = archivoReserva.buscar(idReserva);
+    if (posicion == -1 || posicion == -2){
         cout << "No existe una reserva con ese ID." << endl;
     }
 
-    } while (resultado == -1 || resultado == -2);
-
+    } while (posicion == -1 || posicion == -2);
     // validar cuanto le falta pagar para pagar el total
 
+    float precioTotal;
+    reservaAPagar = archivoReserva.leer(posicion);
+    if(reservaAPagar.getDeudaCancelada()){
+      cout << "Ya se pago el total de esta reserva. " << endl;
+    }
+    else
+        {
+         precioTotal = reservaAPagar.getPrecioTotal();
+    float importesPagados;
+
+    importesPagados = pArchivo.sumarPagosPorReserva(idReserva);
+    float faltaPagar;
+    faltaPagar = precioTotal - importesPagados;
+    cout << "El precio total de la reserva es $" << precioTotal << endl;
+    cout << "El cliente adeuda $" << faltaPagar << endl;
+
     do{
-   cout << "Ingrese el importe pagado: ";
+    cout << "Ingrese el importe recibido: ";
     importe = validar.pedirNumeroFloat();
-    if(!validar.validarFloatPositivo(importe)){
+    if(!validar.validarFloatPositivo(importe) || importe > faltaPagar){
         cout<<"Debe ingresar un importe valido."<<endl;
     }
-    }while(!validar.validarFloatPositivo(importe));
+    }while(!validar.validarFloatPositivo(importe)|| importe > faltaPagar );
 
     pago = Pago(idPago, idReserva, importe, fecha);
-    // validar si hay mas pagos para la misma reserva y si la misma esta cancelada.
     if(pArchivo.guardar(pago))
     {
     cout << "Se guardo correctamente!" << endl;
+
+    if(precioTotal == importesPagados + importe){
+        reservaAPagar.setDeudaCancelada(true);
+        archivoReserva.guardar(reservaAPagar, posicion);
+    }
     }
     else
     {
     cout << "Hubo un error inesperado." << endl;
     }
+    }
+
 }
 
 
@@ -75,7 +98,13 @@ void PagoManager::ListarTodos(){
   PagoArchivo pArchivo;
   Pago registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
+  cout << left
+         << setw(10) << "ID PAGO"
+         << setw(12) << "ID RESERVA"
+         << setw(10) << "IMPORTE"
+         << "FECHA DE PAGO" << endl;
 
+  cout << string(50, '-') << endl;
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);
