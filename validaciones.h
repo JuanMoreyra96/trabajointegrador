@@ -15,12 +15,9 @@ class Validaciones{
         bool validarFloatPositivo(float numero);
         bool validarFechaProxima(int dia, int mes, int anio, int horas, int minutos);
         bool validarFechaPosterior(FechaHora primeraFecha, int dia, int mes, int anio, int horas, int minutos);
-        bool validarDia(int dia);
-        bool validarMes(int mes);
-        bool validarAnio(int anio);
-        bool validarHora(int hora);
-        bool validarMinutos(int minutos);
+        bool validarFechaCorrecta(int dia, int mes, int anio, int horas, int minutos);
         bool validarBooleano(int valor);
+        bool validarTransporte(std::string cadena);
 };
 
 #endif // VALIDACIONES_H_INCLUDED

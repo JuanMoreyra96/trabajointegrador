@@ -15,7 +15,11 @@ public:
   bool guardar(PaqueteDeViaje registro, int posicion);
   int getCantidadRegistros();
   PaqueteDeViaje leer(int pos);
-
-  void modificarCuposOcupados(int cuposOcupados);
+  void mostrarPaquetesPorDestino(std::string destino);
+  void mostrarPaquetesPorDestinoParcial(std::string texto);
+  void buscarPorRangoPrecios(float precioMenor, float precioMayor);
+  void buscarRegistroPorFechaSalida(FechaHora fecha);
+  void buscarRegistroPorFechaRegreso(FechaHora fecha);
+  void mostrarPaquetesPorTransporte(std::string transporte);
 };
 #endif
