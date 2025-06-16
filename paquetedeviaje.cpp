@@ -1,7 +1,7 @@
 #include "paquetedeviaje.h"
 #include "cstring"
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
 
 PaqueteDeViaje::PaqueteDeViaje(){
@@ -131,27 +131,22 @@ PaqueteDeViaje::PaqueteDeViaje(
             _estado = estado;
         }
 
-        void PaqueteDeViaje::Mostrar(){
-            //TODO: el manager ya habrá validado que el paquete esté activo
-            cout<<"ID PAQUETE: "<<_idPaquete<<endl;
-            cout<<"ID COORDINADOR 1: "<<_idCoordinador[0]<<endl;
-            cout<<"ID COORDINADOR 2:"<<_idCoordinador[1]<<endl;
-            cout<<"DESTINO: "<<_destino<<endl;
-            cout<<"HOTEL: "<<_hotel<<endl;
-            cout<<"TIPO DE TRANSPORTE: "<<_tipoTransporte<<endl;
-            cout<<"PRECIO POR PERSONA: "<< _precio<<endl;
-            cout<<"TOTAL DE CUPOS: "<<_totalCupos<<endl;
-            cout<<"CUPOS OCUPADOS: "<<_cuposOcupados<<endl;
-            if(_temporadaAlta)
-                {
-                  cout<<  "TEMPORADA ALTA"<<endl;
+void PaqueteDeViaje::Mostrar(){
+ cout << setw(5)  << _idPaquete
+         << setw(8)  << _idCoordinador[0]
+         << setw(8)  << _idCoordinador[1]
+         << setw(20) << _destino
+         << setw(20) << _hotel
+         << setw(13) << _tipoTransporte
+         << setw(10) << fixed << setprecision(2) << _precio
+         << setw(8)  << _totalCupos
+         << setw(8)  << _cuposOcupados
+         << setw(10) << (_temporadaAlta ? "Alta" : "Baja")
+         << " ";
 
-                }else
-               {
-                  cout<<  "TEMPORADA BAJA"<<endl;
+    _fechaSalida.Mostrar();
+    cout << " - ";
+    _fechaRegreso.Mostrar();
+    cout << endl;
 
-                }
-          _fechaSalida.Mostrar();
-          _fechaRegreso.Mostrar();
-            // estado: no se muestra
-        }
+}

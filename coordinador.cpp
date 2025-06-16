@@ -1,6 +1,7 @@
 #include "coordinador.h"
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 Coordinador::Coordinador(){
@@ -37,31 +38,29 @@ void Coordinador::setIdiomas(int* idiomas) {
 
 
 void Coordinador::Mostrar(std::string* idiomas) {
-    int aux=0;
-    cout<<"ID del Coordinador: " << _idCoordinador << endl;
-    cout<<"Dni: "<< getDni()<< endl;
-    cout<<"Nombre: "<< getNombre()<< endl;
-    cout<<"Apellido: "<< getApellido() << endl;
-    cout<<"Email: "<< getEmail() << endl;
-    cout<<"Celular: "<< getCelular() << endl;
-    cout<<"Estado: ";
-    if(getEstado()){
-        cout<<"Activo "<< endl;
-    }else{
-        cout<<"Inactivo "<< endl;
-    }
-    cout<<"Idiomas: ";
-    do{
-        if (aux < 5 && _idiomas[aux] != -1){
-            if (aux != 0){
-                cout<<", "<<idiomas[_idiomas[aux]-1];
-            }else{
-                cout<<idiomas[_idiomas[aux]-1];
+   int aux = 0;
+
+    // Mostrar columnas fijas con ancho determinado
+    cout << setw(5)  << _idCoordinador
+         << setw(12) << getDni()
+         << setw(15) << getNombre()
+         << setw(15) << getApellido()
+         << setw(25) << getEmail()
+         << setw(15) << getCelular()
+         << setw(10) << (getEstado() ? "Activo" : "Inactivo");
+
+    // Idiomas: los concatenamos primero en un string
+    string idiomasTexto = "";
+    do {
+        if (aux < 5 && _idiomas[aux] != -1) {
+            if (!idiomasTexto.empty()) {
+                idiomasTexto += ", ";
             }
+            idiomasTexto += idiomas[_idiomas[aux] - 1];
         }
         aux++;
-    }while (_idiomas[aux-1] != -1 && aux < 5);
-    cout<<"."<<endl;
-    cout << endl;
+    } while (_idiomas[aux - 1] != -1 && aux < 5);
+
+    cout << " " << idiomasTexto << endl;
 }
 

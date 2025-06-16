@@ -1,7 +1,7 @@
 #include "Cliente.h"
 #include <cstring>
 #include <iostream>
-
+#include <iomanip>
 using namespace std;
 Cliente::Cliente()
     : Persona(), _idCliente(0) {
@@ -17,18 +17,22 @@ int Cliente::getidCliente(){
     return _idCliente;
 }
 void Cliente::Mostrar(){
-    cout<<"Id: "<< _idCliente<< endl;
-    cout<< "Datos del Cliente " << endl;
-    cout<<"Dni: "<< getDni()<< endl;
-    cout<<"Nombre: "<< getNombre()<< endl;
-    cout<<"Apellido: "<< getApellido() << endl;
-    cout<<"Email: "<< getEmail() << endl;
-    cout<<"Celular: "<< getCelular() << endl;
-    cout<<"Estado: "<< (getEstado() ? "ACTIVO" : "BAJA LOGICA") << endl;
+       cout << left
+         << setw(5)  << _idCliente
+         << setw(12) << getDni()
+         << setw(15) << getNombre()
+         << setw(15) << getApellido()
+         << setw(25) << getEmail()
+         << setw(15) << getCelular()
+         << setw(12) << (getEstado() ? "ACTIVO" : "BAJA")
+         << endl;
 }
 
 void Cliente::darDeBaja(){
  setEstado(false);
+}
+void Cliente::darDeAlta(){
+ setEstado(true);
 }
 
 

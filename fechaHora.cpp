@@ -56,7 +56,7 @@ void FechaHora::setMinuto (int minuto){
 }
 
 void FechaHora::Mostrar(){
-    std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto <<  endl;
+    std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto << " ";
 }
 
 //prueba

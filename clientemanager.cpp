@@ -4,6 +4,7 @@
 #include "clientearchivo.h"
 #include "clientemanager.h"
 #include "validaciones.h"
+#include <iomanip>
 using namespace std;
 
 void clientemanager::cargarcliente()
@@ -80,9 +81,9 @@ void clientemanager::cargarcliente()
     nuevoCliente = Cliente(dni,nombre,apellido, email, celular, estado, idCliente);
 
   if(pArchivo.guardar(nuevoCliente)){
-        cout << "se guardo joya" << endl;
+        cout << "se guardo correctamente." << endl;
   }else{
-        cout << "hubo un error al guardar" << endl;
+        cout << "Hubo un error al guardar." << endl;
     }
 }
 
@@ -96,7 +97,18 @@ void clientemanager::listarTodos(){
   clientearchivo pArchivo;
   Cliente registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
-
+  //COLUMNAS
+  cout << left
+         << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(12) << "Estado"
+         << endl;
+  cout << string(99, '-') << endl;
+  // FILAS
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);
@@ -107,7 +119,18 @@ void clientemanager::listarClientesActivos(){
   clientearchivo pArchivo;
   Cliente registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
-
+  //COLUMNAS
+  cout << left
+         << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(12) << "Estado"
+         << endl;
+  cout << string(99, '-') << endl;
+  // FILAS
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);
@@ -120,7 +143,18 @@ void clientemanager::listarClientesInactivos(){
   clientearchivo pArchivo;
   Cliente registro;
   int cantidadRegistros = pArchivo.getCantidadRegistros();
-
+  //COLUMNAS
+  cout << left
+         << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(12) << "Estado"
+         << endl;
+  cout << string(99, '-') << endl;
+  // FILAS
   for(int i=0; i<cantidadRegistros; i++)
   {
     registro = pArchivo.leer(i);
@@ -132,13 +166,13 @@ void clientemanager::listarClientesInactivos(){
 
 void clientemanager::bajaLogicaCliente(){
     clientearchivo pArchivo;
-    int idBaja;
-    cout << "Ingrese el ID del cliente a dar de baja (logica): ";
-    cin >> idBaja;
+    string dni;
+    cout << "Ingrese el DNI del cliente a dar de baja (logica): ";
+    cin >> dni;
 
-    int pos = pArchivo.buscar(idBaja); // Busca la posición del cliente por ID
+    int pos = pArchivo.buscar(dni); // Busca la posición del cliente por ID
     if (pos == -1) {
-        cout << "Cliente con ID " << idBaja << " no encontrado." << endl;
+        cout << "Cliente con ID " << dni << " no encontrado." << endl;
         return;
     }
     if (pos == -2) {
@@ -147,20 +181,47 @@ void clientemanager::bajaLogicaCliente(){
     }
 
     Cliente clienteABajar = pArchivo.leer(pos); // Lee el registro
-    if (clienteABajar.getidCliente() == 0) { // Error en la lectura
-        cout << "Error al leer los datos del cliente." << endl;
-        return;
-    }
 
     if (clienteABajar.getEstado()) { // Si el cliente está actualmente activo
         clienteABajar.darDeBaja(); // Usa el método de Cliente para cambiar el estado
         if (pArchivo.guardar(clienteABajar, pos)) { // Guarda el registro modificado en la misma posición
-            cout << "Cliente con ID " << idBaja << " dado de BAJA exitosamente." << endl;
+            cout << "Cliente con DNI " << dni << " dado de BAJA exitosamente." << endl;
         } else {
             cout << "Error al actualizar el estado del cliente en el archivo." << endl;
         }
     } else {
-        cout << "El cliente con ID " << idBaja << " ya se encuentra en BAJA LOGICA." << endl;
+        cout << "El cliente con DNI " << dni << " ya se encuentra en BAJA LOGICA." << endl;
+    }
+}
+
+
+void clientemanager::altaLogicaCliente(){
+    clientearchivo pArchivo;
+    string dni;
+    cout << "Ingrese el DNI del cliente a reactivar: ";
+    cin >> dni;
+
+    int pos = pArchivo.buscar(dni); // Busca la posición del cliente por ID
+    if (pos == -1) {
+        cout << "Cliente con DNI " << dni << " no encontrado." << endl;
+        return;
+    }
+    if (pos == -2) {
+        cout << "Error al acceder al archivo de clientes." << endl;
+        return;
+    }
+
+    Cliente clienteAActivar = pArchivo.leer(pos); // Lee el registro
+
+    if (!clienteAActivar.getEstado()) {
+        clienteAActivar.darDeAlta();
+        if (pArchivo.guardar(clienteAActivar, pos)) { // Guarda el registro modificado en la misma posición
+            cout << "Cliente con DNI " << dni << " dado de alta exitosamente." << endl;
+        } else {
+            cout << "Error al actualizar el estado del cliente en el archivo." << endl;
+        }
+    } else {
+        cout << "El cliente con DNI " << dni << " ya se encuentra activo." << endl;
     }
 }
 

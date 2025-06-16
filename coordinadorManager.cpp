@@ -4,6 +4,7 @@
 #include "coordinadorArchivo.h"
 #include "coordinadorManager.h"
 #include "validaciones.h"
+#include <iomanip>
 using namespace std;
 
 
@@ -160,7 +161,16 @@ void CoordinadorManager::listarTodos(){
     CoordinadorArchivo cArchivo;
     Coordinador registro;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
+    cout << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(10) << "Estado"
+         << " Idiomas" << endl;
 
+    cout << string(120, '-') << endl;
     for(int i=0; i<cantidadRegistros; i++){
         registro = cArchivo.leer(i);
         registro.Mostrar(vectorIdiomas);
@@ -173,7 +183,16 @@ void CoordinadorManager::listarCoordinadoresActivos(){
     CoordinadorArchivo cArchivo;
     Coordinador registro;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
+ cout << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(10) << "Estado"
+         << " Idiomas" << endl;
 
+    cout << string(120, '-') << endl;
     for(int i=0; i<cantidadRegistros; i++){
         registro = cArchivo.leer(i);
         if(registro.getEstado()){
@@ -188,7 +207,16 @@ void CoordinadorManager::listarCoordinadoresInactivos(){
     CoordinadorArchivo cArchivo;
     Coordinador registro;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
+ cout << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(10) << "Estado"
+         << " Idiomas" << endl;
 
+    cout << string(120, '-') << endl;
     for(int i=0; i<cantidadRegistros; i++){
         registro = cArchivo.leer(i);
         if(!registro.getEstado()){
