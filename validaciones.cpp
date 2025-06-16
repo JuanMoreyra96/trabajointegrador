@@ -13,13 +13,11 @@ using namespace std;
       return true;
   }
 
-
     bool Validaciones::validarLongitudCadena(std::string cadena, int minimo, int maximo){
         int longitud = cadena.length();
         if (longitud < minimo || longitud > maximo) return false;
         return true;
     }
-
 
     bool Validaciones::validarCadenaDeNumeros(std::string cadena){
         for (char c : cadena) {
@@ -27,7 +25,6 @@ using namespace std;
         }
         return true;
     }
-
 
     bool Validaciones::validarCadenaEmail(std::string cadena) {
         bool tieneArroba = false;
@@ -48,6 +45,18 @@ using namespace std;
         }
 	}
 
+	bool Validaciones::validarTransporte(std::string cadena){
+
+	 if (
+      cadena == "avion" || cadena == "tren" || cadena == "colectivo" ||
+      cadena == "AVION" || cadena == "TREN" || cadena == "COLECTIVO"
+
+      ) {
+        return true;
+    }
+
+    return false;
+	}
   // para cantidad de viajeros por ejemplo
 
   int Validaciones::pedirNumero(){
@@ -90,7 +99,7 @@ using namespace std;
     if (anio < anioActual || anio > anioActual + 5) return false;
     if (mes < 1 || mes > 12) return false;
     if (horas < 0 || horas > 23) return false;
-    if (minutos < 1 || minutos > 59) return false;
+    if (minutos < 0 || minutos > 59) return false;
 
     int diasPorMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     if (mes == 2 && ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0))) {
@@ -119,30 +128,28 @@ bool Validaciones::validarFechaPosterior(FechaHora primeraFecha, int dia, int me
     return true;
   }
     // validar dia, mes, anio, minutos, horas por separado
-    bool Validaciones::validarDia(int dia){
-        if(dia >= 1 && dia <=31) return true;
-        return false;
-        }
-    bool Validaciones::validarMes(int mes){
-          if(mes >= 1 && mes <=12) return true;
-        return false;
+bool Validaciones::validarFechaCorrecta( int dia, int mes, int anio, int horas, int minutos){
+    FechaHora fechaActual;
+    int anioActual;
+    anioActual = fechaActual.getAnio();
+
+    if (anio < 2010 || anio > anioActual + 5) return false;
+    if (mes < 1 || mes > 12) return false;
+    if (horas < 0 || horas > 23) return false;
+    if (minutos < 0 || minutos > 59) return false;
+
+    int diasPorMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    if (mes == 2 && ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0))) {
+        diasPorMes[1] = 29; // a�o bisiesto
     }
-    bool Validaciones::validarAnio(int anio){
-        if(anio >= 2025 && anio <= 2030) return true;
-        return false;
+    if (dia < 1 || dia > diasPorMes[mes - 1]) return false;
+
+     return true;
     }
-    bool Validaciones::validarHora(int hora){
-         if(hora >= 0 && hora <= 23) return true;
-        return false;
-    }
-    bool Validaciones::validarMinutos(int minutos){
-        if(minutos >= 0 && minutos <= 59) return true;
-        return false;
-    }
+
   // validar que se ingrso 1 o 0 para booleano
     bool Validaciones::validarBooleano(int valor){
     if(valor == 1 || valor == 0) return true;
     return false;
     }
-  // validar que se ingrese avion, tren o colectivo
 

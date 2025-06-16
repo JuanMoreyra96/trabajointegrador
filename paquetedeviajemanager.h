@@ -9,8 +9,14 @@ public:
   void mostrarCantidadRegistros();
   void listarTodos(); // activos e inactivos
   void listarPaquetesActivos(); //solo activos: que todavia no se hicieron
-  //void listarPaquetesInactivos();
-  // void listarPaquetesPasados --> no confundir con inactivos
-  void modificarCuposOcupadosEnPaquete();
+  void darDeBaja();
+  void darDeAlta();
+  void buscarPaquetePorDestino();
+  void buscarPorRangoDePrecio();
+  void buscarPaquetePorFechaSalida();
+  void buscarPaquetePorFechaRegreso();
+  void buscarPorTransporte();
+  void buscarPorTemporada();
+  void buscarConCuposDisponibles();
 };
 #endif

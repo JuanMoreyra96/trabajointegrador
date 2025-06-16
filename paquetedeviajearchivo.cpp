@@ -1,4 +1,7 @@
+#include <iostream>
 #include "Paquetedeviajearchivo.h"
+#include "fechaHora.h"
+using namespace std;
 
 PaqueteDeViajeArchivo::PaqueteDeViajeArchivo(){
   _nombreArchivo = "paquetesdeviaje.dat";
@@ -89,6 +92,146 @@ int PaqueteDeViajeArchivo::buscar(int idPaquete){
    return -1;
 }
 
-void modificarCuposOcupados(int cuposOcupados){
+std::string toUpper(std::string str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        // Si el caracter es una letra minúscula, lo convierte
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] -= 32;  // Diferencia entre 'a' y 'A' en ASCII
+        }
+    }
+    return str;
+}
 
+
+// ESTE METODO SIRVE PARA COINCIDENCIA ABSOLUTA DE CARACTERES
+void PaqueteDeViajeArchivo::mostrarPaquetesPorDestino(std::string destino){
+ FILE *pFile;
+   PaqueteDeViaje reg;
+   destino = toUpper(destino);
+
+   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo";
+      return;
+   }
+
+   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+      if (toUpper(reg.getDestino()) == destino){
+         reg.Mostrar();
+      }
+   }
+   fclose(pFile);
+}
+// ESTE BUSCA POR COINCIDENCIAS PARCIALES, AL COMEINZO, MEDIO O FINAL DEL TEXTO
+// Para comprender, buscar como funciona substr(pos, len)
+void PaqueteDeViajeArchivo::mostrarPaquetesPorDestinoParcial(std::string texto){
+    FILE *pFile;
+    PaqueteDeViaje reg;
+    texto = toUpper(texto);
+
+    pFile = fopen(_nombreArchivo.c_str(), "rb");
+    if (pFile == nullptr){
+        cout << "No se pudo abrir el archivo";
+        return;
+    }
+
+    while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+        std::string destinoActual = toUpper(reg.getDestino());
+
+        bool coincide = false;
+        int lenTexto = texto.size();
+        int lenDestino = destinoActual.size();
+
+        for (int i = 0; i <= lenDestino - lenTexto; i++) {
+            if (destinoActual.substr(i, lenTexto) == texto) {
+                coincide = true;
+                break;
+            }
+        }
+
+        if (coincide) {
+            reg.Mostrar();
+        }
+    }
+
+    fclose(pFile);
+}
+
+void PaqueteDeViajeArchivo::buscarPorRangoPrecios(float precioMenor, float precioMayor){
+   FILE *pFile;
+   PaqueteDeViaje reg;
+   float precio;
+   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo";
+      return;
+   }
+
+   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+      precio = reg.getPrecio();
+      if (precio >= precioMenor && precio <= precioMayor){
+         reg.Mostrar();
+      }
+   }
+   fclose(pFile);
+}
+
+void PaqueteDeViajeArchivo::buscarRegistroPorFechaSalida(FechaHora fecha){
+   FILE *pFile;
+   PaqueteDeViaje reg;
+   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo";
+      return;
+   }
+
+   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+     if(reg.getFechaSalida().getDia() == fecha.getDia()
+        && reg.getFechaSalida().getMes() == fecha.getMes()
+        && reg.getFechaSalida().getAnio() == fecha.getAnio()
+        ){
+        reg.Mostrar();
+        }
+        }
+        fclose(pFile);
+}
+
+
+void PaqueteDeViajeArchivo::buscarRegistroPorFechaRegreso(FechaHora fecha){
+   FILE *pFile;
+   PaqueteDeViaje reg;
+   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo";
+      return;
+   }
+
+   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+     if(reg.getFechaRegreso().getDia() == fecha.getDia()
+        && reg.getFechaRegreso().getMes() == fecha.getMes()
+        && reg.getFechaRegreso().getAnio() == fecha.getAnio()
+        ){
+        reg.Mostrar();
+        }
+        }
+        fclose(pFile);
+}
+
+void PaqueteDeViajeArchivo::mostrarPaquetesPorTransporte(std::string transporte){
+   FILE *pFile;
+   PaqueteDeViaje reg;
+   transporte = toUpper(transporte);
+
+   pFile = fopen(_nombreArchivo.c_str(), "rb");
+   if (pFile == nullptr){
+      cout << "No se pudo abrir el archivo";
+      return;
+   }
+
+   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
+      if (toUpper(reg.getTipoTransporte()) == transporte){
+         reg.Mostrar();
+      }
+   }
+   fclose(pFile);
 }
