@@ -5,8 +5,9 @@ class CoordinadorManager
 private:
 public:
     void cargarCoordinador();
+    void modificarCoordinador();
     void mostrarCantidadRegistros();
-    void listarTodos();
+    void listarTodosCoordinadoresPorApellido();
     void listarCoordinadoresActivos();
     void listarCoordinadoresInactivos();
 };
