@@ -50,6 +50,10 @@
 		<Unit filename="coordinadorMenu.h" />
 		<Unit filename="fechaHora.cpp" />
 		<Unit filename="fechaHora.h" />
+		<Unit filename="informes.cpp" />
+		<Unit filename="informes.h" />
+		<Unit filename="informesMenu.cpp" />
+		<Unit filename="informesMenu.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="pago.cpp" />
 		<Unit filename="pago.h" />
