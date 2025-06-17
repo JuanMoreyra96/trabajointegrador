@@ -12,8 +12,8 @@ void InformesMenu::Mostrar()
         cout << "_____________________________________________" << endl;
         cout << "     MENU DE INFORMES                        " << endl;
         cout << "_____________________________________________" << endl;
-        cout << "1. Mostrar paquetes que necesitan mas publicidad" << endl;
-
+        cout << "1. Mostrar clientes que adaudan pagos" << endl;
+        cout << "2. Mostrar paquetes que necesitan mas publicidad" << endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -21,6 +21,9 @@ void InformesMenu::Mostrar()
         switch(opcion)
         {
         case 1:
+            informe.mostrarClientesQueAdeudan();
+            break;
+        case 2:
             informe.mostrarPaquetesParaPublicidad();
             break;
 
