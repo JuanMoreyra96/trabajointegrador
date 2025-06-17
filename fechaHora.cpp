@@ -59,4 +59,7 @@ void FechaHora::Mostrar(){
     std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto << " ";
 }
 
-//prueba
+int FechaHora::calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2) {
+
+}
+
