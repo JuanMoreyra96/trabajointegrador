@@ -14,9 +14,10 @@ void CoordinadorMenu::mostrar()
         cout << "|  MENU SISTEMA REGISTRO DE COORDINADORES   |" << endl;
         cout << "---------------------------------------------" << endl;
         cout << "1. Registar nuevo coordinador" << endl;
-        cout << "2. listar todos los coordinadores" << endl;
-        cout << "3. Listar coordinadores activos" << endl;
-        cout << "4. Mostrar cantidad de registros" << endl;
+        cout << "2. Modificar coordinador" << endl;
+        cout << "3. Listar todos los coordinadores" << endl;
+        cout << "4. Listar coordinadores activos" << endl;
+        cout << "5. Mostrar cantidad de registros" << endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -27,12 +28,15 @@ void CoordinadorMenu::mostrar()
             cmanager.cargarCoordinador();
             break;
         case 2:
-            cmanager.listarTodos();
+            cmanager.modificarCoordinador();
             break;
         case 3:
-            cmanager.listarCoordinadoresActivos();
+            cmanager.listarTodosCoordinadoresPorApellido();
             break;
         case 4:
+            cmanager.listarCoordinadoresActivos();
+            break;
+        case 5:
             cmanager.mostrarCantidadRegistros();
             break;
         case 0:
@@ -46,6 +50,6 @@ void CoordinadorMenu::mostrar()
         system("pause");
         system("cls");
     }
-    while (opcion!=5);
+    while (true);
 
 }

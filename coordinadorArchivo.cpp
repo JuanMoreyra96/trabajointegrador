@@ -26,6 +26,24 @@ bool CoordinadorArchivo::guardar(Coordinador registro){
 }
 
 
+bool CoordinadorArchivo::guardar(Coordinador registro, int posicion){
+
+    FILE *pFile;
+    bool result;
+    pFile = fopen(_nombrearchivo.c_str(), "rb+");
+
+    if (pFile == nullptr){
+        return false;
+    }
+
+    fseek(pFile, posicion * sizeof(Coordinador) , SEEK_SET);
+    result = fwrite(&registro, sizeof(Coordinador), 1, pFile);
+    fclose(pFile);
+    return result;
+
+}
+
+
 int CoordinadorArchivo::buscar(int idCoordinador){
     FILE *pFile;
     Coordinador registro;
@@ -71,22 +89,6 @@ int CoordinadorArchivo::buscar(std::string dniCoordinador){
 
     fclose(pFile);
     return -1;
-}
-
-
-bool CoordinadorArchivo::guardar(Coordinador registro, int posicion){
-    FILE *pFile;
-    bool result;
-    pFile = fopen(_nombrearchivo.c_str(), "rb+");
-
-    if (pFile == nullptr){
-        return false;
-    }
-
-    fseek(pFile, posicion * sizeof(Coordinador) , SEEK_SET);
-    result = fwrite(&registro, sizeof(Coordinador), 1, pFile);
-    fclose(pFile);
-    return result;
 }
 
 
