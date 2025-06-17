@@ -5,6 +5,7 @@ private:
 
 public:
   void mostrarPaquetesParaPublicidad();
+  void mostrarClientesQueAdeudan();
 };
 
 
