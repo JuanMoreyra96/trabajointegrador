@@ -18,6 +18,7 @@ class Validaciones{
         bool validarFechaCorrecta(int dia, int mes, int anio, int horas, int minutos);
         bool validarBooleano(int valor);
         bool validarTransporte(std::string cadena);
+        bool validarBajaOcupacion(int totalCupos, int cuposOcupados);
 };
 
 #endif // VALIDACIONES_H_INCLUDED
