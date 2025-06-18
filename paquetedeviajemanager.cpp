@@ -739,3 +739,54 @@ void PaqueteDeViajeManager::listarPorPrecio() {
     delete[] vecIdPaquetes;
 }
 
+void PaqueteDeViajeManager::listarTodosAlfabeticamentePorDestino(){
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    PaqueteDeViaje *vecReg = nullptr;
+
+    vecReg = new PaqueteDeViaje[cantidadRegistros];
+    if( vecReg == nullptr ) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i] = pArchivo.leer(i);
+    }
+
+    for (int i = 1; i < cantidadRegistros; i++) {
+        PaqueteDeViaje paqueteAux = vecReg[i];
+        int j = i - 1;
+
+        while (j >= 0 && paqueteAux.getDestino() < vecReg[j].getDestino()) {
+            vecReg[j + 1] = vecReg[j];
+            j--;
+        }
+        vecReg[j + 1] = paqueteAux;
+    }
+
+
+
+  //COLUMNAS
+
+       cout << setw(5)  << "ID"
+    << setw(8)  << "Coord1"
+    << setw(8)  << "Coord2"
+    << setw(20) << "Destino"
+    << setw(20) << "Hotel"
+    << setw(13) << "Transporte"
+    << setw(10) << "Precio"
+    << setw(8)  << "Cupos"
+    << setw(8)  << "Ocupados"
+    << setw(10) << "Temporada"
+    << " Salida - Regreso" << endl;
+  cout << string(99, '-') << endl;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i].Mostrar();
+    }
+
+    delete []vecReg;
+}
+

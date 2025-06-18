@@ -70,6 +70,7 @@ void PaqueteDeViajeMenu::mostrar(){
                 pManager.buscarConCuposDisponibles();
                 break;
             case 13:
+                pManager.listarTodosAlfabeticamentePorDestino();
                 break;
             case 14:
                 pManager.listarDeMasAMenosProximo();

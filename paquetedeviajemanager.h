@@ -21,5 +21,7 @@ public:
   void buscarConCuposDisponibles();
   void listarDeMasAMenosProximo();
   void listarPorPrecio();
+  void listarTodosAlfabeticamentePorDestino();
+
 };
 #endif
