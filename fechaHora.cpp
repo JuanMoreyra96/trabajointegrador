@@ -10,7 +10,7 @@ FechaHora::FechaHora(){
 
     _dia = local->tm_mday;
     _mes = local->tm_mon + 1;                // tm_mon es de 0 (enero) a 11 (diciembre)
-    _anio = local->tm_year + 1900;           // tm_year es años desde 1900
+    _anio = local->tm_year + 1900;           // tm_year es aï¿½os desde 1900
     _hora = local->tm_hour;
     _minuto = local->tm_min;
 }
@@ -58,11 +58,13 @@ void FechaHora::setMinuto (int minuto){
 void FechaHora::Mostrar(){
     std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto << " ";
 }
+
+
 bool FechaHora::esBisiesto(int anio) {
     return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
 }
 int FechaHora::contarAniosBisiestos(int anio) {
-    // Restamos 1 porque no contamos el año actual
+    // Restamos 1 porque no contamos el a o actual
     anio--;
     return anio / 4 - anio / 100 + anio / 400;
 }
@@ -72,17 +74,17 @@ int FechaHora::convertirADiasTotales(FechaHora fecha) {
 
     int diasPorMes[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 
-    // Sumamos los días de los meses anteriores al actual
+    // Sumamos los d as de los meses anteriores al actual
     for (int i = 0; i < fecha._mes - 1; i++) {
         diasTotales += diasPorMes[i];
     }
 
-    // Ajustamos si el año es bisiesto y la fecha es posterior a febrero
+    // Ajustamos si el a o es bisiesto y la fecha es posterior a febrero
     if (fecha._mes > 2 && esBisiesto(fecha._anio)) {
         diasTotales += 1;
     }
 
-    // Contamos los años bisiestos anteriores a este año
+    // Contamos los a os bisiestos anteriores a este a o
     diasTotales += contarAniosBisiestos(fecha._anio);
 
     return diasTotales;
@@ -94,3 +96,21 @@ int FechaHora::calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2) {
     return abs(dias1 - dias2);
 }
 
+
+bool FechaHora::operator>=(FechaHora aux){
+    if(aux._anio>_anio) return false;
+    if(aux._mes>_mes) return false;
+    if(aux._dia>_dia) return false;
+    if(aux._hora>_hora) return false;
+    if(aux._minuto>_minuto) return false;
+    return true;
+}
+
+bool FechaHora::operator<=(FechaHora aux){
+    if(aux._anio<_anio) return false;
+    if(aux._mes<_mes) return false;
+    if(aux._dia<_dia) return false;
+    if(aux._hora<_hora) return false;
+    if(aux._minuto<_minuto) return false;
+    return true;
+}
