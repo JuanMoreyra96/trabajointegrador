@@ -49,15 +49,6 @@ void clientemanager::cargarcliente()
     }while(!validar.validarCadenaDeLetras(apellido) && !validar.validarLongitudCadena(apellido, 3, 50));
 
      do{
- cout << "ingrese direccion: ";
-    getline(cin, direccion);
-    if( !validar.validarCadenaDeLetras(direccion) && !validar.validarLongitudCadena(direccion, 3, 50)){
-        cout<<"La direccion debe contener entre 3 y 50 caracteres."<<endl;
-    }
-    }while(!validar.validarCadenaDeLetras(direccion) && !validar.validarLongitudCadena(direccion, 3, 50));
-
-
-     do{
     cout << "ingrese email: ";
     getline(cin, email);
     if(!validar.validarCadenaDeLetras(email) && !validar.validarLongitudCadena(email, 3, 50)){
@@ -87,11 +78,13 @@ void clientemanager::cargarcliente()
     }
 }
 
+
 void clientemanager::mostrarCantidadRegistros(){
  clientearchivo pArchivo;
  int cantidadRegistros = pArchivo.getCantidadRegistros();
  cout << "La cantidad de registros son: " << cantidadRegistros << endl;
 }
+
 
 void clientemanager::listarTodos(){
   clientearchivo pArchivo;
@@ -115,6 +108,57 @@ void clientemanager::listarTodos(){
     registro.Mostrar();
   }
 }
+
+
+void clientemanager::listarTodosAlfabeticamentePorApellido(){
+    clientearchivo pArchivo;
+    Cliente registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    Cliente *vecReg = nullptr;
+
+    vecReg = new Cliente[cantidadRegistros];
+    if( vecReg == nullptr ) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i] = pArchivo.leer(i);
+    }
+
+    for (int i = 1; i < cantidadRegistros; i++) {
+        Cliente clienteAux = vecReg[i];
+        int j = i - 1;
+
+        while (j >= 0 && clienteAux.getApellido() < vecReg[j].getApellido()) {
+            vecReg[j + 1] = vecReg[j];
+            j--;
+        }
+        vecReg[j + 1] = clienteAux;
+    }
+
+
+
+  //COLUMNAS
+  cout << left
+         << setw(5)  << "ID"
+         << setw(12) << "DNI"
+         << setw(15) << "Nombre"
+         << setw(15) << "Apellido"
+         << setw(25) << "Email"
+         << setw(15) << "Celular"
+         << setw(12) << "Estado"
+         << endl;
+  cout << string(99, '-') << endl;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i].Mostrar();
+    }
+
+    delete []vecReg;
+}
+
+
 void clientemanager::listarClientesActivos(){
   clientearchivo pArchivo;
   Cliente registro;
@@ -139,6 +183,8 @@ void clientemanager::listarClientesActivos(){
     }
   }
 }
+
+
 void clientemanager::listarClientesInactivos(){
   clientearchivo pArchivo;
   Cliente registro;
@@ -163,6 +209,7 @@ void clientemanager::listarClientesInactivos(){
     }
     }
 }
+
 
 void clientemanager::bajaLogicaCliente(){
     clientearchivo pArchivo;

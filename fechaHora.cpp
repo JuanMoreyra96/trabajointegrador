@@ -59,11 +59,6 @@ void FechaHora::Mostrar(){
     std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto << " ";
 }
 
- int convertirADiasTotales(FechaHora fecha);
-    int calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2);
-    bool esBisiesto(int anio);
-    int contarAniosBisiestos(int anio);
-
 
 bool FechaHora::esBisiesto(int anio) {
     return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
@@ -102,3 +97,20 @@ int FechaHora::calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2) {
 }
 
 
+bool FechaHora::operator>=(FechaHora aux){
+    if(aux._anio>_anio) return false;
+    if(aux._mes>_mes) return false;
+    if(aux._dia>_dia) return false;
+    if(aux._hora>_hora) return false;
+    if(aux._minuto>_minuto) return false;
+    return true;
+}
+
+bool FechaHora::operator<=(FechaHora aux){
+    if(aux._anio<_anio) return false;
+    if(aux._mes<_mes) return false;
+    if(aux._dia<_dia) return false;
+    if(aux._hora<_hora) return false;
+    if(aux._minuto<_minuto) return false;
+    return true;
+}

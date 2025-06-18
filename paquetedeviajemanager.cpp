@@ -4,21 +4,27 @@
 #include "paquetedeviaje.h"
 #include "paquetedeviajearchivo.h"
 #include "paquetedeviajemanager.h"
+#include "coordinadorArchivo.h"
+#include "coordinador.h"
 #include "validaciones.h"
 #include <iomanip>
 using namespace std;
 
 void PaqueteDeViajeManager::cargarPaqueteDeViaje()
 {
-  PaqueteDeViaje paquete;
-  PaqueteDeViajeArchivo pArchivo;
-  Validaciones validar;
-   int idPaquete, idCoordinador1, idCoordinador2, totalCupos, cuposOcupados;
-   string destino, hotel, tipoTransporte;
-   float precio;
-   bool temporadaAlta, estado;
-   int dia, mes, anio, hora, minutos;
-   FechaHora fechaRegreso, fechaSalida;
+    PaqueteDeViaje paquete;
+    PaqueteDeViajeArchivo pArchivo;
+    Validaciones validar;
+    int idPaquete, idCoordinador1, idCoordinador2, totalCupos, cuposOcupados;
+    string destino, hotel, tipoTransporte;
+    float precio;
+    bool temporadaAlta, estado, seguir;
+    int dia, mes, anio, hora, minutos;
+    FechaHora fechaRegreso, fechaSalida;
+    string vectorIdiomas[10] = {"Espaniol", "Ingles", "Portugues", "Frances", "Arabe","Aleman", "Ruso", "Chino", "Japones", "Hindi"};
+    bool *vectorCoordinadoresDisponibles = nullptr;
+    CoordinadorArchivo cArchivo;
+    int cantidadCoordinadores = cArchivo.getCantidadRegistros();
 
     int cantRegistros = pArchivo.getCantidadRegistros();
     idPaquete = cantRegistros+1;
@@ -122,9 +128,103 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
 
   //Aqui mostrariamos los coordinadores que tengan disponibilidad en esas fechas
   // Funcion: Coordinador coordinadorDisponible(fechaSalida, fechaRegreso)
-  cout << "Ingrese el ID de los coordinadores: ";
-  cin>>idCoordinador1;
-  cin>>idCoordinador2;
+    //Obtenemos la cantidad de coordinadores y creamos un vector booleano
+    vectorCoordinadoresDisponibles = new bool[cantidadCoordinadores];
+
+    //Vector Dinamico
+    if( vectorCoordinadoresDisponibles == nullptr ) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    //Vector Dinamico seteando a todos los coordinadores disponibles
+    for (int i=0 ; i<cantidadCoordinadores ; i++){
+        vectorCoordinadoresDisponibles[i] = 1;
+    }
+
+    //Recorremos la cantidad de registros y seteamos en cero los coordinadores que tengan conflictos con las fechas propuestas.
+    for(int i=0; i<cantRegistros; i++){
+        paquete = pArchivo.leer(i);
+        if((fechaSalida >= paquete.getFechaSalida() && fechaSalida <= paquete.getFechaRegreso())
+        || (fechaRegreso >= paquete.getFechaSalida() && fechaRegreso <= paquete.getFechaRegreso())){
+            vectorCoordinadoresDisponibles[paquete.getIdCoordinador1()] = 0;
+            vectorCoordinadoresDisponibles[paquete.getIdCoordinador2()] = 0;
+        }
+    }
+
+    //Mostramos todos los coordinadores disponibles
+    for(int i=0 ; i<cantidadCoordinadores ; i++){
+        if(vectorCoordinadoresDisponibles[i] == 1){
+            Coordinador coordinador = cArchivo.leer(i);
+            if(coordinador.getEstado()){
+                coordinador.Mostrar(vectorIdiomas);
+            }
+        }
+    }
+
+    //Comprobar si el ID ingresado esta activo y puede realizar el viaje.
+
+    do{
+        seguir = true;
+        cout<<"Ingrese el ID del coordinador numero 1: ";
+        cin>>idCoordinador1;
+        cin.ignore();
+        int idPosCoordinador = cArchivo.buscar(idCoordinador1);
+        if(idPosCoordinador == -1){
+            cout<<"El id del coordinador no existe. Por favor, ingrese un ID Coordinador existente"<<endl;
+            seguir = false;
+        }else if(idPosCoordinador == -2){
+            cout<<"Hubo un error inesperado"<<endl;
+            seguir = false;
+        }else{
+            Coordinador coordinador = cArchivo.leer(idPosCoordinador);
+            if(coordinador.getEstado() == false){
+                cout<<"No se puede seleccionar dicho coordinador porque no esta activo: ";
+                cout<<"ID: "<< coordinador.getIdCoordinador()<<" Dni: "<<coordinador.getDni();
+                cout<<" Nombre: "<<coordinador.getApellido()<<", "<<coordinador.getNombre()<<endl;
+                seguir = false;
+            }else if(vectorCoordinadoresDisponibles[coordinador.getIdCoordinador()] == 0){
+                cout<<"No se puede seleccionar dicho coordinador porque esta asignado a otro paquete: ";
+                cout<<"ID: "<< coordinador.getIdCoordinador()<<" Dni: "<<coordinador.getDni();
+                cout<<" Nombre: "<<coordinador.getApellido()<<", "<<coordinador.getNombre()<<endl;
+                seguir = false;
+            }
+        }
+    } while(!seguir);
+
+    do{
+        seguir = true;
+        cout<<"Ingrese el ID del coordinador numero 2: ";
+        cin>>idCoordinador2;
+        cin.ignore();
+        int idPosCoordinador = cArchivo.buscar(idCoordinador2);
+        if(idCoordinador2 == idCoordinador1){
+            cout<<"El ID de coordinador seleccionado ya fue asignado al paquete, por favor ingrese otro."<<endl;
+            seguir = false;
+        }
+        else if(idPosCoordinador == -1){
+            cout<<"El id del coordinador no existe. Por favor, ingrese un ID Coordinador existente"<<endl;
+            seguir = false;
+        }else if(idPosCoordinador == -2){
+            cout<<"Hubo un error inesperado"<<endl;
+            seguir = false;
+        }else{
+            Coordinador coordinador = cArchivo.leer(idPosCoordinador);
+            if(coordinador.getEstado() == false){
+                cout<<"No se puede seleccionar dicho coordinador porque no esta activo: ";
+                cout<<"ID: "<< coordinador.getIdCoordinador()<<" Dni: "<<coordinador.getDni();
+                cout<<" Nombre: "<<coordinador.getApellido()<<", "<<coordinador.getNombre()<<endl;
+                seguir = false;
+            }else if(vectorCoordinadoresDisponibles[coordinador.getIdCoordinador()] == 0){
+                cout<<"No se puede seleccionar dicho coordinador porque esta asignado a otro paquete: ";
+                cout<<"ID: "<< coordinador.getIdCoordinador()<<" Dni: "<<coordinador.getDni();
+                cout<<" Nombre: "<<coordinador.getApellido()<<", "<<coordinador.getNombre()<<endl;
+                seguir = false;
+            }
+        }
+    } while(!seguir);
+
+
   estado = true;
   cuposOcupados = 0;
   /// aca ya se que esta todo ok
