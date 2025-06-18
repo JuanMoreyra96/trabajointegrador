@@ -501,7 +501,7 @@ void PaqueteDeViajeManager::listarDeMasAMenosProximo(){
     int contadorFechasProximas=0;
     for(int i=0; i<cantidadRegistros;i++){
       registro = pArchivo.leer(i);
-      if(valida.validarFechaProxima(
+      if(validar.validarFechaPosterior(
         hoy, registro.getFechaSalida().getDia(),
         registro.getFechaSalida().getMes(),
         registro.getFechaSalida().getAnio(),
@@ -513,8 +513,62 @@ void PaqueteDeViajeManager::listarDeMasAMenosProximo(){
         contadorFechasProximas++;
       }
     }
+ if (contadorFechasProximas == 0) {
+        cout << "No hay paquetes con fechas próximas." << endl;
+        return;
+    }
+    int* vecDias = new int[contadorFechasProximas];
+    int* vecIdPaquete = new int[contadorFechasProximas];
+    string* vecDestino = new string[contadorFechasProximas];
 
-    
+    // Segundo recorrido: llenar los vectores
+    int aux = 0;
+    for (int i = 0; i < cantidadRegistros; i++) {
+        registro = pArchivo.leer(i);
+        if (validar.validarFechaPosterior(
+                hoy,
+                registro.getFechaSalida().getDia(),
+                registro.getFechaSalida().getMes(),
+                registro.getFechaSalida().getAnio(),
+                registro.getFechaSalida().getHora(),
+                registro.getFechaSalida().getMinuto())) {
+
+            int dias = hoy.calcularDiferenciaDeDias(registro.getFechaSalida(), hoy);
+            vecDias[aux] = dias;
+            vecIdPaquete[aux] = registro.getIdPaquete();
+            vecDestino[aux] = registro.getDestino();
+            aux++;
+        }
+    }
+
+    // Ordenar de menor a mayor por vecDias
+    for (int i = 0; i < contadorFechasProximas - 1; i++) {
+        for (int j = i + 1; j < contadorFechasProximas; j++) {
+            if (vecDias[i] > vecDias[j]) {
+                vecDias[i] = vecDias[j];
+                vecIdPaquete[i] = vecIdPaquete[j];
+                vecDestino[i]= vecDestino[j];
+            }
+        }
+    }
+
+    // Mostrar resultados
+    cout << left << setw(15) << "ID PAQUETE"
+         << setw(25) << "DESTINO"
+         << "DIAS PARA SALIDA" << endl;
+    cout << string(60, '-') << endl;
+
+    for (int i = 0; i < contadorFechasProximas; i++) {
+        cout << left << setw(15) << vecIdPaquete[i]
+             << setw(25) << vecDestino[i]
+             << vecDias[i] << " dias" << endl;
+    }
+
+    // Liberar memoria
+    delete[] vecDias;
+    delete[] vecIdPaquete;
+    delete[] vecDestino;
+
 }
 void PaqueteDeViajeManager::listarPorPrecio() {
     PaqueteDeViajeArchivo pArchivo;

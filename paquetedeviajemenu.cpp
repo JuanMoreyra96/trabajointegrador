@@ -72,6 +72,7 @@ void PaqueteDeViajeMenu::mostrar(){
             case 13:
                 break;
             case 14:
+                pManager.listarDeMasAMenosProximo();
                 break;
             case 15:
                 pManager.listarPorPrecio();
