@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Paquetedeviajearchivo.h"
 #include "fechaHora.h"
+#include "validaciones.h"
 using namespace std;
 
 PaqueteDeViajeArchivo::PaqueteDeViajeArchivo(){
@@ -124,11 +125,12 @@ void PaqueteDeViajeArchivo::mostrarPaquetesPorDestino(std::string destino){
 }
 // ESTE BUSCA POR COINCIDENCIAS PARCIALES, AL COMEINZO, MEDIO O FINAL DEL TEXTO
 // Para comprender, buscar como funciona substr(pos, len)
-void PaqueteDeViajeArchivo::mostrarPaquetesPorDestinoParcial(std::string texto){
+void PaqueteDeViajeArchivo::mostrarPaquetesPorDestinoParcial(std::string texto, bool soloProximos){
     FILE *pFile;
     PaqueteDeViaje reg;
     texto = toUpper(texto);
-
+    FechaHora fechaActual;
+    Validaciones validar;
     pFile = fopen(_nombreArchivo.c_str(), "rb");
     if (pFile == nullptr){
         cout << "No se pudo abrir el archivo";
@@ -148,12 +150,25 @@ void PaqueteDeViajeArchivo::mostrarPaquetesPorDestinoParcial(std::string texto){
                 break;
             }
         }
-
+        if(soloProximos){
+            if(validar.validarFechaProxima(
+            reg.getFechaSalida().getDia(),
+            reg.getFechaSalida().getMes(),
+            reg.getFechaSalida().getAnio(),
+            reg.getFechaSalida().getHora(),
+            reg.getFechaSalida().getMinuto()
+            )
+            && coincide
+            )
+            {
+             reg.Mostrar();
+            }
+        }else{
         if (coincide) {
             reg.Mostrar();
         }
+        }
     }
-
     fclose(pFile);
 }
 

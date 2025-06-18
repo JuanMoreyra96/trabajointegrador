@@ -12,7 +12,7 @@ public:
   void listarPaquetesActivos(); //solo activos: que todavia no se hicieron
   void darDeBaja();
   void darDeAlta();
-  void buscarPaquetePorDestino();
+  void buscarPaquetePorDestino(bool soloProximos = false);
   void buscarPorRangoDePrecio();
   void buscarPaquetePorFechaSalida();
   void buscarPaquetePorFechaRegreso();

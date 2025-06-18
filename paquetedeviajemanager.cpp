@@ -358,7 +358,7 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
     }
   }
 
-void PaqueteDeViajeManager::buscarPaquetePorDestino(){
+void PaqueteDeViajeManager::buscarPaquetePorDestino(bool soloProximos){
     PaqueteDeViajeArchivo pArchivo;
     string destino;
      Validaciones validar;
@@ -386,7 +386,7 @@ void PaqueteDeViajeManager::buscarPaquetePorDestino(){
 
     cout << string(135, '-') << endl;
     // aqui mostramos coincidencias aproximadas
-    pArchivo.mostrarPaquetesPorDestinoParcial(destino);
+    pArchivo.mostrarPaquetesPorDestinoParcial(destino, soloProximos );
   }
 
 void PaqueteDeViajeManager::buscarPorRangoDePrecio(){

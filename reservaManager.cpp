@@ -8,12 +8,14 @@
 #include "paquetedeviaje.h"
 #include "clientearchivo.h"
 #include "cliente.h"
+#include "paquetedeviajemanager.h"
+#include "validaciones.h"
 #include <iomanip>
 using namespace std;
 
 
 void ReservaManager::CargarReserva(){
-
+    PaqueteDeViajeManager paqueteManager;
     Cliente cliente;
     clientearchivo cArchivo;
     Reserva reserva;
@@ -25,47 +27,74 @@ void ReservaManager::CargarReserva(){
     float precioTotal;
     bool deudaCancelada;
     string dniCliente;
-
     int cantRegistros = pArchivo.getCantidadRegistros();
     idReserva = cantRegistros+1;
-
+    Validaciones validar;
     // CLIENTE
     do {
     cout << "Ingrese DNI del cliente: ";
     cin >> dniCliente;
 
-    pos = cArchivo.buscar(dniCliente);
-    if (pos==-1){
-    cout << "No existe un cliente con ese DNI. Ingrese otro." << endl;
+    if (!validar.validarCadenaDeNumeros(dniCliente)) {
+        cout << "El DNI debe contener solo números. Ingrese nuevamente." << endl;
+        pos = -1;
+    } else {
+        pos = cArchivo.buscar(dniCliente);
+        if (pos == -1) {
+            cout << "No existe un cliente con ese DNI. Ingrese otro." << endl;
+        }
     }
-    }  while (pos == -1);
+
+    } while (pos == -1);
+
     cliente = cArchivo.leer(pos);
     idCliente = cliente.getidCliente();
-
+    //MOSTRAMOS SEGUN BUSQUEDA
+    paqueteManager.buscarPaquetePorDestino(true);
     // PAQUETE
     do {
-    cout << "Ingrese ID de paquete: ";
+    cout << "Ingrese ID de paquete (solo aquellos con fecha de salida futura): ";
     cin >> idPaquete;
 
     pos = paqueteArchivo.buscar(idPaquete);
-    if (pos==-1){
-    cout << "No existe un paquete con ese ID. Ingrese otro." << endl;
+
+    if (pos == -1) {
+        cout << "No existe un paquete con ese ID. Ingrese otro." << endl;
     }
-    }  while (pos == -1);
-    paquete = paqueteArchivo.leer(pos);
+
+        paquete = paqueteArchivo.leer(pos);  // Leer el paquete solo si existe
+
+      // Validar que la fecha del paquete sea futura
+        if (!validar.validarFechaProxima(
+            paquete.getFechaSalida().getDia(),
+            paquete.getFechaSalida().getMes(),
+            paquete.getFechaSalida().getAnio(),
+            paquete.getFechaSalida().getHora(),
+            paquete.getFechaSalida().getMinuto())) {
+
+        cout << "La fecha de salida del paquete ya ha pasado. Ingrese un ID de paquete futuro." << endl;
+        pos = -1;  // Para forzar que el bucle vuelva a pedir un ID
+    }
+
+    } while (pos == -1);
+
     int ocupados = paquete.getCuposOcupados();
     idPaquete = paquete.getIdPaquete();
 
     // CUPOS
     do{
     cout << "Ingrese la cantidad de viajeros: ";
-    cin >> cantidadViajeros;
-
+    cantidadViajeros = validar.pedirNumero();
+      if(!validar.validarIntPositivo(cantidadViajeros)){
+        cout<<"Ingrese un numero valido."<<endl;
+        }else{
     cupos = paquete.getTotalCupos() - paquete.getCuposOcupados() - cantidadViajeros;
     int cuposLibres = paquete.getTotalCupos() - paquete.getCuposOcupados();
     if (cupos < 0){
         cout << "Solo quedan " << cuposLibres << " cupos libres." << endl;
         }
+        }
+
     } while (cupos < 0);
     int suma = paquete.getCuposOcupados() + cantidadViajeros;
     paquete.setCuposOcupados(suma);
