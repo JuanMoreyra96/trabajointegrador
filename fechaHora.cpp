@@ -58,6 +58,11 @@ void FechaHora::setMinuto (int minuto){
 void FechaHora::Mostrar(){
     std::cout << _dia << "/" << _mes << "/" << _anio << " " << _hora << ":" << _minuto << " ";
 }
+
+int FechaHora::calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2) {
+
+}
+
 bool FechaHora::operator>=(FechaHora aux){
     if(aux._anio>_anio) return false;
     if(aux._mes>_mes) return false;

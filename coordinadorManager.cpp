@@ -224,7 +224,8 @@ void CoordinadorManager::listarTodosCoordinadoresPorApellido(){
     string vectorIdiomas[10] = {"Espaniol", "Ingles", "Portugues", "Frances", "Arabe","Aleman", "Ruso", "Chino", "Japones", "Hindi"};
     CoordinadorArchivo cArchivo;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
-
+<<<<<<< Updated upstream
+=======
     Coordinador *vecReg = nullptr;
 
     vecReg = new Coordinador[cantidadRegistros];
