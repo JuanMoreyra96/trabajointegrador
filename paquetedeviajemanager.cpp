@@ -492,7 +492,30 @@ void PaqueteDeViajeManager::buscarConCuposDisponibles(){
 
   }
 }
+void PaqueteDeViajeManager::listarDeMasAMenosProximo(){
+   PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    FechaHora hoy;
+    Validaciones validar;
+    int contadorFechasProximas=0;
+    for(int i=0; i<cantidadRegistros;i++){
+      registro = pArchivo.leer(i);
+      if(valida.validarFechaProxima(
+        hoy, registro.getFechaSalida().getDia(),
+        registro.getFechaSalida().getMes(),
+        registro.getFechaSalida().getAnio(),
+        registro.getFechaSalida().getHora(),
+        registro.getFechaSalida().getMinuto()
 
+      ))
+      {
+        contadorFechasProximas++;
+      }
+    }
+
+    
+}
 void PaqueteDeViajeManager::listarPorPrecio() {
     PaqueteDeViajeArchivo pArchivo;
     PaqueteDeViaje registro;
