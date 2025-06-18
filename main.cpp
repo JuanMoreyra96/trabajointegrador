@@ -6,6 +6,7 @@ using namespace std;
 #include "paquetedeviajemenu.h"
 #include "coordinadorMenu.h"
 #include "pagoMenu.h"
+#include "informesMenu.h"
 int main()
 {
     int opc;
@@ -14,6 +15,7 @@ int main()
     ReservaMenu MenuReservas;
     CoordinadorMenu MenuCoordinadores;
     PagoMenu MenuPagos;
+    InformesMenu MenuInformes;
     while(true){
         system("cls");
         cout << "****** ABML EMPRESA DE TURISMO******" << endl;
@@ -22,6 +24,7 @@ int main()
         cout << "3. MENU RESERVAS" << endl;
         cout << "4. MENU COORDINADORES" << endl;
         cout << "5. MENU PAGOS" << endl;
+        cout << "6. MENU INFORMES" << endl;
         cout << "0. FIN DEL PROGRAMA" << endl;
         cout << "************************" << endl;
         cout << "SELECCIONAR OPCION " << endl;
@@ -37,6 +40,8 @@ int main()
             case 4: MenuCoordinadores.mostrar();
                     break;
             case 5: MenuPagos.Mostrar();
+                    break;
+            case 6: MenuInformes.Mostrar();
                     break;
             case 0: return 0;
                     break;
