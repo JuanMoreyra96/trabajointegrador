@@ -25,9 +25,11 @@ public:
     void setMinuto (int minuto);
 
     void Mostrar();
+     int convertirADiasTotales(FechaHora fecha);
     int calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2);
 bool operator>=(FechaHora aux);
-    bool operator<=(FechaHora aux);
+    bool operator<=(FechaHora aux);    bool esBisiesto(int anio);
+    int contarAniosBisiestos(int anio);
 };
 
 //prueba

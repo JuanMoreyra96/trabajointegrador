@@ -16,13 +16,16 @@ void PaqueteDeViajeMenu::mostrar(){
     cout << "3. Listar paquetes de viajes activos" << endl;
     cout << "4. Dar de baja un paquete de viaje" << endl;
     cout << "5. Reactivar paquete de viaje" << endl;
-    cout << "6. Buscar paquetes por destino" << endl;
-    cout << "7. Buscar paquetes por rango de precios" << endl;
-    cout << "8. Buscar paquetes por fecha de salida" << endl;
-    cout << "9. Buscar paquetes por fecha de regreso" << endl;
-    cout << "10. Buscar por tipo de transporte"<< endl;
-    cout << "11. Buscar por temporada"<< endl;
-    cout << "12. Buscar paquete con cupos disponibles"<< endl;
+    cout << "6. Consultar paquetes por destino" << endl;
+    cout << "7. Consultar paquetes por rango de precios" << endl;
+    cout << "8. Consultar paquetes por fecha de salida" << endl;
+    cout << "9. Consultar paquetes por fecha de regreso" << endl;
+    cout << "10. Consultar por tipo de transporte"<< endl;
+    cout << "11. Consultar por temporada"<< endl;
+    cout << "12. Consultar paquete con cupos disponibles"<< endl;
+    cout << "13. Listar paquetes ordenados alfabéticamente (A-Z) por destino"<< endl;
+    cout << "14. Listar paquetes ordenados por fecha de salida (del más proximo al menos proximo)"<< endl;
+    cout << "15. Listar paquetes ordenados por precio"<< endl;
     cout << "0. Volver al menu principal" << endl;
     cout << "===============================" << endl;
     cout << "Ingrese una opcion: ";
@@ -65,6 +68,16 @@ void PaqueteDeViajeMenu::mostrar(){
                 break;
             case 12:
                 pManager.buscarConCuposDisponibles();
+                break;
+            case 13:
+                pManager.listarTodosAlfabeticamentePorDestino();
+                break;
+            case 14:
+                pManager.listarDeMasAMenosProximo();
+                break;
+            case 15:
+                pManager.listarPorPrecio();
+                break;
             case 0:
                 return;
                 break;

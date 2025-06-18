@@ -592,3 +592,201 @@ void PaqueteDeViajeManager::buscarConCuposDisponibles(){
 
   }
 }
+void PaqueteDeViajeManager::listarDeMasAMenosProximo(){
+   PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    FechaHora hoy;
+    Validaciones validar;
+    int contadorFechasProximas=0;
+    for(int i=0; i<cantidadRegistros;i++){
+      registro = pArchivo.leer(i);
+      if(validar.validarFechaPosterior(
+        hoy, registro.getFechaSalida().getDia(),
+        registro.getFechaSalida().getMes(),
+        registro.getFechaSalida().getAnio(),
+        registro.getFechaSalida().getHora(),
+        registro.getFechaSalida().getMinuto()
+
+      ))
+      {
+        contadorFechasProximas++;
+      }
+    }
+ if (contadorFechasProximas == 0) {
+        cout << "No hay paquetes con fechas próximas." << endl;
+        return;
+    }
+    int* vecDias = new int[contadorFechasProximas];
+    int* vecIdPaquete = new int[contadorFechasProximas];
+    string* vecDestino = new string[contadorFechasProximas];
+
+    // Segundo recorrido: llenar los vectores
+    int aux = 0;
+    for (int i = 0; i < cantidadRegistros; i++) {
+        registro = pArchivo.leer(i);
+        if (validar.validarFechaPosterior(
+                hoy,
+                registro.getFechaSalida().getDia(),
+                registro.getFechaSalida().getMes(),
+                registro.getFechaSalida().getAnio(),
+                registro.getFechaSalida().getHora(),
+                registro.getFechaSalida().getMinuto())) {
+
+            int dias = hoy.calcularDiferenciaDeDias(registro.getFechaSalida(), hoy);
+            vecDias[aux] = dias;
+            vecIdPaquete[aux] = registro.getIdPaquete();
+            vecDestino[aux] = registro.getDestino();
+            aux++;
+        }
+    }
+
+    // Ordenar de menor a mayor por vecDias
+    for (int i = 0; i < contadorFechasProximas - 1; i++) {
+        for (int j = i + 1; j < contadorFechasProximas; j++) {
+            if (vecDias[i] > vecDias[j]) {
+                vecDias[i] = vecDias[j];
+                vecIdPaquete[i] = vecIdPaquete[j];
+                vecDestino[i]= vecDestino[j];
+            }
+        }
+    }
+
+    // Mostrar resultados
+    cout << left << setw(15) << "ID PAQUETE"
+         << setw(25) << "DESTINO"
+         << "DIAS PARA SALIDA" << endl;
+    cout << string(60, '-') << endl;
+
+    for (int i = 0; i < contadorFechasProximas; i++) {
+        cout << left << setw(15) << vecIdPaquete[i]
+             << setw(25) << vecDestino[i]
+             << vecDias[i] << " dias" << endl;
+    }
+
+    // Liberar memoria
+    delete[] vecDias;
+    delete[] vecIdPaquete;
+    delete[] vecDestino;
+
+}
+void PaqueteDeViajeManager::listarPorPrecio() {
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+
+    if (cantidadRegistros == 0) {
+        cout << "No hay paquetes cargados." << endl;
+        return;
+    }
+
+    float* vecPrecios = new float[cantidadRegistros];
+    int* vecIdPaquetes = new int[cantidadRegistros];
+
+    // Validar memoria
+    if (vecPrecios == nullptr || vecIdPaquetes == nullptr) {
+        cout << "No hay memoria suficiente." << endl;
+        delete[] vecPrecios;
+        delete[] vecIdPaquetes;
+        return;
+    }
+    float auxPrecio;
+    int auxId;
+    // Llenar vectores
+    for (int i = 0; i < cantidadRegistros; i++) {
+        registro = pArchivo.leer(i);
+        vecPrecios[i] = registro.getPrecio();
+        vecIdPaquetes[i] = registro.getIdPaquete();
+    }
+
+    // Ordenar por precio
+    for (int i = 0; i < cantidadRegistros - 1; i++) {
+        int posmin = i;
+        for (int j = i + 1; j < cantidadRegistros; j++) {
+            if (vecPrecios[j] < vecPrecios[posmin]) {
+                posmin = j;
+            }
+        }
+
+        // Intercambiar precios
+       auxPrecio = vecPrecios[i];
+        vecPrecios[i] = vecPrecios[posmin];
+        vecPrecios[posmin] = auxPrecio;
+
+        // Intercambiar IDs correspondientes
+        auxId = vecIdPaquetes[i];
+        vecIdPaquetes[i] = vecIdPaquetes[posmin];
+        vecIdPaquetes[posmin] = auxId;
+    }
+    // Mostramos resultados
+    cout << left << setw(15) << "ID PAQUETE"
+     << setw(10) << "PRECIO"
+     << "DESTINO" << endl;
+
+    cout << string(50, '-') << endl;
+
+    for (int i = 0; i < cantidadRegistros; i++) {
+
+    int posicion = pArchivo.buscar(vecIdPaquetes[i]);
+    registro = pArchivo.leer(posicion);
+    cout << left << setw(15) << registro.getIdPaquete()
+         << "$" << setw(9) << fixed << setprecision(2) << registro.getPrecio()
+         << registro.getDestino() << endl;
+    }
+
+    // Liberar memoria
+    delete[] vecPrecios;
+    delete[] vecIdPaquetes;
+}
+
+void PaqueteDeViajeManager::listarTodosAlfabeticamentePorDestino(){
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    PaqueteDeViaje *vecReg = nullptr;
+
+    vecReg = new PaqueteDeViaje[cantidadRegistros];
+    if( vecReg == nullptr ) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i] = pArchivo.leer(i);
+    }
+
+    for (int i = 1; i < cantidadRegistros; i++) {
+        PaqueteDeViaje paqueteAux = vecReg[i];
+        int j = i - 1;
+
+        while (j >= 0 && paqueteAux.getDestino() < vecReg[j].getDestino()) {
+            vecReg[j + 1] = vecReg[j];
+            j--;
+        }
+        vecReg[j + 1] = paqueteAux;
+    }
+
+
+
+  //COLUMNAS
+
+       cout << setw(5)  << "ID"
+    << setw(8)  << "Coord1"
+    << setw(8)  << "Coord2"
+    << setw(20) << "Destino"
+    << setw(20) << "Hotel"
+    << setw(13) << "Transporte"
+    << setw(10) << "Precio"
+    << setw(8)  << "Cupos"
+    << setw(8)  << "Ocupados"
+    << setw(10) << "Temporada"
+    << " Salida - Regreso" << endl;
+  cout << string(99, '-') << endl;
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i].Mostrar();
+    }
+
+    delete []vecReg;
+}
+

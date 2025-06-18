@@ -19,5 +19,9 @@ public:
   void buscarPorTransporte();
   void buscarPorTemporada();
   void buscarConCuposDisponibles();
+  void listarDeMasAMenosProximo();
+  void listarPorPrecio();
+  void listarTodosAlfabeticamentePorDestino();
+
 };
 #endif
