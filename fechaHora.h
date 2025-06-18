@@ -25,7 +25,8 @@ public:
     void setMinuto (int minuto);
 
     void Mostrar();
-
+bool operator>=(FechaHora aux);
+    bool operator<=(FechaHora aux);
 };
 
 //prueba

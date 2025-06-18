@@ -224,8 +224,7 @@ void CoordinadorManager::listarTodosCoordinadoresPorApellido(){
     string vectorIdiomas[10] = {"Espaniol", "Ingles", "Portugues", "Frances", "Arabe","Aleman", "Ruso", "Chino", "Japones", "Hindi"};
     CoordinadorArchivo cArchivo;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
-<<<<<<< Updated upstream
-=======
+
     Coordinador *vecReg = nullptr;
 
     vecReg = new Coordinador[cantidadRegistros];
@@ -259,7 +258,6 @@ void CoordinadorManager::listarTodosCoordinadoresPorApellido(){
          << setw(12) << "Estado"
          << endl;
     cout << string(135, '-') << endl;
->>>>>>> Stashed changes
 
     for(int i=0; i<cantidadRegistros; i++){
         vecReg[i].Mostrar(vectorIdiomas);
@@ -274,8 +272,6 @@ void CoordinadorManager::listarCoordinadoresActivos(){
     CoordinadorArchivo cArchivo;
     Coordinador *vecReg = nullptr;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
-<<<<<<< Updated upstream
-=======
 
     vecReg = new Coordinador[cantidadRegistros];
 
@@ -309,7 +305,6 @@ void CoordinadorManager::listarCoordinadoresActivos(){
          << setw(12) << "Estado"
          << endl;
     cout << string(99, '-') << endl;
->>>>>>> Stashed changes
 
     for(int i=0; i<cantidadRegistros; i++){
         if(vecReg[i].getEstado()){
