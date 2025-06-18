@@ -184,6 +184,64 @@ void ReservaManager::ListarReservasDeudaCancelada(){
     }
 }
 
+void ReservaManager::listarTodasAlfabeticamentePorDestino(){
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = rArchivo.getCantidadRegistros();
+    Reserva *vecReg = nullptr;
+    string *nombresDestinos = nullptr;
+    vecReg = new Reserva[cantidadRegistros];
+    nombresDestinos = new string[cantidadRegistros];
+    if( vecReg == nullptr || nombresDestinos == nullptr) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i] = rArchivo.leer(i);
+        int idPaquete = vecReg[i].getIidPaquete();
+        int posicion = pArchivo.buscar(idPaquete);
+        registro = pArchivo.leer(posicion);
+        nombresDestinos[i] = registro.getDestino();
+    }
+
+    for (int i = 1; i < cantidadRegistros; i++) {
+        Reserva reservaAux = vecReg[i];
+        string destinoAux = nombresDestinos[i];
+        int j = i - 1;
+
+        while (j >= 0 && destinoAux < nombresDestinos[j]) {
+            vecReg[j + 1] = vecReg[j];
+            nombresDestinos[j+1]=nombresDestinos[j];
+            j--;
+        }
+        nombresDestinos[j+1] = destinoAux;
+        vecReg[j + 1] = reservaAux;
+    }
+  //COLUMNAS
+
+            cout << left
+         << setw(10) << "DESTINO"
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+  cout << string(99, '-') << endl;
+
+    for(int i=0; i<cantidadRegistros; i++){
+       cout << setw(10) << left << nombresDestinos[i];
+        vecReg[i].Mostrar();
+    }
+
+    delete []nombresDestinos;
+    delete []vecReg;
+}
  void ReservaManager::BuscarReservasDeCliente(int dni){
 
  }

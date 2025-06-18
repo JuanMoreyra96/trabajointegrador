@@ -12,6 +12,8 @@ public:
   void ListarTodos(); // activos e inactivos
   void ListarReservasDeudaCancelada(); //solo reservas con deuda cancelada
   void BuscarReservasDeCliente(int dni);
+  void listarTodasAlfabeticamentePorDestino();
+
 };
 
 
