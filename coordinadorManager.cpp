@@ -272,7 +272,6 @@ void CoordinadorManager::listarCoordinadoresActivos(){
     CoordinadorArchivo cArchivo;
     Coordinador *vecReg = nullptr;
     int cantidadRegistros = cArchivo.getCantidadRegistros();
-
     vecReg = new Coordinador[cantidadRegistros];
 
     if( vecReg == nullptr ) {

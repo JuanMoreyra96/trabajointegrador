@@ -9,7 +9,7 @@ public:
   void CargarPago();
   void MostrarCantidadRegistros();
   void ListarTodos();
-  void ListarPagosDeCliente(int dni);
+  void ListarOrdenadosPorIDCliente();
 };
 
 #endif // PAGOMANAGER_H_INCLUDED
