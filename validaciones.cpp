@@ -148,8 +148,12 @@ bool Validaciones::validarFechaCorrecta( int dia, int mes, int anio, int horas, 
     }
 
   // validar que se ingrso 1 o 0 para booleano
-    bool Validaciones::validarBooleano(int valor){
+bool Validaciones::validarBooleano(int valor){
     if(valor == 1 || valor == 0) return true;
     return false;
-    }
+}
 
+bool Validaciones::validarBajaOcupacion(int totalCupos, int cuposOcupados){
+    if(totalCupos / 2 > cuposOcupados) return true;
+    return false;
+}
