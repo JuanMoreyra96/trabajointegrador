@@ -492,3 +492,73 @@ void PaqueteDeViajeManager::buscarConCuposDisponibles(){
 
   }
 }
+
+void PaqueteDeViajeManager::listarPorPrecio() {
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+
+    if (cantidadRegistros == 0) {
+        cout << "No hay paquetes cargados." << endl;
+        return;
+    }
+
+    float* vecPrecios = new float[cantidadRegistros];
+    int* vecIdPaquetes = new int[cantidadRegistros];
+
+    // Validar memoria
+    if (vecPrecios == nullptr || vecIdPaquetes == nullptr) {
+        cout << "No hay memoria suficiente." << endl;
+        delete[] vecPrecios;
+        delete[] vecIdPaquetes;
+        return;
+    }
+    float auxPrecio;
+    int auxId;
+    // Llenar vectores
+    for (int i = 0; i < cantidadRegistros; i++) {
+        registro = pArchivo.leer(i);
+        vecPrecios[i] = registro.getPrecio();
+        vecIdPaquetes[i] = registro.getIdPaquete();
+    }
+
+    // Ordenar por precio
+    for (int i = 0; i < cantidadRegistros - 1; i++) {
+        int posmin = i;
+        for (int j = i + 1; j < cantidadRegistros; j++) {
+            if (vecPrecios[j] < vecPrecios[posmin]) {
+                posmin = j;
+            }
+        }
+
+        // Intercambiar precios
+       auxPrecio = vecPrecios[i];
+        vecPrecios[i] = vecPrecios[posmin];
+        vecPrecios[posmin] = auxPrecio;
+
+        // Intercambiar IDs correspondientes
+        auxId = vecIdPaquetes[i];
+        vecIdPaquetes[i] = vecIdPaquetes[posmin];
+        vecIdPaquetes[posmin] = auxId;
+    }
+    // Mostramos resultados
+    cout << left << setw(15) << "ID PAQUETE"
+     << setw(10) << "PRECIO"
+     << "DESTINO" << endl;
+
+    cout << string(50, '-') << endl;
+
+    for (int i = 0; i < cantidadRegistros; i++) {
+
+    int posicion = pArchivo.buscar(vecIdPaquetes[i]);
+    registro = pArchivo.leer(posicion);
+    cout << left << setw(15) << registro.getIdPaquete()
+         << "$" << setw(9) << fixed << setprecision(2) << registro.getPrecio()
+         << registro.getDestino() << endl;
+    }
+
+    // Liberar memoria
+    delete[] vecPrecios;
+    delete[] vecIdPaquetes;
+}
+

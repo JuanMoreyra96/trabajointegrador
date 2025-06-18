@@ -18,5 +18,6 @@ public:
   void buscarPorTransporte();
   void buscarPorTemporada();
   void buscarConCuposDisponibles();
+  void listarPorPrecio();
 };
 #endif
