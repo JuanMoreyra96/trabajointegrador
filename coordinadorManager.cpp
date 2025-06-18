@@ -79,15 +79,6 @@ void CoordinadorManager::cargarCoordinador(){
 
 
     do{
-        cout<<"Ingrese direccion: ";
-        getline(cin, direccion);
-        if(!validar.validarLongitudCadena(direccion, 3, 50)){
-            cout<<"La direccion debe contener entre 3 y 50 caracteres."<<endl;
-        }
-    } while(!validar.validarLongitudCadena(direccion, 3, 50));
-
-
-    do{
         cout<<"Ingrese email: ";
         getline(cin, email);
         if(!validar.validarLongitudCadena(email, 3, 50) || !validar.validarCadenaEmail(email)){
@@ -248,14 +239,14 @@ void CoordinadorManager::listarTodosCoordinadoresPorApellido(){
     }
 
     for (int i = 1; i < cantidadRegistros; i++) {
-        Coordinador actual = vecReg[i];
+        Coordinador coordinadorAux = vecReg[i];
         int j = i - 1;
 
-        while (j >= 0 && actual.getApellido() < vecReg[j].getApellido()) {
+        while (j >= 0 && coordinadorAux.getApellido() < vecReg[j].getApellido()) {
             vecReg[j + 1] = vecReg[j];
             j--;
         }
-        vecReg[j + 1] = actual;
+        vecReg[j + 1] = coordinadorAux;
     }
 
     cout << left

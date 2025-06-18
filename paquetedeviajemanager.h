@@ -1,5 +1,6 @@
 #ifndef PAQUETEDEVIAJEMANAGER_H_INCLUDED
 #define PAQUETEDEVIAJEMANAGER_H_INCLUDED
+#include "fechaHora.h"
 
 class PaqueteDeViajeManager{
 private:
