@@ -10,7 +10,7 @@ FechaHora::FechaHora(){
 
     _dia = local->tm_mday;
     _mes = local->tm_mon + 1;                // tm_mon es de 0 (enero) a 11 (diciembre)
-    _anio = local->tm_year + 1900;           // tm_year es años desde 1900
+    _anio = local->tm_year + 1900;           // tm_year es aï¿½os desde 1900
     _hora = local->tm_hour;
     _minuto = local->tm_min;
 }
@@ -63,3 +63,20 @@ int FechaHora::calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2) {
 
 }
 
+bool FechaHora::operator>=(FechaHora aux){
+    if(aux._anio>_anio) return false;
+    if(aux._mes>_mes) return false;
+    if(aux._dia>_dia) return false;
+    if(aux._hora>_hora) return false;
+    if(aux._minuto>_minuto) return false;
+    return true;
+}
+
+bool FechaHora::operator<=(FechaHora aux){
+    if(aux._anio<_anio) return false;
+    if(aux._mes<_mes) return false;
+    if(aux._dia<_dia) return false;
+    if(aux._hora<_hora) return false;
+    if(aux._minuto<_minuto) return false;
+    return true;
+}

@@ -45,7 +45,7 @@ void Coordinador::Mostrar(std::string* idiomas) {
          << setw(12) << getDni()
          << setw(15) << getNombre()
          << setw(15) << getApellido()
-         << setw(25) << getEmail()
+         << setw(35) << getEmail()
          << setw(15) << getCelular()
          << setw(10) << (getEstado() ? "Activo" : "Inactivo");
 

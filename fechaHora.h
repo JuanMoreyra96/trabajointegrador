@@ -26,7 +26,8 @@ public:
 
     void Mostrar();
     int calcularDiferenciaDeDias(FechaHora fecha1, FechaHora fecha2);
-
+bool operator>=(FechaHora aux);
+    bool operator<=(FechaHora aux);
 };
 
 //prueba
