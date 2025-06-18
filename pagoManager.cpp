@@ -84,11 +84,6 @@ using namespace std;
 
 }
 
-
-  void ListarPagosDeCliente(int dni){
-
-  }
-
 void PagoManager::MostrarCantidadRegistros(){
     PagoArchivo pArchivo;
     int cantidadRegistros = pArchivo.getCantidadRegistros();
@@ -110,4 +105,54 @@ void PagoManager::ListarTodos(){
     registro = pArchivo.leer(i);
     registro.Mostrar();
   }
+}
+
+void PagoManager::ListarOrdenadosPorIDCliente() {
+    PagoArchivo pArchivo;
+    Pago registro;
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    clientearchivo cArchivo;
+    Cliente registroCliente;
+
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    int cantidadRegistrosReserva = rArchivo.getCantidadRegistros();
+    int cantidadRegistrosCliente = cArchivo.getCantidadRegistros();
+
+    for (int i = 0; i < cantidadRegistrosCliente; i++) {
+        registroCliente = cArchivo.leer(i);
+        int idCliente = registroCliente.getidCliente();
+        string dni = registroCliente.getDni();
+        bool tienePagos = false;  // <--- FLAG
+
+        cout << "CLIENTE: " << idCliente << " . DNI: " << dni << endl;
+        cout << left
+             << setw(10) << "ID PAGO"
+             << setw(12) << "ID RESERVA"
+             << setw(10) << "IMPORTE"
+             << "FECHA DE PAGO" << endl;
+
+        cout << string(50, '-') << endl;
+
+        for (int j = 0; j < cantidadRegistrosReserva; j++) {
+            registroReserva = rArchivo.leer(j);
+            if (registroReserva.getIdCliente() == idCliente) {
+                int idReserva = registroReserva.getIdReserva();
+
+                for (int k = 0; k < cantidadRegistros; k++) {
+                    registro = pArchivo.leer(k);
+                    if (registro.getIdReserva() == idReserva) {
+                        registro.Mostrar();
+                        tienePagos = true;  // <--- Se encontró un pago
+                    }
+                }
+            }
+        }
+
+        if (!tienePagos) {
+            cout << "Este cliente no tiene pagos registrados." << endl;
+        }
+
+        cout << endl;
+    }
 }
