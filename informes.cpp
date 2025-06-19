@@ -272,7 +272,7 @@ void Informes::mostrarRecaudacionAnualGeneralPorAnio()
     Pago registroPago;
     int anio,i,m;
     float TotalVentaAnio=0;
-    float VecTotalMes[12]={0};
+    float VecTotalMes[13]={0};
     int cantidadRegistrosPagos = pArchivo.getCantidadRegistros();
     if (cantidadRegistrosPagos==0)
     {
@@ -313,18 +313,18 @@ void Informes::mostrarRecaudacionAnualGeneralPorAnio()
     }
 
     cout << "Las ventas totales para el anio " << anio << " son: $" << TotalVentaAnio <<endl;
-    cout << "En el mes de Enero se recaudo: "<< VecTotalMes[0]<<endl;
-    cout << "En el mes de Febrero se recaudo: "<< VecTotalMes[1]<<endl;
-    cout << "En el mes de Marzo se recaudo: "<< VecTotalMes[2]<<endl;
-    cout << "En el mes de Abril se recaudo: "<< VecTotalMes[3]<<endl;
-    cout << "En el mes de Mayo se recaudo: "<< VecTotalMes[4]<<endl;
-    cout << "En el mes de Junio se recaudo: "<< VecTotalMes[5]<<endl;
-    cout << "En el mes de Julio se recaudo: "<< VecTotalMes[6]<<endl;
-    cout << "En el mes de Agosto se recaudo: "<< VecTotalMes[7]<<endl;
-    cout << "En el mes de Septiembre se recaudo: "<< VecTotalMes[8]<<endl;
-    cout << "En el mes de Octubre se recaudo: "<< VecTotalMes[9]<<endl;
-    cout << "En el mes de Noviembre se recaudo: "<< VecTotalMes[10]<<endl;
-    cout << "En el mes de Diciembre se recaudo: "<< VecTotalMes[11]<<endl;
+    cout << "En el mes de Enero se recaudo: "<< VecTotalMes[1]<<endl;
+    cout << "En el mes de Febrero se recaudo: "<< VecTotalMes[2]<<endl;
+    cout << "En el mes de Marzo se recaudo: "<< VecTotalMes[3]<<endl;
+    cout << "En el mes de Abril se recaudo: "<< VecTotalMes[4]<<endl;
+    cout << "En el mes de Mayo se recaudo: "<< VecTotalMes[5]<<endl;
+    cout << "En el mes de Junio se recaudo: "<< VecTotalMes[6]<<endl;
+    cout << "En el mes de Julio se recaudo: "<< VecTotalMes[7]<<endl;
+    cout << "En el mes de Agosto se recaudo: "<< VecTotalMes[8]<<endl;
+    cout << "En el mes de Septiembre se recaudo: "<< VecTotalMes[9]<<endl;
+    cout << "En el mes de Octubre se recaudo: "<< VecTotalMes[10]<<endl;
+    cout << "En el mes de Noviembre se recaudo: "<< VecTotalMes[11]<<endl;
+    cout << "En el mes de Diciembre se recaudo: "<< VecTotalMes[12]<<endl;
 
     return;
 
