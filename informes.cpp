@@ -262,7 +262,51 @@ void Informes::mostrarDestinoMasVisitadoEnAnio()
     delete[] destinos;
     delete[] acumulador;
 }
+void Informes::mostrarPorcentajeTemporada(){
+    ReservaArchivo regReserva;
+    PaqueteDeViajeArchivo regPaquete;
+    Validaciones validar;
 
+    Reserva reserva;
+    PaqueteDeViaje paquete;
+    FechaHora fecha;
+
+    int cantTempAlta =0, cantTempBaja =0, anio;
+    int totalReservasAnio = 0;
+    int cantRegReserva = regReserva.getCantidadRegistros();
+    int cantRegPaquete = regPaquete.getCantidadRegistros();
+
+    do {
+    cout << "Ingrese el anio (actual o anios anteriores): ";
+    anio = validar.pedirNumero();
+    if (!validar.validarIntPositivo(anio)) {
+        cout << "Ingrese un anio válido." << endl;
+    }
+    } while (!validar.validarIntPositivo(anio));
+
+    for (int i=0; i < cantRegReserva; i++){
+        reserva = regReserva.leer(i);
+        paquete = regPaquete.leer(reserva.getIidPaquete()-1);
+        fecha = paquete.getFechaSalida();
+
+        if (fecha.getAnio() == anio){
+            if (paquete.getTemporadaAlta()){
+                cantTempAlta += 1;
+            }
+            else {
+                cantTempBaja += 1;
+            }
+        }
+    }
+
+    float porcAlta, porcBaja;
+    totalReservasAnio = cantTempAlta + cantTempBaja;
+    porcAlta = cantTempAlta*100/totalReservasAnio;
+    porcBaja = cantTempBaja*100/totalReservasAnio;
+
+    cout << "De un total de " << totalReservasAnio << " de reservas para el a�o " << anio << ", hubo un " << porcAlta << "% de reservas en temporada alta contra un " << porcBaja << "% de reservas en temporada baja." << endl;
+
+}
 void Informes::mostrarRecaudacionAnualGeneralPorAnio()
 {
     Validaciones validar;

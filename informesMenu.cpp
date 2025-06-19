@@ -18,7 +18,7 @@ void InformesMenu::Mostrar()
         cout << "4. Mostrar el destino mas visitado en un anio" << endl;
         cout << "5. Recaudacion anual cliente" << endl;
         cout << "6. Recaudacion anual paquete" << endl;
-
+        cout << "7. Mostrar el porcentaje de reservas en temporatada ALTA/BAJA en un anio." << endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -37,12 +37,15 @@ void InformesMenu::Mostrar()
         case 4:
             informe.mostrarDestinoMasVisitadoEnAnio();
             break;
-         case 5:
+        case 5:
             informe.mostrarRecaudacionAnualDelCliente();
             break;
         case 6:
             informe.mostrarRecaudacionAnualDelPaquete();
             break;
+        case 7:
+            informe.mostrarPorcentajeTemporada();
+            break;       
         case 0:
             return;
             break;
