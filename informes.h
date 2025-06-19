@@ -7,4 +7,6 @@ public:
   void mostrarClientesQueAdeudan();
   void mostrarDestinoMasVisitadoEnAnio();
   void mostrarRecaudacionAnualGeneralPorAnio();
+  void mostrarRecaudacionAnualDelPaquete();
+  void mostrarRecaudacionAnualDelCliente();
 };

@@ -22,8 +22,8 @@ int main()
         cout << "1. MENU CLIENTES" << endl;
         cout << "2. MENU PAQUETES DE VIAJES" << endl;
         cout << "3. MENU RESERVAS" << endl;
-        cout << "4. MENU COORDINADORES" << endl;
-        cout << "5. MENU PAGOS" << endl;
+        cout << "4. MENU PAGOS" << endl;
+        cout << "5. MENU COORDINADORES" << endl;
         cout << "6. MENU INFORMES" << endl;
         cout << "0. FIN DEL PROGRAMA" << endl;
         cout << "************************" << endl;
@@ -37,9 +37,9 @@ int main()
                     break;
             case 3: MenuReservas.Mostrar();
                     break;
-            case 4: MenuCoordinadores.mostrar();
+            case 4: MenuPagos.Mostrar();
                     break;
-            case 5: MenuPagos.Mostrar();
+            case 5: MenuCoordinadores.mostrar();
                     break;
             case 6: MenuInformes.Mostrar();
                     break;

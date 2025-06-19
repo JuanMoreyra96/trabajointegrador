@@ -16,6 +16,8 @@ void InformesMenu::Mostrar()
         cout << "2. Mostrar paquetes que necesitan mas publicidad" << endl;
         cout << "3. Mostrar recaudacion anual general en un anio " << endl;
         cout << "4. Mostrar el destino mas visitado en un anio" << endl;
+        cout << "5. Recaudacion anual cliente" << endl;
+        cout << "6. Recaudacion anual paquete" << endl;
 
         cout << "0- Volver al menu principal" << endl;
 
@@ -34,6 +36,12 @@ void InformesMenu::Mostrar()
             break;
         case 4:
             informe.mostrarDestinoMasVisitadoEnAnio();
+            break;
+         case 5:
+            informe.mostrarRecaudacionAnualDelCliente();
+            break;
+        case 6:
+            informe.mostrarRecaudacionAnualDelPaquete();
             break;
         case 0:
             return;
