@@ -36,7 +36,7 @@ void ReservaManager::CargarReserva(){
     cin >> dniCliente;
 
     if (!validar.validarCadenaDeNumeros(dniCliente)) {
-        cout << "El DNI debe contener solo n�meros. Ingrese nuevamente." << endl;
+        cout << "El DNI debe contener solo n�meros. Ingrese nuevamente." << endl;
         pos = -1;
     } else {
         pos = cArchivo.buscar(dniCliente);
@@ -242,6 +242,122 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
     delete []nombresDestinos;
     delete []vecReg;
 }
- void ReservaManager::BuscarReservasDeCliente(int dni){
 
+ void ReservaManager::BuscarReservasDeCliente(){
+    clientearchivo cArchivo;
+    Cliente registro;
+    Validaciones validar;
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    int resultado, cantidadRegistros = rArchivo.getCantidadRegistros();
+    string dni;
+
+    do {
+        cout << "Ingrese DNI del cliente: ";
+        cin >> dni;
+
+        if (!validar.validarCadenaDeNumeros(dni)) {
+            cout << "❌ El DNI debe contener solo números. Ingrese nuevamente." << endl;
+            resultado = -1;
+        } else {
+            resultado = cArchivo.buscar(dni);
+            if (resultado == -1) {
+                cout << "No existe un cliente con ese DNI. Ingrese otro." << endl;
+            }
+        }
+    } while (resultado == -1);
+
+    registro = cArchivo.leer(resultado);
+    int idCliente = registro.getidCliente();
+    string nombre = registro.getNombre();
+    string apellido = registro.getApellido();
+    bool encontrado = false;
+
+    cout << "CLIENTE: " << nombre << " " << apellido << "\n" << endl;
+ cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+
+    cout << string(100, '-') << endl;
+
+    for(int i = 0; i < cantidadRegistros; i++) {
+        registroReserva = rArchivo.leer(i);
+        if (registroReserva.getIdCliente() == idCliente) {
+            registroReserva.Mostrar();
+            encontrado = true;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "⚠️  No hay reservas del cliente buscado." << endl;
+    }
+
+    cout << endl;
+}
+
+
+ void ReservaManager::ListarReservasDeudaNoCancelada(){
+ ReservaArchivo pArchivo;
+    Reserva registro;
+    int cantidadRegistros = pArchivo.getCantidadRegistros();
+    cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+
+    cout << string(100, '-') << endl;
+    for(int i=0; i<cantidadRegistros; i++){
+        registro = pArchivo.leer(i);
+        if(!registro.getDeudaCancelada()){
+        registro.Mostrar();
+        }
+    }
+   }
+
+ void ReservaManager::buscarReservasDeUnDestino(){
+    PaqueteDeViajeArchivo pArchivo;
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    string destino;
+    Validaciones validar;
+    int cantidadRegistros = rArchivo.getCantidadRegistros();
+    do{
+    cout<<"Ingrese el destino: ";
+    cin.ignore();
+    getline(cin, destino);
+    if(!validar.validarCadenaDeLetras(destino) || !validar.validarLongitudCadena(destino, 2, 20)){
+        cout<<"La busquda debe contener entre 2 y 20 caracteres."<<endl;
+    }
+    }
+    while(!validar.validarCadenaDeLetras(destino) || !validar.validarLongitudCadena(destino, 2, 20));
+    cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+
+    cout << string(100, '-') << endl;
+
+    int idDestino = pArchivo.mostrarPaquetesPorDestino(destino);
+    for(int i=0;i<cantidadRegistros;i++){
+        registroReserva = rArchivo.leer(i);
+        if(registroReserva.getIidPaquete()==idDestino){
+            registroReserva.Mostrar();
+        }
+    }
  }

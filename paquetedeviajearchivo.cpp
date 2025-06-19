@@ -95,7 +95,7 @@ int PaqueteDeViajeArchivo::buscar(int idPaquete){
 
 std::string toUpper(std::string str) {
     for (int i = 0; str[i] != '\0'; i++) {
-        // Si el caracter es una letra minúscula, lo convierte
+        // Si el caracter es una letra minï¿½scula, lo convierte
         if (str[i] >= 'a' && str[i] <= 'z') {
             str[i] -= 32;  // Diferencia entre 'a' y 'A' en ASCII
         }
@@ -105,20 +105,20 @@ std::string toUpper(std::string str) {
 
 
 // ESTE METODO SIRVE PARA COINCIDENCIA ABSOLUTA DE CARACTERES
-void PaqueteDeViajeArchivo::mostrarPaquetesPorDestino(std::string destino){
- FILE *pFile;
+int PaqueteDeViajeArchivo::mostrarPaquetesPorDestino(std::string destino){
+   FILE *pFile;
    PaqueteDeViaje reg;
    destino = toUpper(destino);
-
+   int posicion;
    pFile = fopen(_nombreArchivo.c_str(), "rb");
    if (pFile == nullptr){
       cout << "No se pudo abrir el archivo";
-      return;
+      return -1;
    }
 
    while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
       if (toUpper(reg.getDestino()) == destino){
-         reg.Mostrar();
+         return reg.getIdPaquete();
       }
    }
    fclose(pFile);

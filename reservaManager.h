@@ -11,8 +11,10 @@ public:
   void MostrarCantidadRegistros();
   void ListarTodos(); // activos e inactivos
   void ListarReservasDeudaCancelada(); //solo reservas con deuda cancelada
-  void BuscarReservasDeCliente(int dni);
+  void ListarReservasDeudaNoCancelada(); //solo reservas sin deuda cancelada
+  void BuscarReservasDeCliente();
   void listarTodasAlfabeticamentePorDestino();
+  void buscarReservasDeUnDestino();
 
 };
 
