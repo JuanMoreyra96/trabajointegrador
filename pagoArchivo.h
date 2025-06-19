@@ -1,5 +1,4 @@
-#ifndef PAGOARCHIVO_H_INCLUDED
-#define PAGOARCHIVO_H_INCLUDED
+#pragma once
 #include <string>
 #include "pago.h"
 class PagoArchivo{
@@ -16,6 +15,3 @@ public:
   int getCantidadRegistros();
   Pago leer(int pos);
 };
-
-
-#endif // PAGOARCHIVO_H_INCLUDED

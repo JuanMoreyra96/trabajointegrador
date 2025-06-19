@@ -1,5 +1,4 @@
-#ifndef VALIDACIONES_H_INCLUDED
-#define VALIDACIONES_H_INCLUDED
+#pragma once
 #include <string>
 #include "fechahora.h"
 class Validaciones{
@@ -20,5 +19,3 @@ class Validaciones{
         bool validarTransporte(std::string cadena);
         bool validarBajaOcupacion(int totalCupos, int cuposOcupados);
 };
-
-#endif // VALIDACIONES_H_INCLUDED

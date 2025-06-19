@@ -1,5 +1,4 @@
-#ifndef PAQUETEDEVIAJE_H_INCLUDED
-#define PAQUETEDEVIAJE_H_INCLUDED
+#pragma once
 #include <string>
 #include "fechahora.h"
  class PaqueteDeViaje{
@@ -67,5 +66,3 @@
         void Mostrar();
 
     };
-
-#endif // CLIENTE_H_INCLUDED
