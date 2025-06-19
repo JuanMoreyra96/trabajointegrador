@@ -15,7 +15,7 @@ public:
   void BuscarReservasDeCliente();
   void listarTodasAlfabeticamentePorDestino();
   void buscarReservasDeUnDestino();
-
+  void buscarReservasParaIdPaquete();
 };
 
 

@@ -20,6 +20,8 @@ void ReservaMenu::Mostrar()
         cout << "5. Mostrar cantidad de registros" << endl;
         cout << "6- Listar las reservas ordenadas alfabeticamente por destino.." << endl;
         cout << "7- Buscar todas las reservas de un cliente."<<endl;
+        cout << "8- Buscar todas las reservas de un destino (busqueda por nombre exacto)." <<endl;
+        cout<<"9- Buscar todas las reservas de un paquete (IdPaquete)"<< endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -37,7 +39,7 @@ void ReservaMenu::Mostrar()
             break;
         case 4:
             reservaManager.ListarReservasDeudaNoCancelada();
-            break;            
+            break;
         case 5:
             reservaManager.MostrarCantidadRegistros();
             break;
@@ -46,7 +48,13 @@ void ReservaMenu::Mostrar()
             break;
         case 7:
             reservaManager.BuscarReservasDeCliente();
-            break;    
+            break;
+        case 8:
+            reservaManager.buscarReservasDeUnDestino();
+            break;
+        case 9:
+            reservaManager.buscarReservasParaIdPaquete();
+            break;
         case 0:
             return;
             break;

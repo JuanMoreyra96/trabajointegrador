@@ -274,7 +274,7 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
     bool encontrado = false;
 
     cout << "CLIENTE: " << nombre << " " << apellido << "\n" << endl;
- cout << left
+    cout << left
          << setw(10) << "ID"
          << setw(12) << "Cliente"
          << setw(12) << "Paquete"
@@ -295,7 +295,7 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
     }
 
     if (!encontrado) {
-        cout << "⚠️  No hay reservas del cliente buscado." << endl;
+        cout << "No hay reservas del cliente buscado." << endl;
     }
 
     cout << endl;
@@ -332,6 +332,8 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
     string destino;
     Validaciones validar;
     int cantidadRegistros = rArchivo.getCantidadRegistros();
+    int cantidadRegistrosPaquete = pArchivo.getCantidadRegistros();
+    bool encontrado=false;
     do{
     cout<<"Ingrese el destino: ";
     cin.ignore();
@@ -341,6 +343,16 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
     }
     }
     while(!validar.validarCadenaDeLetras(destino) || !validar.validarLongitudCadena(destino, 2, 20));
+
+    PaqueteDeViaje* vecPaquetes = new PaqueteDeViaje[cantidadRegistrosPaquete];
+
+    if (vecPaquetes == nullptr) {
+        cout << "No hay memoria suficiente." << endl;
+        delete[] vecPaquetes;
+        return;
+    }
+    pArchivo.guardarPaquetesPorDestino(vecPaquetes, cantidadRegistrosPaquete, destino);
+
     cout << left
          << setw(10) << "ID"
          << setw(12) << "Cliente"
@@ -353,11 +365,67 @@ void ReservaManager::listarTodasAlfabeticamentePorDestino(){
 
     cout << string(100, '-') << endl;
 
-    int idDestino = pArchivo.mostrarPaquetesPorDestino(destino);
-    for(int i=0;i<cantidadRegistros;i++){
-        registroReserva = rArchivo.leer(i);
-        if(registroReserva.getIidPaquete()==idDestino){
+    for (int i = 0; i < cantidadRegistros; i++) {
+    registroReserva = rArchivo.leer(i);
+    int idReservaPaquete = registroReserva.getIidPaquete();
+
+    for (int j = 0; j < cantidadRegistrosPaquete; j++) {
+        if (vecPaquetes[j].getIdPaquete() == idReservaPaquete) {
             registroReserva.Mostrar();
+            encontrado = true;
+            }
         }
     }
+
+    if (!encontrado) {
+        cout << "No se encontraron reservas para el destino ingresado." << endl;
+        }
  }
+
+void ReservaManager::buscarReservasParaIdPaquete() {
+    PaqueteDeViajeArchivo paqueteArchivo;
+    PaqueteDeViaje paquete;
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    int cantidadRegistros = rArchivo.getCantidadRegistros();
+    int idPaquete, pos;
+    bool encontrado = false;
+
+    do {
+        cout << "Ingrese ID de paquete: ";
+        cin >> idPaquete;
+
+        pos = paqueteArchivo.buscar(idPaquete);
+
+        if (pos == -1) {
+            cout << "No existe un paquete con ese ID. Ingrese otro." << endl;
+        } else {
+            paquete = paqueteArchivo.leer(pos);  // Leer solo si existe
+        }
+
+    } while (pos == -1);
+
+    cout << left
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+
+    cout << string(100, '-') << endl;
+
+    for (int i = 0; i < cantidadRegistros; i++) {
+        registroReserva = rArchivo.leer(i);
+        if (registroReserva.getIidPaquete() == idPaquete) {
+            registroReserva.Mostrar();
+            encontrado = true;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "No hay reservas registradas para ese paquete." << endl;
+    }
+}

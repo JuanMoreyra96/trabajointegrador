@@ -105,23 +105,19 @@ std::string toUpper(std::string str) {
 
 
 // ESTE METODO SIRVE PARA COINCIDENCIA ABSOLUTA DE CARACTERES
-int PaqueteDeViajeArchivo::mostrarPaquetesPorDestino(std::string destino){
-   FILE *pFile;
+void PaqueteDeViajeArchivo::guardarPaquetesPorDestino(PaqueteDeViaje *v,int tam, std::string destino){
+   PaqueteDeViajeArchivo pArchivo;
    PaqueteDeViaje reg;
    destino = toUpper(destino);
    int posicion;
-   pFile = fopen(_nombreArchivo.c_str(), "rb");
-   if (pFile == nullptr){
-      cout << "No se pudo abrir el archivo";
-      return -1;
-   }
+   int cantidadRegistros = pArchivo.getCantidadRegistros();
 
-   while(fread(&reg, sizeof(PaqueteDeViaje), 1, pFile) == 1){
-      if (toUpper(reg.getDestino()) == destino){
-         return reg.getIdPaquete();
+    for(int i=0;i<cantidadRegistros;i++){
+       reg = pArchivo.leer(i);
+        if (toUpper(reg.getDestino()) == destino){
+         v[i]=reg;
       }
-   }
-   fclose(pFile);
+    }
 }
 // ESTE BUSCA POR COINCIDENCIAS PARCIALES, AL COMEINZO, MEDIO O FINAL DEL TEXTO
 // Para comprender, buscar como funciona substr(pos, len)
