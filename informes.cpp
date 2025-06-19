@@ -249,24 +249,19 @@ void Informes::mostrarPorcentajeTemporada(){
     int cantRegReserva = regReserva.getCantidadRegistros();
     int cantRegPaquete = regPaquete.getCantidadRegistros();
 
-        do {
-        cout << "Ingrese el anio (actual o anios anteriores): ";
-        anio = validar.pedirNumero();
-        if (!validar.validarIntPositivo(anio)) {
-            cout << "Ingrese un anio válido." << endl;
-        }
-        } while (!validar.validarIntPositivo(anio));
-
+    do {
+    cout << "Ingrese el anio (actual o anios anteriores): ";
+    anio = validar.pedirNumero();
+    if (!validar.validarIntPositivo(anio)) {
+        cout << "Ingrese un anio válido." << endl;
+    }
+    } while (!validar.validarIntPositivo(anio));
 
     for (int i=0; i < cantRegReserva; i++){
         reserva = regReserva.leer(i);
-        paquete = regPaquete.leer(reserva.getIidPaquete());
+        paquete = regPaquete.leer(reserva.getIidPaquete()-1);
         fecha = paquete.getFechaSalida();
-        cout << "Reserva " << i+1 << endl;
-        cout << "Paquete " << reserva.getIidPaquete() << endl;
-        cout << "A�o salida paquete " << fecha.getAnio() << endl;
-        cout << "Temporada " << paquete.getTemporadaAlta() << endl;
-        cout << endl;
+
         if (fecha.getAnio() == anio){
             if (paquete.getTemporadaAlta()){
                 cantTempAlta += 1;
