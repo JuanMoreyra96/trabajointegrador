@@ -264,17 +264,36 @@ void Informes::mostrarDestinoMasVisitadoEnAnio()
 }
 
 
+#include "informes.h"
+#include <iostream>
+#include "fechaHora.h"
+#include "paquetedeviaje.h"
+#include "paquetedeviajearchivo.h"
+#include "paquetedeviajemanager.h"
+#include "validaciones.h"
+#include "reservaArchivo.h"
+#include "reserva.h"
+#include "clientearchivo.h"
+#include "cliente.h"
+#include "pagoArchivo.h"
+#include "pago.h"
+#include <iomanip> // ¡Muy importante incluir este!
+#include <string>  // Necesario para std::string si usas el array de nombres de meses
+using namespace std;
+
+// ... (otras funciones como mostrarPaquetesParaPublicidad, mostrarClientesQueAdeudan, etc. quedan igual) ...
+
 void Informes::mostrarRecaudacionAnualGeneralPorAnio()
 {
     Validaciones validar;
     FechaHora hoy;
     PagoArchivo pArchivo;
     Pago registroPago;
-    int anio,i,m;
-    float TotalVentaAnio=0;
-    float VecTotalMes[13]={0};
+    int anio, i, m;
+    float TotalVentaAnio = 0;
+    float VecTotalMes[12] = {0};
     int cantidadRegistrosPagos = pArchivo.getCantidadRegistros();
-    if (cantidadRegistrosPagos==0)
+    if (cantidadRegistrosPagos == 0)
     {
         cout << "No hay registros de pagos para analizar." << endl;
         cout << "\nPresione una tecla para volver al menu de informes..." << endl;
@@ -295,37 +314,37 @@ void Informes::mostrarRecaudacionAnualGeneralPorAnio()
             cout << "El anio ingresado no puede ser mayor al anio actual (" << hoy.getAnio() << "). Intente de nuevo." << endl;
         }
     } while (!validar.validarIntPositivo(anio) || anio > hoy.getAnio());
-
-    for (i=0; i<cantidadRegistrosPagos; i++)
+    for (i = 0; i < cantidadRegistrosPagos; i++)
     {
         registroPago = pArchivo.leer(i);
         FechaHora fPago = registroPago.getFecha();
-
-        if(fPago.getAnio()==anio)
+        if (fPago.getAnio() == anio)
         {
-            TotalVentaAnio+=registroPago.getImporte();
-            for(m=0;m<12;m++){
-            if(fPago.getMes()==m){
-            VecTotalMes[m]+=registroPago.getImporte();
-                                 }
-                             }
+            TotalVentaAnio += registroPago.getImporte();
+            if (fPago.getMes() >= 1 && fPago.getMes() <= 12) {
+                VecTotalMes[fPago.getMes()] += registroPago.getImporte();
+            }
         }
     }
-
-    cout << "Las ventas totales para el anio " << anio << " son: $" << TotalVentaAnio <<endl;
-    cout << "En el mes de Enero se recaudo: "<< VecTotalMes[1]<<endl;
-    cout << "En el mes de Febrero se recaudo: "<< VecTotalMes[2]<<endl;
-    cout << "En el mes de Marzo se recaudo: "<< VecTotalMes[3]<<endl;
-    cout << "En el mes de Abril se recaudo: "<< VecTotalMes[4]<<endl;
-    cout << "En el mes de Mayo se recaudo: "<< VecTotalMes[5]<<endl;
-    cout << "En el mes de Junio se recaudo: "<< VecTotalMes[6]<<endl;
-    cout << "En el mes de Julio se recaudo: "<< VecTotalMes[7]<<endl;
-    cout << "En el mes de Agosto se recaudo: "<< VecTotalMes[8]<<endl;
-    cout << "En el mes de Septiembre se recaudo: "<< VecTotalMes[9]<<endl;
-    cout << "En el mes de Octubre se recaudo: "<< VecTotalMes[10]<<endl;
-    cout << "En el mes de Noviembre se recaudo: "<< VecTotalMes[11]<<endl;
-    cout << "En el mes de Diciembre se recaudo: "<< VecTotalMes[12]<<endl;
-
+    cout << "\n--- REPORTE DE RECAUDACION ANUAL ---" << endl;
+    cout << "Las ventas totales para el anio " << anio << " son: $" << TotalVentaAnio << endl;
+    cout << endl;
+    string nombresMeses[] = {
+        "","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+    cout << left
+         << setw(15) << "MES"
+         << setw(20) << "RECAUDACION ($)"
+         << endl;
+    cout << string(35, '-') << endl;
+    for (m = 1; m <= 12; m++)
+    {
+        cout << left
+             << setw(15) << nombresMeses[m]
+             << setw(20) << fixed << setprecision(2) << VecTotalMes[m] // Aplicar formato de moneda
+             << endl;
+    }
+    cout << "\nPresione una tecla para volver al menu de informes..." << endl;
+    system("pause");
+    system("cls");
     return;
-
 }
