@@ -263,26 +263,6 @@ void Informes::mostrarDestinoMasVisitadoEnAnio()
     delete[] acumulador;
 }
 
-
-#include "informes.h"
-#include <iostream>
-#include "fechaHora.h"
-#include "paquetedeviaje.h"
-#include "paquetedeviajearchivo.h"
-#include "paquetedeviajemanager.h"
-#include "validaciones.h"
-#include "reservaArchivo.h"
-#include "reserva.h"
-#include "clientearchivo.h"
-#include "cliente.h"
-#include "pagoArchivo.h"
-#include "pago.h"
-#include <iomanip> // ¡Muy importante incluir este!
-#include <string>  // Necesario para std::string si usas el array de nombres de meses
-using namespace std;
-
-// ... (otras funciones como mostrarPaquetesParaPublicidad, mostrarClientesQueAdeudan, etc. quedan igual) ...
-
 void Informes::mostrarRecaudacionAnualGeneralPorAnio()
 {
     Validaciones validar;
