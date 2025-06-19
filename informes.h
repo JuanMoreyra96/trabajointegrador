@@ -6,4 +6,5 @@ public:
   void mostrarPaquetesParaPublicidad();
   void mostrarClientesQueAdeudan();
   void mostrarDestinoMasVisitadoEnAnio();
+  void mostrarRecaudacionAnualGeneralPorAnio();
 };

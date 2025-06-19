@@ -13,7 +13,8 @@
 #include "pago.h"
 #include <iomanip>
 using namespace std;
-void Informes::mostrarPaquetesParaPublicidad() {
+void Informes::mostrarPaquetesParaPublicidad()
+{
     FechaHora fechaActual;
     PaqueteDeViajeArchivo pArchivo;
     PaqueteDeViaje registro, paqueteMasCercano;
@@ -23,7 +24,8 @@ void Informes::mostrarPaquetesParaPublicidad() {
     int diferenciaMenor = -1;
     bool encontrado = false;
 
-    for (int i = 0; i < cantidadRegistros; i++) {
+    for (int i = 0; i < cantidadRegistros; i++)
+    {
         registro = pArchivo.leer(i);
         FechaHora fechaDelRegistro = registro.getFechaSalida();
 
@@ -40,10 +42,12 @@ void Informes::mostrarPaquetesParaPublicidad() {
                             registro.getTotalCupos(),
                             registro.getCuposOcupados());
 
-        if (esValido) {
+        if (esValido)
+        {
             int diferencia = fechaActual.calcularDiferenciaDeDias(fechaActual, fechaDelRegistro);
 
-            if (!encontrado || diferencia < diferenciaMenor) {
+            if (!encontrado || diferencia < diferenciaMenor)
+            {
                 diferenciaMenor = diferencia;
                 paqueteMasCercano = registro;
                 encontrado = true;
@@ -51,27 +55,31 @@ void Informes::mostrarPaquetesParaPublicidad() {
         }
     }
 
-    if (encontrado) {
+    if (encontrado)
+    {
         std::cout << "Paquete más cercano con baja ocupacion. Necesita mas publicidad!:\n";
         cout << setw(5)  << "ID"
-         << setw(8)  << "Coord1"
-         << setw(8)  << "Coord2"
-         << setw(20) << "Destino"
-         << setw(20) << "Hotel"
-         << setw(13) << "Transporte"
-         << setw(10) << "Precio"
-         << setw(8)  << "Cupos"
-         << setw(8)  << "Ocupados"
-         << setw(10) << "Temporada"
-         << " Salida - Regreso" << endl;
+             << setw(8)  << "Coord1"
+             << setw(8)  << "Coord2"
+             << setw(20) << "Destino"
+             << setw(20) << "Hotel"
+             << setw(13) << "Transporte"
+             << setw(10) << "Precio"
+             << setw(8)  << "Cupos"
+             << setw(8)  << "Ocupados"
+             << setw(10) << "Temporada"
+             << " Salida - Regreso" << endl;
 
         cout << string(135, '-') << endl;
         paqueteMasCercano.Mostrar();
-    } else {
+    }
+    else
+    {
         std::cout << "No hay paquetes disponibles con baja ocupación y fecha futura.\n";
     }
 }
-void Informes::mostrarClientesQueAdeudan() {
+void Informes::mostrarClientesQueAdeudan()
+{
     ReservaArchivo rArchivo;
     clientearchivo cArchivo;
     PaqueteDeViajeArchivo paqueteArchivo;
@@ -98,18 +106,22 @@ void Informes::mostrarClientesQueAdeudan() {
 
     cout << string(110, '-') << endl;  // Línea divisoria
 
-    for (int i = 0; i < cantidadRegistros; i++) {
+    for (int i = 0; i < cantidadRegistros; i++)
+    {
         registro = rArchivo.leer(i);
 
-        if (!registro.getDeudaCancelada()) {
+        if (!registro.getDeudaCancelada())
+        {
             float sumaPagos = 0;
 
             registroCliente = cArchivo.leer(registro.getIdCliente());
             registroPaquete = paqueteArchivo.leer(registro.getIidPaquete());
 
-            for (int j = 0; j < cantidadRegistrosPagos; j++) {
+            for (int j = 0; j < cantidadRegistrosPagos; j++)
+            {
                 registroPago = pagoArchivo.leer(j);
-                if (registroPago.getIdReserva() == registro.getIdReserva()) {
+                if (registroPago.getIdReserva() == registro.getIdReserva())
+                {
                     sumaPagos += registroPago.getImporte();
                 }
             }
@@ -130,7 +142,8 @@ void Informes::mostrarClientesQueAdeudan() {
     }
 }
 
-void Informes::mostrarDestinoMasVisitadoEnAnio() {
+void Informes::mostrarDestinoMasVisitadoEnAnio()
+{
     Validaciones validar;
     PaqueteDeViajeArchivo pArchivo;
     PaqueteDeViaje registroPaquete;
@@ -140,28 +153,34 @@ void Informes::mostrarDestinoMasVisitadoEnAnio() {
     int anio;
 
     // Solicitar y validar año
-    do {
+    do
+    {
         cout << "Ingrese el anio (actual o anios anteriores): ";
         anio = validar.pedirNumero();
-        if (!validar.validarIntPositivo(anio)) {
+        if (!validar.validarIntPositivo(anio))
+        {
             cout << "Ingrese un anio válido." << endl;
         }
-    } while (!validar.validarIntPositivo(anio) || anio > hoy.getAnio());
+    }
+    while (!validar.validarIntPositivo(anio) || anio > hoy.getAnio());
 
     // Contar cuántos paquetes del año cumplen con la condición de haber ya salido
     int cantidadDestinosEnAnio = 0;
-    for (int i = 0; i < cantidadRegistros; i++) {
+    for (int i = 0; i < cantidadRegistros; i++)
+    {
         registroPaquete = pArchivo.leer(i);
         FechaHora fechaSalida = registroPaquete.getFechaSalida();
 
         if (fechaSalida.getAnio() == anio &&
-            (anio < hoy.getAnio() || !validar.validarFechaPosterior(hoy, fechaSalida.getDia(), fechaSalida.getMes(), fechaSalida.getAnio(), fechaSalida.getHora(), fechaSalida.getMinuto())
- )) {
+                (anio < hoy.getAnio() || !validar.validarFechaPosterior(hoy, fechaSalida.getDia(), fechaSalida.getMes(), fechaSalida.getAnio(), fechaSalida.getHora(), fechaSalida.getMinuto())
+                ))
+        {
             cantidadDestinosEnAnio++;
         }
     }
 
-    if (cantidadDestinosEnAnio == 0) {
+    if (cantidadDestinosEnAnio == 0)
+    {
         cout << "No hay paquetes para el anio elegido cuya fecha de salida ya haya pasado." << endl;
         return;
     }
@@ -170,43 +189,50 @@ void Informes::mostrarDestinoMasVisitadoEnAnio() {
     string* destinos = new string[cantidadDestinosEnAnio];
     int* acumulador = new int[cantidadDestinosEnAnio];
 
-    if (destinos == nullptr || acumulador == nullptr) {
+    if (destinos == nullptr || acumulador == nullptr)
+    {
         cout << "No hay memoria suficiente." << endl;
         delete[] destinos;
         delete[] acumulador;
         return;
     }
-    for(int i = 0; i < cantidadDestinosEnAnio; i++){
+    for(int i = 0; i < cantidadDestinosEnAnio; i++)
+    {
         acumulador[i] = 0;
     }
 
     // Agrupar destinos y acumular cupos ocupados
-    for (int i = 0; i < cantidadRegistros; i++) {
+    for (int i = 0; i < cantidadRegistros; i++)
+    {
         registroPaquete = pArchivo.leer(i);
         FechaHora fechaSalida = registroPaquete.getFechaSalida();
 
         if (fechaSalida.getAnio() == anio &&
-            (anio < hoy.getAnio() || !validar.validarFechaPosterior(hoy,
-                                     fechaSalida.getDia(),
-                                     fechaSalida.getMes(),
-                                     fechaSalida.getAnio(),
-                                     fechaSalida.getHora(),
-                                     fechaSalida.getMinuto()
-            ))) {
+                (anio < hoy.getAnio() || !validar.validarFechaPosterior(hoy,
+                        fechaSalida.getDia(),
+                        fechaSalida.getMes(),
+                        fechaSalida.getAnio(),
+                        fechaSalida.getHora(),
+                        fechaSalida.getMinuto()
+                                                                       )))
+        {
 
             string destinoActual = registroPaquete.getDestino();
             int cupos = registroPaquete.getCuposOcupados();
 
             bool encontrado = false;
-            for (int j = 0; j < cantidadUnicaDestinos; j++) {
-                if (destinos[j] == destinoActual) {
+            for (int j = 0; j < cantidadUnicaDestinos; j++)
+            {
+                if (destinos[j] == destinoActual)
+                {
                     acumulador[j] += cupos;
                     encontrado = true;
                     break;
                 }
             }
 
-            if (!encontrado) {
+            if (!encontrado)
+            {
                 destinos[cantidadUnicaDestinos] = destinoActual;
                 acumulador[cantidadUnicaDestinos] = cupos;
                 cantidadUnicaDestinos++;
@@ -218,8 +244,10 @@ void Informes::mostrarDestinoMasVisitadoEnAnio() {
     int mayorCantidadCuposOcupados = acumulador[0];
     string destinoMasCuposOcupados = destinos[0];
 
-    for (int i = 1; i < cantidadUnicaDestinos; i++) {
-        if (acumulador[i] > mayorCantidadCuposOcupados) {
+    for (int i = 1; i < cantidadUnicaDestinos; i++)
+    {
+        if (acumulador[i] > mayorCantidadCuposOcupados)
+        {
             mayorCantidadCuposOcupados = acumulador[i];
             destinoMasCuposOcupados = destinos[i];
         }
@@ -233,4 +261,70 @@ void Informes::mostrarDestinoMasVisitadoEnAnio() {
     // Liberar memoria
     delete[] destinos;
     delete[] acumulador;
+}
+
+void Informes::mostrarRecaudacionAnualGeneralPorAnio()
+{
+    Validaciones validar;
+    FechaHora hoy;
+    PagoArchivo pArchivo;
+    Pago registroPago;
+    int anio, i, m;
+    float TotalVentaAnio = 0;
+    float VecTotalMes[12] = {0};
+    int cantidadRegistrosPagos = pArchivo.getCantidadRegistros();
+    if (cantidadRegistrosPagos == 0)
+    {
+        cout << "No hay registros de pagos para analizar." << endl;
+        cout << "\nPresione una tecla para volver al menu de informes..." << endl;
+        system("pause");
+        system("cls");
+        return;
+    }
+    do
+    {
+        cout << "Ingrese el anio: ";
+        cin >> anio;
+        if (!validar.validarIntPositivo(anio))
+        {
+            cout << "El anio debe ser un numero positivo. Intente de nuevo." << endl;
+        }
+        else if (anio > hoy.getAnio())
+        {
+            cout << "El anio ingresado no puede ser mayor al anio actual (" << hoy.getAnio() << "). Intente de nuevo." << endl;
+        }
+    } while (!validar.validarIntPositivo(anio) || anio > hoy.getAnio());
+    for (i = 0; i < cantidadRegistrosPagos; i++)
+    {
+        registroPago = pArchivo.leer(i);
+        FechaHora fPago = registroPago.getFecha();
+        if (fPago.getAnio() == anio)
+        {
+            TotalVentaAnio += registroPago.getImporte();
+            if (fPago.getMes() >= 1 && fPago.getMes() <= 12) {
+                VecTotalMes[fPago.getMes()] += registroPago.getImporte();
+            }
+        }
+    }
+    cout << "\n--- REPORTE DE RECAUDACION ANUAL ---" << endl;
+    cout << "Las ventas totales para el anio " << anio << " son: $" << TotalVentaAnio << endl;
+    cout << endl;
+    string nombresMeses[] = {
+        "","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+    cout << left
+         << setw(15) << "MES"
+         << setw(20) << "RECAUDACION ($)"
+         << endl;
+    cout << string(35, '-') << endl;
+    for (m = 1; m <= 12; m++)
+    {
+        cout << left
+             << setw(15) << nombresMeses[m]
+             << setw(20) << fixed << setprecision(2) << VecTotalMes[m] // Aplicar formato de moneda
+             << endl;
+    }
+    cout << "\nPresione una tecla para volver al menu de informes..." << endl;
+    system("pause");
+    system("cls");
+    return;
 }
