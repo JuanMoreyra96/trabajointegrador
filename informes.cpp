@@ -234,3 +234,189 @@ void Informes::mostrarDestinoMasVisitadoEnAnio() {
     delete[] destinos;
     delete[] acumulador;
 }
+
+void Informes::mostrarRecaudacionAnualDelPaquete(){
+    // Solicitar id de paquete y anio de dicha recaudacion
+    int idPaquete;
+    int anio;
+
+    ReservaArchivo reservaArchivo;
+    int reservaCantidadRegistro;
+    Reserva *reservaVectorRegistro = nullptr;
+    PagoArchivo pagoArchivo;
+    int pagoCantidadRegistro;
+    Pago *pagoVectorRegistro = nullptr;
+
+    cout<<"Ingresa el ID del paquete para conocer su recaudacion anual";
+    cin>>idPaquete;
+    cin.ignore();
+
+
+    cout<<"Ingresa el anio para conocer la recaudacion anual del paquete: "<< idPaquete<<endl;
+
+    cout<<"Anio: "<<endl;
+    cin>>anio;
+    cin.ignore();
+    //Verifico que los id de paquete y los anios son correctos
+
+    // levantar todas las reservas relacionados al id de paquete
+    reservaCantidadRegistro = reservaArchivo.getCantidadRegistros(),
+    pagoCantidadRegistro = pagoArchivo.getCantidadRegistros();
+
+    reservaVectorRegistro = new Reserva[reservaCantidadRegistro];
+    pagoVectorRegistro = new Pago[pagoCantidadRegistro];
+
+    if( reservaVectorRegistro == nullptr || pagoVectorRegistro == nullptr) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for (int i=0 ; i<reservaCantidadRegistro ; i++){
+        reservaVectorRegistro[i] = reservaArchivo.leer(i);
+    }
+
+    for (int i=0 ; i<pagoCantidadRegistro ; i++){
+        pagoVectorRegistro[i] = pagoArchivo.leer(i);
+    }
+
+
+    // levantar todos los pagos que hagan referencia al id relacionado
+    float recaudacionAnual = 0;
+    for(int i=0 ; i < reservaCantidadRegistro; i++){
+        if(reservaVectorRegistro[i].getIidPaquete() == idPaquete){
+            for(int j=0 ; j<pagoCantidadRegistro; j++){
+                if(pagoVectorRegistro[j].getFecha().getAnio() == anio
+                   && pagoVectorRegistro[j].getIdReserva() == reservaVectorRegistro[i].getIdReserva()){
+                    recaudacionAnual += pagoVectorRegistro[j].getImporte();
+                }
+            }
+        }
+
+    }
+
+    // Mostrar el id del paquete con la suma del año.
+
+    cout << "Para el idPaquete: "<< idPaquete <<" La suma total del año: "<<anio<<" es de: "<<recaudacionAnual<<endl;
+
+}
+
+
+void Informes::mostrarRecaudacionAnualDelCliente(){
+
+    string dniCliente;
+    int anio;
+
+    Validaciones validar;
+    clientearchivo clienteArchivo;
+    Cliente cliente;
+    int posicionClienteArchivo;
+    ReservaArchivo reservaArchivo;
+    int reservaCantidadRegistro;
+    Reserva *reservaVectorRegistro = nullptr;
+    PagoArchivo pagoArchivo;
+    int pagoCantidadRegistro;
+    Pago *pagoVectorRegistro = nullptr;
+
+    /////////////////////////
+
+    do{
+        cout<<"Ingresa el DNI del cliente para conocer su recaudacion anual";
+        getline(cin, dniCliente);
+        if(!validar.validarCadenaDeNumeros(dniCliente)){
+            cout << "El DNI debe contener solo números. Ingrese nuevamente." << endl;
+        }else{
+            posicionClienteArchivo = clienteArchivo.buscar(dniCliente);
+            switch(posicionClienteArchivo){
+                case -1:
+                    cout << "No se encontro cliente para el dni ingresado. Por favor intente nuevamente" << endl;
+                    break;
+                case -2:
+                    cout << "Ocurrio un error inexperado, intente nuevamente." << endl;
+                    break;
+                default:
+                    cliente = clienteArchivo.leer(posicionClienteArchivo);
+            }
+        }
+    }while(!validar.validarCadenaDeNumeros(dniCliente) || posicionClienteArchivo < 0);
+
+    cout<<"Ingresa el anio para conocer la recaudacion anual del cliente: "<<cliente.getApellido()<<", "<<cliente.getNombre()<<endl;
+    cout<<"Anio: "<<endl;
+    cin>>anio;
+    cin.ignore();
+    //Verifico que los id de paquete y los anios son correctos
+
+    // levantar todas las reservas relacionados al id de paquete
+    reservaCantidadRegistro = reservaArchivo.getCantidadRegistros(),
+    pagoCantidadRegistro = pagoArchivo.getCantidadRegistros();
+
+    reservaVectorRegistro = new Reserva[reservaCantidadRegistro];
+    pagoVectorRegistro = new Pago[pagoCantidadRegistro];
+
+    if( reservaVectorRegistro == nullptr || pagoVectorRegistro == nullptr) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for (int i=0 ; i<reservaCantidadRegistro ; i++){
+        reservaVectorRegistro[i] = reservaArchivo.leer(i);
+    }
+
+    for (int i=0 ; i<pagoCantidadRegistro ; i++){
+        pagoVectorRegistro[i] = pagoArchivo.leer(i);
+    }
+
+
+    // levantar todos los pagos que hagan referencia al id relacionado
+    float recaudacionAnualCliente = 0;
+    for(int i=0 ; i < reservaCantidadRegistro; i++){
+        if(reservaVectorRegistro[i].getIdCliente() == cliente.getidCliente()){
+            for(int j=0 ; j<pagoCantidadRegistro; j++){
+                if(pagoVectorRegistro[j].getFecha().getAnio() == anio
+                   && pagoVectorRegistro[j].getIdReserva() == reservaVectorRegistro[i].getIdReserva()){
+                    recaudacionAnualCliente += pagoVectorRegistro[j].getImporte();
+                }
+            }
+        }
+
+    }
+
+    cout << "Para el cliente: "<< cliente.getApellido()<<", "<<cliente.getNombre()<<" La suma total del año: "<<anio<<" es de: "<<recaudacionAnualCliente<<endl;
+
+}
+/*
+Pago::Pago(){
+    _idPago=0;
+    _idReserva=0;
+    _importe=0;
+    FechaHora _fecha(1,1,2000,0,0);
+}
+
+/*
+Reserva::Reserva(){
+    _idReserva=0;
+    _idCliente=0;
+    _idPaquete=0;
+    _cantidadViajeros=0;
+    _fecha=FechaHora();
+    _precioTotal=0;
+    _deudaCancelada=false;
+}
+*/
+
+/*
+PaqueteDeViaje::PaqueteDeViaje(){
+    _idPaquete = 0;
+    _idCoordinador[0] = 0;
+      _idCoordinador[1] = 0;
+       strcpy( _destino, "");
+       strcpy( _tipoTransporte, "");
+       strcpy(  _hotel, "");
+    _precio = 0;
+    _totalCupos = 0;
+    _cuposOcupados = 0;
+    _temporadaAlta = false;
+   _fechaRegreso = FechaHora();
+   _fechaSalida = FechaHora();
+    _estado = false;
+   }
+*/
