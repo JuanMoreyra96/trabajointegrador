@@ -16,7 +16,7 @@ public:
   int getCantidadRegistros();
   PaqueteDeViaje leer(int pos);
   void mostrarPaquetesPorDestino(std::string destino);
-  void mostrarPaquetesPorDestinoParcial(std::string texto);
+  void mostrarPaquetesPorDestinoParcial(std::string texto, bool soloProximos = false);
   void buscarPorRangoPrecios(float precioMenor, float precioMayor);
   void buscarRegistroPorFechaSalida(FechaHora fecha);
   void buscarRegistroPorFechaRegreso(FechaHora fecha);

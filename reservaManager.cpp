@@ -8,12 +8,14 @@
 #include "paquetedeviaje.h"
 #include "clientearchivo.h"
 #include "cliente.h"
+#include "paquetedeviajemanager.h"
+#include "validaciones.h"
 #include <iomanip>
 using namespace std;
 
 
 void ReservaManager::CargarReserva(){
-
+    PaqueteDeViajeManager paqueteManager;
     Cliente cliente;
     clientearchivo cArchivo;
     Reserva reserva;
@@ -25,47 +27,74 @@ void ReservaManager::CargarReserva(){
     float precioTotal;
     bool deudaCancelada;
     string dniCliente;
-
     int cantRegistros = pArchivo.getCantidadRegistros();
     idReserva = cantRegistros+1;
-
+    Validaciones validar;
     // CLIENTE
     do {
     cout << "Ingrese DNI del cliente: ";
     cin >> dniCliente;
 
-    pos = cArchivo.buscar(dniCliente);
-    if (pos==-1){
-    cout << "No existe un cliente con ese DNI. Ingrese otro." << endl;
+    if (!validar.validarCadenaDeNumeros(dniCliente)) {
+        cout << "El DNI debe contener solo números. Ingrese nuevamente." << endl;
+        pos = -1;
+    } else {
+        pos = cArchivo.buscar(dniCliente);
+        if (pos == -1) {
+            cout << "No existe un cliente con ese DNI. Ingrese otro." << endl;
+        }
     }
-    }  while (pos == -1);
+
+    } while (pos == -1);
+
     cliente = cArchivo.leer(pos);
     idCliente = cliente.getidCliente();
-
+    //MOSTRAMOS SEGUN BUSQUEDA
+    paqueteManager.buscarPaquetePorDestino(true);
     // PAQUETE
     do {
-    cout << "Ingrese ID de paquete: ";
+    cout << "Ingrese ID de paquete (solo aquellos con fecha de salida futura): ";
     cin >> idPaquete;
 
     pos = paqueteArchivo.buscar(idPaquete);
-    if (pos==-1){
-    cout << "No existe un paquete con ese ID. Ingrese otro." << endl;
+
+    if (pos == -1) {
+        cout << "No existe un paquete con ese ID. Ingrese otro." << endl;
     }
-    }  while (pos == -1);
-    paquete = paqueteArchivo.leer(pos);
+
+        paquete = paqueteArchivo.leer(pos);  // Leer el paquete solo si existe
+
+      // Validar que la fecha del paquete sea futura
+        if (!validar.validarFechaProxima(
+            paquete.getFechaSalida().getDia(),
+            paquete.getFechaSalida().getMes(),
+            paquete.getFechaSalida().getAnio(),
+            paquete.getFechaSalida().getHora(),
+            paquete.getFechaSalida().getMinuto())) {
+
+        cout << "La fecha de salida del paquete ya ha pasado. Ingrese un ID de paquete futuro." << endl;
+        pos = -1;  // Para forzar que el bucle vuelva a pedir un ID
+    }
+
+    } while (pos == -1);
+
     int ocupados = paquete.getCuposOcupados();
     idPaquete = paquete.getIdPaquete();
 
     // CUPOS
     do{
     cout << "Ingrese la cantidad de viajeros: ";
-    cin >> cantidadViajeros;
-
+    cantidadViajeros = validar.pedirNumero();
+      if(!validar.validarIntPositivo(cantidadViajeros)){
+        cout<<"Ingrese un numero valido."<<endl;
+        }else{
     cupos = paquete.getTotalCupos() - paquete.getCuposOcupados() - cantidadViajeros;
     int cuposLibres = paquete.getTotalCupos() - paquete.getCuposOcupados();
     if (cupos < 0){
         cout << "Solo quedan " << cuposLibres << " cupos libres." << endl;
         }
+        }
+
     } while (cupos < 0);
     int suma = paquete.getCuposOcupados() + cantidadViajeros;
     paquete.setCuposOcupados(suma);
@@ -155,6 +184,64 @@ void ReservaManager::ListarReservasDeudaCancelada(){
     }
 }
 
+void ReservaManager::listarTodasAlfabeticamentePorDestino(){
+    ReservaArchivo rArchivo;
+    Reserva registroReserva;
+    PaqueteDeViajeArchivo pArchivo;
+    PaqueteDeViaje registro;
+    int cantidadRegistros = rArchivo.getCantidadRegistros();
+    Reserva *vecReg = nullptr;
+    string *nombresDestinos = nullptr;
+    vecReg = new Reserva[cantidadRegistros];
+    nombresDestinos = new string[cantidadRegistros];
+    if( vecReg == nullptr || nombresDestinos == nullptr) {
+        cout << "Ocurrio un error inesperado: " << endl;
+        return;
+    }
+
+    for(int i=0; i<cantidadRegistros; i++){
+        vecReg[i] = rArchivo.leer(i);
+        int idPaquete = vecReg[i].getIidPaquete();
+        int posicion = pArchivo.buscar(idPaquete);
+        registro = pArchivo.leer(posicion);
+        nombresDestinos[i] = registro.getDestino();
+    }
+
+    for (int i = 1; i < cantidadRegistros; i++) {
+        Reserva reservaAux = vecReg[i];
+        string destinoAux = nombresDestinos[i];
+        int j = i - 1;
+
+        while (j >= 0 && destinoAux < nombresDestinos[j]) {
+            vecReg[j + 1] = vecReg[j];
+            nombresDestinos[j+1]=nombresDestinos[j];
+            j--;
+        }
+        nombresDestinos[j+1] = destinoAux;
+        vecReg[j + 1] = reservaAux;
+    }
+  //COLUMNAS
+
+            cout << left
+         << setw(10) << "DESTINO"
+         << setw(10) << "ID"
+         << setw(12) << "Cliente"
+         << setw(12) << "Paquete"
+         << setw(20) << "Cant. Viajeros"
+         << setw(15) << "Fecha"
+         << setw(15) << "Precio Total"
+         << setw(18) << "Deuda"
+         << endl;
+  cout << string(99, '-') << endl;
+
+    for(int i=0; i<cantidadRegistros; i++){
+       cout << setw(10) << left << nombresDestinos[i];
+        vecReg[i].Mostrar();
+    }
+
+    delete []nombresDestinos;
+    delete []vecReg;
+}
  void ReservaManager::BuscarReservasDeCliente(int dni){
 
  }

@@ -17,7 +17,7 @@ void ReservaMenu::Mostrar()
         cout << "2. Listar todas las reservas." << endl;
         cout << "3. Listar reservas con deuda cancelada." << endl;
         cout << "4. Mostrar cantidad de registros" << endl;
-     //   cout << "5- Modificar cantidad de viajeros." << endl;
+        cout << "5- Listar las reservas ordenadas alfabeticamente por destino.." << endl;
         cout << "0- Volver al menu principal" << endl;
 
         cin >> opcion;
@@ -36,9 +36,9 @@ void ReservaMenu::Mostrar()
         case 4:
             reservaManager.MostrarCantidadRegistros();
             break;
-       // case 5:
-        //    reservaManager.ModificarCantidadViajeros();
-        //    break;
+        case 5:
+            reservaManager.listarTodasAlfabeticamentePorDestino();
+            break;
         case 0:
             return;
             break;

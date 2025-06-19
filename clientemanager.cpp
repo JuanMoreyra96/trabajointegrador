@@ -15,7 +15,7 @@ void clientemanager::cargarcliente()
     int idCliente;
     string nombre,apellido,direccion,email,dni, celular;
     bool estado;
-
+    int resultado=0;
     int cantRegistros = pArchivo.getCantidadRegistros();
     idCliente = cantRegistros+1;
     // Aqui pedimos y verificamos que no exista un cliente con el mismo DNI ya registrado.
@@ -23,47 +23,53 @@ void clientemanager::cargarcliente()
     cout << "Ingrese DNI del cliente: ";
     cin >> dni;
 
-    int resultado = pArchivo.buscar(dni);
-    if (resultado == -1 || resultado == -2) break;
-
-    cout << "Ya existe un cliente con ese DNI. Ingrese otro." << endl;
-
-    } while (true);
+    if (!validar.validarCadenaDeNumeros(dni)) {
+        cout << "El DNI debe contener solo números. Ingrese nuevamente." << endl;
+        resultado = 0;
+    } else {
+        resultado = pArchivo.buscar(dni);
+        if (resultado != -1) {
+            cout << "Ya existe un cliente con ese DNI. Ingrese otro." << endl;
+            }
+        }
+    } while (resultado != -1);
 
     do{
     cout << "ingrese nombre/s: ";
     cin.ignore();
     getline(cin, nombre);
-    if(!validar.validarCadenaDeLetras(nombre) && !validar.validarLongitudCadena(nombre, 3, 50)){
+    if(!validar.validarCadenaDeLetras(nombre) || !validar.validarLongitudCadena(nombre, 3, 50)){
         cout<<"El nombre debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadenaDeLetras(nombre) && !validar.validarLongitudCadena(nombre, 3, 50));
+    }while(!validar.validarCadenaDeLetras(nombre) || !validar.validarLongitudCadena(nombre, 3, 50));
 
 
      do{
   cout << "ingrese apellido/s: ";
     getline(cin, apellido);
-    if(!validar.validarCadenaDeLetras(apellido) && !validar.validarLongitudCadena(apellido, 3, 50)){
+    if(!validar.validarCadenaDeLetras(apellido) || !validar.validarLongitudCadena(apellido, 3, 50)){
         cout<<"El apellido debe contener entre 3 y 50 caracteres."<<endl;
     }
-    }while(!validar.validarCadenaDeLetras(apellido) && !validar.validarLongitudCadena(apellido, 3, 50));
+    }while(!validar.validarCadenaDeLetras(apellido) || !validar.validarLongitudCadena(apellido, 3, 50));
 
      do{
-    cout << "ingrese email: ";
-    getline(cin, email);
-    if(!validar.validarCadenaDeLetras(email) && !validar.validarLongitudCadena(email, 3, 50)){
-        cout<<"El email debe contener entre 3 y 50 caracteres."<<endl;
-    }
-    }while(!validar.validarCadenaDeLetras(email) && !validar.validarLongitudCadena(email, 3, 50));
-
+        cout<<"Ingrese email: ";
+        getline(cin, email);
+        if(!validar.validarLongitudCadena(email, 3, 50) || !validar.validarCadenaEmail(email)){
+            cout<<"El email debe contener entre 3 y 50 caracteres."<<endl;
+        }
+        if(!validar.validarCadenaEmail(email)){
+            cout<<"Por favor ingrese un email valido."<<endl;
+        }
+    } while(!validar.validarLongitudCadena(email, 3, 50) || !validar.validarCadenaEmail(email));
 
     do{
-    cout << "ingrese celular: ";
-    cin >> celular;
-    if(!validar.validarLongitudCadena(celular, 3, 11)){
-        cout<<"El celular debe contener entre 3 y 11 caracteres."<<endl;
-    }
-    }while(!validar.validarLongitudCadena(celular, 3, 11));
+        cout<<"Ingrese celular sin signos ni puntos: ";
+        getline(cin, celular);
+        if(!validar.validarLongitudCadena(celular, 10, 10) || !validar.validarCadenaDeNumeros(celular)){
+            cout<<"El celular debe contener 10 caracteres numericos."<<endl;
+        }
+    } while(!validar.validarLongitudCadena(celular, 10, 10) || !validar.validarCadenaDeNumeros(celular));
 
 
     //Lo dejamos en activo por defecto
