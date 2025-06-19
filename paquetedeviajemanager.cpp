@@ -82,7 +82,7 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
     }
     }while(!validar.validarBooleano(temporadaAlta));
 
-  //  do{
+   do{
        cout<<"Ingrese la fecha de salida: ";
   cout<<"Dia: ";
   cin>> dia;
@@ -95,14 +95,14 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   cout<<"Minutos: ";
   cin>>minutos;
 
-  //  if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)){
-   //     cout<<"La fecha no debe ser anterior al dia actual."<<endl;
-    // }
-    //}while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos));
+    if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)){
+        cout<<"La fecha no debe ser anterior al dia actual."<<endl;
+     }
+    }while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos));
 
     fechaSalida = FechaHora(dia, mes, anio, hora, minutos);
 
-       // do{
+        do{
        cout<<"Ingrese la fecha de regreso: ";
   cout<<"Dia: ";
   cin>> dia;
@@ -115,14 +115,14 @@ void PaqueteDeViajeManager::cargarPaqueteDeViaje()
   cout<<"Minutos: ";
   cin>>minutos;
 
-   // if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
-   //&& !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
-  // ){
-   //     cout<<"La fecha de regreso debe ser posterior a la de salida."<<endl;
-   //  }
-  //  }while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
-  // && !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
-   // );
+    if(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
+   && !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
+  ){
+        cout<<"La fecha de regreso debe ser posterior a la de salida."<<endl;
+     }
+}while(!validar.validarFechaProxima(dia, mes, anio, hora, minutos)
+   && !validar.validarFechaPosterior(fechaSalida, dia, mes, anio, hora, minutos)
+    );
 
   fechaRegreso = FechaHora(dia, mes, anio, hora, minutos);
 
