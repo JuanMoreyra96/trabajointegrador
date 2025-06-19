@@ -1,5 +1,4 @@
-#ifndef INFORMES_H_INCLUDED
-#define INFORMES_H_INCLUDED
+#pragma once
 class Informes{
 private:
 
@@ -8,6 +7,3 @@ public:
   void mostrarClientesQueAdeudan();
   void mostrarDestinoMasVisitadoEnAnio();
 };
-
-
-#endif // INFORMES_H_INCLUDED

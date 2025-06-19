@@ -1,7 +1,4 @@
-#ifndef PAGOMANAGER_H_INCLUDED
-#define PAGOMANAGER_H_INCLUDED
-
-
+#pragma once
 class PagoManager{
 private:
 
@@ -12,4 +9,3 @@ public:
   void ListarOrdenadosPorIDCliente();
 };
 
-#endif // PAGOMANAGER_H_INCLUDED

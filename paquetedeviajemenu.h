@@ -1,8 +1,5 @@
-#ifndef PAQUETEDEVIAJEMENU_H_INCLUDED
-#define PAQUETEDEVIAJEMENU_H_INCLUDED
-
+#pragma once
 class PaqueteDeViajeMenu{
    public:
       void mostrar();
 };
-#endif // PAQUETEDEVIAJEMENU_H_INCLUDED

@@ -1,10 +1,7 @@
-#ifndef CLIENTEMENU_H_INCLUDED
-#define CLIENTEMENU_H_INCLUDED
-
+#pragma once
 class clientemenu{
 
     public:
         void mostrar();
 };
 
-#endif // CLIENTEMENU_H_INCLUDED

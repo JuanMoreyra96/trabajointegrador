@@ -1,5 +1,4 @@
-#ifndef RESERVAARCHIVO_H_INCLUDED
-#define RESERVAARCHIVO_H_INCLUDED
+#pragma once
 #include <string>
 #include "Reserva.h"
 
@@ -17,5 +16,3 @@ public:
   Reserva leer(int pos);
 };
 
-
-#endif // RESERVAARCHIVO_H_INCLUDED

@@ -1,7 +1,4 @@
-#ifndef RESERVAMANAGER_H_INCLUDED
-#define RESERVAMANAGER_H_INCLUDED
-
-
+#pragma once
 
 class ReservaManager{
 private:
@@ -15,6 +12,3 @@ public:
   void listarTodasAlfabeticamentePorDestino();
 
 };
-
-
-#endif // RESERVAMANAGER_H_INCLUDED

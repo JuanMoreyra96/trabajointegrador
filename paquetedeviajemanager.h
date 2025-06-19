@@ -1,5 +1,4 @@
-#ifndef PAQUETEDEVIAJEMANAGER_H_INCLUDED
-#define PAQUETEDEVIAJEMANAGER_H_INCLUDED
+#pragma once
 #include "fechaHora.h"
 
 class PaqueteDeViajeManager{
@@ -24,4 +23,3 @@ public:
   void listarTodosAlfabeticamentePorDestino();
 
 };
-#endif

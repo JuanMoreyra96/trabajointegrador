@@ -1,5 +1,4 @@
-#ifndef PAQUETEDEVIAJEARCHIVO_H_INCLUDED
-#define PAQUETEDEVIAJEARCHIVO_H_INCLUDED
+#pragma once
 #include <string>
 #include "paquetedeviaje.h"
 
@@ -22,4 +21,3 @@ public:
   void buscarRegistroPorFechaRegreso(FechaHora fecha);
   void mostrarPaquetesPorTransporte(std::string transporte);
 };
-#endif
